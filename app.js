@@ -42,6 +42,7 @@
     
     // UI 控制
     showAnswerSheet: false,
+    sheetFilter: 'all', // 'all' | 'done' | 'undone' | 'wrong'
     showImageModal: false,
     modalImageUrl: '',
     showSettingsModal: false,
@@ -539,10 +540,17 @@
               ${q.category}
             </span>
           </div>
-          <div class="flex items-center gap-3">
-            <span class="text-sm font-semibold font-mono text-slate-500 dark:text-slate-400">
-              ${state.currentIndex + 1} / ${state.activeQuestions.length}
-            </span>
+          <div class="flex items-center gap-2.5">
+            <!-- 快速跳轉指定題號小元件 -->
+            <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-700/60 px-2.5 py-1 rounded-xl border border-slate-200/80 dark:border-slate-600/60 shadow-inner">
+              <span class="text-xs font-medium text-slate-500 dark:text-slate-400">第</span>
+              <input type="number" min="1" max="${state.activeQuestions.length}" value="${state.currentIndex + 1}"
+                     title="點擊可直接輸入題號跳轉，按 Enter 前往"
+                     onchange="window.handleQuickJump(this.value)"
+                     onkeydown="if(event.key==='Enter') window.handleQuickJump(this.value)"
+                     class="w-12 text-center font-mono font-bold text-xs bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-600 rounded-lg px-1 py-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">/ ${state.activeQuestions.length} 題</span>
+            </div>
             <button onclick="window.handleToggleBookmark('${q.id}')" title="收藏本題 (快捷鍵 S)" class="p-2 rounded-lg text-slate-400 hover:text-amber-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
               <span class="text-xl ${isBookmarked ? 'text-amber-500' : ''}">${isBookmarked ? '★' : '☆'}</span>
             </button>
@@ -663,7 +671,7 @@
     renderAnswerSheetModal();
   }
 
-  // 答題卡跳轉網格彈窗
+  // 學習進度與答題卡跳轉網格彈窗
   function renderAnswerSheetModal() {
     const modal = document.getElementById('answer-sheet-modal');
     if (!modal) return;
@@ -674,37 +682,142 @@
     }
     modal.classList.remove('hidden');
     
+    const summaryBox = document.getElementById('progress-summary-box');
     const gridContainer = document.getElementById('answer-sheet-grid');
     if (!gridContainer) return;
     
-    let buttonsHtml = '';
-    state.activeQuestions.forEach((q, idx) => {
-      let bg = "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200";
-      const isCurrent = idx === state.currentIndex;
+    // 計算每題作答狀態
+    const items = state.activeQuestions.map((q, idx) => {
+      let isDone = false;
+      let isCorrect = false;
+      let isWrong = false;
+      let userAns = null;
       
       if (state.currentMode === 'exam') {
-        const userAns = state.exam.answers[idx];
-        if (state.exam.submitted) {
-          // 已交卷，顯示對錯
-          if (userAns === q.answer) bg = "bg-green-500 text-white font-bold";
-          else if (userAns) bg = "bg-red-500 text-white font-bold";
-          else bg = "bg-slate-200 text-slate-500 dark:bg-slate-700 dark:text-slate-400";
-        } else {
-          // 作答中，顯示是否已做
-          if (userAns) bg = "bg-blue-600 text-white font-bold";
+        userAns = state.exam.answers[idx];
+        if (userAns) {
+          isDone = true;
+          if (state.exam.submitted) {
+            isCorrect = (userAns === q.answer);
+            isWrong = !isCorrect;
+          }
         }
       } else {
-        // 練習模式
         const hist = state.history[q.id];
         if (hist) {
-          if (hist.isCorrect) bg = "bg-green-500 text-white font-bold";
-          else bg = "bg-red-500 text-white font-bold";
+          isDone = true;
+          isCorrect = hist.isCorrect;
+          isWrong = !hist.isCorrect;
         }
       }
       
-      const currentRing = isCurrent ? "ring-2 ring-offset-2 ring-blue-600 dark:ring-offset-slate-800 scale-110 font-extrabold" : "";
+      return { q, idx, isDone, isCorrect, isWrong, userAns };
+    });
+
+    const total = items.length;
+    const doneCount = items.filter(i => i.isDone).length;
+    const correctCount = items.filter(i => i.isCorrect).length;
+    const wrongCount = items.filter(i => i.isWrong).length;
+    const undoneCount = total - doneCount;
+    const completionRate = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+    const accuracyRate = doneCount > 0 ? Math.round((correctCount / doneCount) * 100) : 0;
+    
+    // 1. 渲染進度統計面版
+    if (summaryBox) {
+      summaryBox.innerHTML = `
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-3 text-center">
+          <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 dark:text-slate-400">總題數</div>
+            <div class="text-lg font-bold font-mono text-slate-800 dark:text-slate-100">${total} 題</div>
+          </div>
+          <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 dark:text-slate-400">已完成</div>
+            <div class="text-lg font-bold font-mono text-blue-600 dark:text-blue-400">${doneCount} 題 <span class="text-xs font-normal">(${completionRate}%)</span></div>
+          </div>
+          <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 dark:text-slate-400">答對題數</div>
+            <div class="text-lg font-bold font-mono text-green-600 dark:text-green-400">${correctCount} 題 <span class="text-xs font-normal">(${accuracyRate}%)</span></div>
+          </div>
+          <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 dark:text-slate-400">答錯題數</div>
+            <div class="text-lg font-bold font-mono text-red-600 dark:text-red-400">${wrongCount} 題</div>
+          </div>
+        </div>
+
+        <!-- 雙色進度長條圖 -->
+        <div class="space-y-1">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+            <span>完成進度條</span>
+            <span>已做 ${doneCount} / 剩餘 ${undoneCount} 題</span>
+          </div>
+          <div class="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
+            <div style="width: ${(correctCount / total) * 100}%" class="bg-green-500 h-full transition-all duration-300" title="答對：${correctCount} 題"></div>
+            <div style="width: ${(wrongCount / total) * 100}%" class="bg-red-500 h-full transition-all duration-300" title="答錯：${wrongCount} 題"></div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 2. 更新篩選標籤 Tab 樣式與計數
+    const tabs = [
+      { id: 'sheet-tab-all', key: 'all', label: `全部 (${total})` },
+      { id: 'sheet-tab-done', key: 'done', label: `✅ 已完成 (${doneCount})` },
+      { id: 'sheet-tab-undone', key: 'undone', label: `⬜ 未完成 (${undoneCount})` },
+      { id: 'sheet-tab-wrong', key: 'wrong', label: `❌ 做錯 (${wrongCount})` },
+    ];
+    tabs.forEach(tab => {
+      const el = document.getElementById(tab.id);
+      if (el) {
+        el.innerText = tab.label;
+        if (state.sheetFilter === tab.key) {
+          el.className = "sheet-tab-btn px-3 py-1.5 font-semibold rounded-lg bg-blue-600 text-white shadow-sm";
+        } else {
+          el.className = "sheet-tab-btn px-3 py-1.5 font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition";
+        }
+      }
+    });
+
+    // 3. 依據篩選條件過濾要展示在網格中的題目
+    let displayItems = items;
+    if (state.sheetFilter === 'done') {
+      displayItems = items.filter(i => i.isDone);
+    } else if (state.sheetFilter === 'undone') {
+      displayItems = items.filter(i => !i.isDone);
+    } else if (state.sheetFilter === 'wrong') {
+      displayItems = items.filter(i => i.isWrong);
+    }
+
+    if (displayItems.length === 0) {
+      gridContainer.innerHTML = `
+        <div class="col-span-full py-12 text-center text-slate-400">
+          <div class="text-3xl mb-2">🔍</div>
+          <p class="text-sm">此分類下暫無題目</p>
+        </div>
+      `;
+      return;
+    }
+
+    let buttonsHtml = '';
+    displayItems.forEach(item => {
+      const idx = item.idx;
+      const isCurrent = (idx === state.currentIndex);
+      let bg = "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-600";
+      
+      if (state.currentMode === 'exam') {
+        if (state.exam.submitted) {
+          if (item.isCorrect) bg = "bg-green-500 text-white font-bold";
+          else if (item.isWrong) bg = "bg-red-500 text-white font-bold";
+        } else {
+          if (item.isDone) bg = "bg-blue-600 text-white font-bold";
+        }
+      } else {
+        if (item.isCorrect) bg = "bg-green-500 text-white font-bold";
+        else if (item.isWrong) bg = "bg-red-500 text-white font-bold";
+      }
+      
+      const currentRing = isCurrent ? "ring-2 ring-offset-2 ring-blue-600 dark:ring-offset-slate-800 scale-105 font-extrabold shadow-md" : "";
       buttonsHtml += `
-        <button onclick="window.jumpToQuestion(${idx})" class="answer-grid-btn w-9 h-9 rounded-lg flex items-center justify-center text-xs font-mono font-medium ${bg} ${currentRing}">
+        <button onclick="window.jumpToQuestion(${idx})" title="題號 #${idx + 1} (${item.isDone ? (item.isCorrect ? '已答對' : '已答錯') : '未作答'})" class="answer-grid-btn h-9 rounded-lg flex items-center justify-center text-xs font-mono font-medium ${bg} ${currentRing}">
           ${idx + 1}
         </button>
       `;
@@ -868,6 +981,28 @@
     state.currentIndex = idx;
     state.showAnswerSheet = false;
     render();
+  };
+  window.handleQuickJump = function(val) {
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 1 && num <= state.activeQuestions.length) {
+      state.currentIndex = num - 1;
+      render();
+    }
+  };
+  window.setAnswerSheetFilter = function(filter) {
+    state.sheetFilter = filter;
+    renderAnswerSheetModal();
+  };
+  window.jumpBySheetInput = function() {
+    const input = document.getElementById('sheet-jump-input');
+    if (!input) return;
+    const num = parseInt(input.value, 10);
+    if (!isNaN(num) && num >= 1 && num <= state.activeQuestions.length) {
+      window.jumpToQuestion(num - 1);
+      input.value = '';
+    } else {
+      alert(`請輸入 1 到 ${state.activeQuestions.length} 之間的有效題號！`);
+    }
   };
   window.switchToMode = switchMode;
   window.startNewExam = function() {
