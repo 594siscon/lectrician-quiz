@@ -111,7 +111,7 @@
     // 動態更新章節篩選下拉框
     const catSelect = document.getElementById('category-filter');
     if (catSelect) {
-      let optHtml = `<option value="all">全本題庫 (全部 ${data.categories.length} 大篇章 · ${data.total_count} 題)</option>`;
+      let optHtml = `<option value="all">全部章節 (${data.total_count} 題)</option>`;
       data.categories.forEach((c, idx) => {
         const cnt = state.allQuestions.filter(q => q.category === c).length;
         optHtml += `<option value="${c}">${idx + 1}. ${c} (${cnt} 題)</option>`;
@@ -415,9 +415,9 @@
     document.querySelectorAll('.mode-btn').forEach(btn => {
       const mode = btn.dataset.mode;
       if (mode === state.currentMode) {
-        btn.className = "mode-btn flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm";
+        btn.className = "mode-btn flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm whitespace-nowrap shrink-0 transition";
       } else {
-        btn.className = "mode-btn flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition";
+        btn.className = "mode-btn flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800 whitespace-nowrap shrink-0 transition";
       }
     });
     
@@ -451,7 +451,7 @@
     // 篩選列控制：考試模式時隱藏章節篩選
     const filterSection = document.getElementById('filter-section');
     if (filterSection) {
-      filterSection.style.display = state.currentMode === 'exam' ? 'none' : 'flex';
+      filterSection.style.display = state.currentMode === 'exam' ? 'none' : 'block';
     }
   }
 
@@ -491,7 +491,21 @@
         state.currentMode = 'practice';
         state.selectedCategory = 'all';
         state.selectedType = 'all';
+        state.onlyUndone = false;
         state.searchKeyword = '';
+        const sInput = document.getElementById('search-input');
+        if (sInput) sInput.value = '';
+        const clrBtn = document.getElementById('clear-search-btn');
+        if (clrBtn) clrBtn.classList.add('hidden');
+        const undoneToggle = document.getElementById('only-undone-toggle');
+        if (undoneToggle) undoneToggle.checked = false;
+        const catSel = document.getElementById('category-filter');
+        if (catSel) catSel.value = 'all';
+        document.querySelectorAll('.type-filter-btn').forEach(b => {
+          b.className = b.dataset.type === 'all'
+            ? "type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white"
+            : "type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+        });
         updateActiveQuestions();
         render();
       });
@@ -546,25 +560,28 @@
             // 正確答案標綠
             cardStyle = "border-green-500 bg-green-50 dark:bg-green-950/40 text-green-900 dark:text-green-200 ring-2 ring-green-500/30";
             keyStyle = "bg-green-600 text-white font-bold";
-            statusIcon = `<span class="ml-auto text-green-600 dark:text-green-400 font-bold text-lg">✓ 正確</span>`;
+            statusIcon = `<span class="ml-2 text-green-600 dark:text-green-400 font-bold text-sm sm:text-base shrink-0">✓ 正確</span>`;
           } else if (opt.key === userAns) {
             // 答錯的選項標紅
             cardStyle = "border-red-500 bg-red-50 dark:bg-red-950/40 text-red-900 dark:text-red-200 ring-2 ring-red-500/30";
             keyStyle = "bg-red-600 text-white font-bold";
-            statusIcon = `<span class="ml-auto text-red-600 dark:text-red-400 font-bold text-lg">✗ 你的選擇</span>`;
+            statusIcon = `<span class="ml-2 text-red-600 dark:text-red-400 font-bold text-sm sm:text-base shrink-0">✗ 你的選擇</span>`;
           }
         }
       }
 
       // 快速鍵提示標籤
       const kbdKey = opt.key;
+      const optionTextHtml = (opt.text && opt.text.trim())
+        ? opt.text
+        : '<span class="text-slate-400 dark:text-slate-500 italic text-sm">（請參考題目附圖選項）</span>';
       optionsHtml += `
-        <div class="option-card flex items-center p-4 rounded-xl border-2 cursor-pointer transition select-none ${cardStyle}"
+        <div class="option-card flex items-center p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition select-none ${cardStyle}"
              onclick="window.handleSelectOption('${opt.key}')">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 mr-3.5 ${keyStyle}">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shrink-0 mr-3 sm:mr-3.5 ${keyStyle}">
             ${opt.key}
           </div>
-          <div class="text-base leading-relaxed flex-1">${opt.text}</div>
+          <div class="text-sm sm:text-base leading-relaxed flex-1">${optionTextHtml}</div>
           ${statusIcon}
           <span class="kbd-badge ml-3 hidden sm:inline-flex text-xs opacity-60">${kbdKey}</span>
         </div>
@@ -589,7 +606,7 @@
     }
 
     container.innerHTML = `
-      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8 animate-fade-in">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 sm:p-8 animate-fade-in">
         <!-- 頂部資訊列 -->
         <div class="flex items-center justify-between mb-5 flex-wrap gap-2 pb-4 border-b border-slate-100 dark:border-slate-700/60">
           <div class="flex items-center gap-2.5">
@@ -616,7 +633,7 @@
         </div>
 
         <!-- 題目內文 -->
-        <div class="text-lg sm:text-xl font-medium text-slate-900 dark:text-slate-100 leading-relaxed mb-6">
+        <div class="text-base sm:text-lg md:text-xl font-medium text-slate-900 dark:text-slate-100 leading-relaxed tracking-wide mb-6">
           <span class="text-blue-600 dark:text-blue-400 font-bold font-mono mr-1.5">#${q.num}.</span>
           ${q.question}
         </div>
@@ -884,8 +901,11 @@
     gridContainer.innerHTML = buttonsHtml;
   }
 
-  // 鍵盤快速鍵監聽
+  // 鍵盤快速鍵監聽（僅綁定一次，避免切換科目重複註冊）
+  let isShortcutsBound = false;
   function bindKeyboardShortcuts() {
+    if (isShortcutsBound) return;
+    isShortcutsBound = true;
     window.addEventListener('keydown', (e) => {
       // 避免在輸入框打字時觸發快捷鍵
       if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
@@ -924,8 +944,11 @@
     });
   }
 
-  // 綁定 UI 元素事件
+  // 綁定 UI 元素事件（僅綁定一次，避免切換科目重複註冊）
+  let isEventsBound = false;
   function bindEvents() {
+    if (isEventsBound) return;
+    isEventsBound = true;
     // 模式切換
     document.querySelectorAll('.mode-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -955,8 +978,8 @@
         state.selectedType = btn.dataset.type;
         document.querySelectorAll('.type-filter-btn').forEach(b => {
           b.className = b.dataset.type === state.selectedType 
-            ? "type-filter-btn px-3 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white" 
-            : "type-filter-btn px-3 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700";
+            ? "type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white whitespace-nowrap transition" 
+            : "type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap transition";
         });
         state.currentIndex = 0;
         updateActiveQuestions();
@@ -1000,17 +1023,28 @@
       submitExam(false);
     });
 
-    // 搜尋輸入框
+    // 搜尋輸入框與清除按鈕
     const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         state.searchKeyword = e.target.value;
+        if (clearSearchBtn) {
+          clearSearchBtn.classList.toggle('hidden', !state.searchKeyword.length);
+        }
         if (state.searchKeyword.trim()) {
           state.currentMode = 'search';
+          state.currentIndex = 0;
+        } else if (state.currentMode === 'search') {
+          state.currentMode = 'practice';
+          state.currentIndex = 0;
         }
         updateActiveQuestions();
         render();
       });
+    }
+    if (clearSearchBtn && !clearSearchBtn.getAttribute('onclick')) {
+      clearSearchBtn.addEventListener('click', () => window.clearSearch());
     }
   }
 
@@ -1035,6 +1069,30 @@
   // 全域暴露給 HTML 點擊調用的函數
   window.handleSelectOption = answerQuestion;
   window.handleToggleBookmark = toggleBookmark;
+  window.toggleOnlyUndone = function(checked) {
+    state.onlyUndone = Boolean(checked);
+    state.currentIndex = 0;
+    updateActiveQuestions();
+    render();
+  };
+  window.clearSearch = function() {
+    const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.focus();
+    }
+    if (clearSearchBtn) {
+      clearSearchBtn.classList.add('hidden');
+    }
+    state.searchKeyword = '';
+    if (state.currentMode === 'search') {
+      state.currentMode = 'practice';
+      state.currentIndex = 0;
+    }
+    updateActiveQuestions();
+    render();
+  };
   window.jumpToQuestion = function(idx) {
     state.currentIndex = idx;
     state.showAnswerSheet = false;

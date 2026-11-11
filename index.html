@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中級維修電工 技能測試刷題系統</title>
+  <title>澳門電工技能測試 刷題系統</title>
   <!-- PWA 與行動裝置全螢幕支援 -->
   <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,36 +30,63 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261111_7">
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
-  <!-- 頂部主導航列 -->
-  <header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700/80 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+  <!-- 頂部主導航列 (雙層清爽佈局：品牌功能列 + 模式導覽列) -->
+  <header class="sticky top-0 z-30 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700/80 shadow-xs">
+    <!-- 第一層：標題切換與工具按鈕 -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
       
-      <!-- 標題與科目切換 -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-sm shrink-0">
+      <!-- 左側：Logo 與科目切換 -->
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
           ⚡
         </div>
-        <div>
-          <div class="flex items-center gap-2 flex-wrap">
-            <select id="subject-selector" onchange="window.switchSubject(this.value)" class="text-sm sm:text-base font-bold bg-transparent text-slate-900 dark:text-white border-b border-blue-500 focus:outline-none cursor-pointer py-0.5">
-              <option value="mid_maintenance_electrician">⚡ 中級維修電工 (920 題)</option>
-              <option value="junior_maintenance_electrician">⚡ 初級維修電工 (610 題)</option>
-              <option value="junior_equipment_installer">⚡ 初級電氣設備安裝工 (328 題)</option>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <select id="subject-selector" onchange="window.switchSubject(this.value)" class="max-w-[165px] sm:max-w-none truncate text-sm sm:text-base font-bold bg-transparent text-slate-900 dark:text-white border-b border-blue-500/70 focus:outline-none cursor-pointer py-0.5">
+              <option value="mid_maintenance_electrician">中級維修電工 (920題)</option>
+              <option value="junior_maintenance_electrician">初級維修電工 (610題)</option>
+              <option value="junior_equipment_installer">初級設備安裝工 (328題)</option>
             </select>
-            <span id="subject-badge" class="px-2 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+            <span id="subject-badge" class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-semibold rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300 shrink-0">
               官方題庫
             </span>
           </div>
-          <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">澳門特別行政區政府 勞工事務局技能測試</p>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:block truncate">澳門特別行政區政府 勞工事務局技能測試</p>
         </div>
       </div>
 
-      <!-- 模式切換按鈕組 (桌面端) -->
-      <nav class="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-900/60 p-1 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+      <!-- 右側：工具組 (倒數計時、雲端同步、答題卡、深色切換) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <!-- 考試倒數計時框 (只在模擬考時出現) -->
+        <div id="exam-timer-box" class="hidden flex items-center gap-1 px-2.5 py-1.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-lg">
+          <span class="text-xs font-semibold text-red-600 dark:text-red-400">⏱️</span>
+          <span id="exam-timer-text" class="text-xs sm:text-sm font-mono font-bold text-red-600 dark:text-red-400">60:00</span>
+        </div>
+
+        <!-- 雲端同步與備份按鈕 -->
+        <button id="cloud-sync-btn" onclick="window.openCloudSyncModal()" title="雲端同步與備份" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium transition whitespace-nowrap">
+          <span id="cloud-sync-btn-text" class="max-w-[90px] sm:max-w-[150px] truncate">☁️ 同步</span>
+        </button>
+
+        <!-- 答題卡按鈕 -->
+        <button id="open-answer-sheet-btn" title="查看答題卡與全題號跳轉" class="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 transition whitespace-nowrap">
+          <span>📋</span> <span class="hidden xs:inline sm:inline">答題卡</span>
+        </button>
+
+        <!-- 深色模式切換 -->
+        <button id="theme-toggle-btn" title="深色/淺色主題切換" class="p-1.5 sm:p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition text-sm leading-none">
+          🌓
+        </button>
+      </div>
+    </div>
+
+    <!-- 第二層：統一響應式模式切換欄 (桌面置中、手機可橫滑，皆含計數徽章) -->
+    <div class="border-t border-slate-100 dark:border-slate-700/60 bg-slate-50/70 dark:bg-slate-900/40">
+      <nav class="max-w-4xl mx-auto px-3 sm:px-6 py-1.5 flex items-center justify-between sm:justify-start gap-1 sm:gap-2 overflow-x-auto no-scrollbar">
         <button class="mode-btn" data-mode="practice">
           <span>📖</span> 順序練習
         </button>
@@ -78,96 +105,46 @@
           <span id="bookmark-count-badge" class="ml-1 px-1.5 py-0.2 text-[10px] font-bold rounded-full bg-amber-500 text-white hidden">0</span>
         </button>
       </nav>
-
-      <!-- 右側工具組 (計時器、深色切換、進度備份) -->
-      <div class="flex items-center gap-2">
-        <!-- 考試倒數計時框 (只在模擬考時出現) -->
-        <div id="exam-timer-box" class="hidden flex items-center gap-1.5 px-3 py-1.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-lg">
-          <span class="text-xs font-semibold text-red-600 dark:text-red-400">⏱️</span>
-          <span id="exam-timer-text" class="text-sm font-mono font-bold text-red-600 dark:text-red-400">60:00</span>
-        </div>
-
-        <!-- 雲端同步按鈕 (方案 C) -->
-        <button id="cloud-sync-btn" onclick="window.openCloudSyncModal()" title="雲端帳號同步" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium transition">
-          <span id="cloud-sync-btn-text">☁️ 雲端同步</span>
-        </button>
-
-        <!-- 答題卡按鈕 -->
-        <button id="open-answer-sheet-btn" title="查看答題卡與全題號跳轉" class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 transition">
-          <span>📋</span> 答題卡
-        </button>
-
-        <!-- 備份資料按鈕 -->
-        <button onclick="window.exportProgress()" title="匯出作答進度備份 JSON" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition text-sm">
-          💾
-        </button>
-        <label title="匯入作答進度" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition text-sm cursor-pointer">
-          📂
-          <input type="file" accept=".json" onchange="window.importProgress(this)" class="hidden" />
-        </label>
-
-        <!-- 深色模式切換 -->
-        <button id="theme-toggle-btn" title="深色/淺色主題切換" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition text-sm">
-          🌓
-        </button>
-      </div>
-    </div>
-
-    <!-- 行動端底部模式切換欄 (手機版展示) -->
-    <div class="md:hidden flex items-center justify-around border-t border-slate-200 dark:border-slate-700 py-2 px-2 overflow-x-auto text-xs">
-      <button class="mode-btn py-1 px-2.5" data-mode="practice">順序</button>
-      <button class="mode-btn py-1 px-2.5" data-mode="shuffle">隨機</button>
-      <button class="mode-btn py-1 px-2.5" data-mode="exam">模擬考</button>
-      <button class="mode-btn py-1 px-2.5" data-mode="mistakes">錯題</button>
-      <button class="mode-btn py-1 px-2.5" data-mode="bookmarks">收藏</button>
     </div>
   </header>
 
   <!-- 次級篩選與搜尋列 -->
-  <div id="filter-section" class="bg-white/60 dark:bg-slate-800/60 border-b border-slate-200/80 dark:border-slate-700/60 py-3">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
+  <div id="filter-section" class="bg-white/70 dark:bg-slate-800/60 border-b border-slate-200/80 dark:border-slate-700/60 py-2.5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-2.5">
       
-      <!-- 章節與題型篩選 -->
-      <div class="flex items-center gap-3 flex-wrap">
+      <!-- 左側：章節、題型與未做篩選 -->
+      <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap">
         <!-- 章節下拉選單 -->
-        <div class="flex items-center gap-1.5">
-          <label class="text-xs font-semibold text-slate-500 dark:text-slate-400">章節：</label>
-          <select id="category-filter" class="text-xs sm:text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="all">全本題庫 (全部 6 大篇章 · 920 題)</option>
-            <option value="工作規範與電工安全">1. 工作規範與電工安全 (150 題)</option>
-            <option value="電工基礎">2. 電工基礎 (235 題)</option>
-            <option value="電工儀錶測量">3. 電工儀錶測量 (130 題)</option>
-            <option value="低壓電器與照明電路">4. 低壓電器與照明電路 (148 題)</option>
-            <option value="電機與電氣控制">5. 電機與電氣控制 (175 題)</option>
-            <option value="電子技術基礎">6. 電子技術基礎 (82 題)</option>
-          </select>
-        </div>
+        <select id="category-filter" class="flex-1 sm:flex-initial max-w-full sm:max-w-[235px] text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 truncate">
+          <option value="all">全本題庫</option>
+        </select>
 
-        <!-- 題型篩選按鈕組 -->
-        <div class="flex items-center bg-slate-100 dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-          <button class="type-filter-btn px-3 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white" data-type="all">全部</button>
-          <button class="type-filter-btn px-3 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="tf">是非題</button>
-          <button class="type-filter-btn px-3 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="mc">選擇題</button>
+        <!-- 題型篩選膠囊 -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
+          <button class="type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white" data-type="all">全部</button>
+          <button class="type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="tf">是非</button>
+          <button class="type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="mc">選擇</button>
         </div>
 
         <!-- 只刷未完成題開關 -->
-        <label class="flex items-center gap-1.5 cursor-pointer select-none text-xs text-slate-600 dark:text-slate-300 ml-1">
+        <label class="flex items-center gap-1.5 cursor-pointer select-none text-xs text-slate-600 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-900/60 px-2.5 py-1.5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 shrink-0">
           <input type="checkbox" id="only-undone-toggle" onchange="window.toggleOnlyUndone(this.checked)" class="w-3.5 h-3.5 rounded text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-600" />
-          <span>只刷未做題</span>
+          <span>只刷未做</span>
         </label>
       </div>
 
-      <!-- 關鍵字搜尋框 -->
-      <div class="relative w-full sm:w-64">
-        <input type="text" id="search-input" placeholder="搜尋題庫關鍵字..." class="w-full text-xs sm:text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <span class="absolute left-2.5 top-2 text-xs text-slate-400">🔍</span>
+      <!-- 右側：關鍵字搜尋框 -->
+      <div class="relative w-full md:w-56 shrink-0">
+        <input type="text" id="search-input" placeholder="搜尋題庫關鍵字..." class="w-full text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg pl-8 pr-7 py-1.5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <span class="absolute left-2.5 top-1.5 text-xs text-slate-400">🔍</span>
+        <button id="clear-search-btn" onclick="window.clearSearch()" title="清除搜尋" class="hidden absolute right-2 top-1.5 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">✕</button>
       </div>
 
     </div>
   </div>
 
-  <!-- 主內容區域 -->
-  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col justify-center">
+  <!-- 主內容區域 (頂部齊平，避免切題時卡片上下跳動) -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 pt-5 pb-8 sm:pt-7 sm:pb-12 flex flex-col justify-start">
     <div id="question-area">
       <!-- 題目卡片由 app.js 動態渲染 -->
       <div class="flex items-center justify-center p-12 text-slate-400">
@@ -177,30 +154,31 @@
   </main>
 
   <!-- 底部固定導航列 -->
-  <footer class="sticky bottom-0 z-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-700 py-3 shadow-lg">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+  <footer class="sticky bottom-0 z-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-700 py-2.5 sm:py-3 shadow-lg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
       
       <!-- 左側輔助選項：自動下一題開關 -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center">
         <label class="flex items-center gap-2 cursor-pointer select-none text-xs sm:text-sm text-slate-600 dark:text-slate-300">
           <input type="checkbox" id="auto-next-toggle" checked class="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-600" />
-          <span>答對自動下一題</span>
+          <span class="hidden sm:inline">答對自動下一題</span>
+          <span class="sm:hidden">自動下一題</span>
         </label>
       </div>
 
-      <!-- 中間/右側操作按鈕組 -->
-      <div class="flex items-center gap-3">
+      <!-- 右側操作按鈕組 -->
+      <div class="flex items-center gap-2 sm:gap-3">
         <!-- 模擬考試交卷按鈕 -->
-        <button id="submit-exam-btn" class="hidden px-5 py-2 text-sm font-semibold rounded-xl bg-green-600 hover:bg-green-700 text-white shadow-sm transition">
+        <button id="submit-exam-btn" class="hidden px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-green-600 hover:bg-green-700 text-white shadow-sm transition">
           交卷評分
         </button>
 
-        <button id="prev-btn" class="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-xl border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+        <button id="prev-btn" class="flex items-center gap-1 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
           <span>←</span> 上一題
           <span class="kbd-badge ml-1 hidden sm:inline-flex text-[10px]">←</span>
         </button>
 
-        <button id="next-btn" class="flex items-center gap-1.5 px-5 py-2 text-sm font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
+        <button id="next-btn" class="flex items-center gap-1 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
           下一題 <span>→</span>
           <span class="kbd-badge ml-1 hidden sm:inline-flex text-[10px] text-white/80 border-white/30">→</span>
         </button>
@@ -428,6 +406,22 @@
           </button>
         </div>
       </div>
+
+      <!-- 本機檔案離線備份與匯入區塊 (整併至同步彈窗，讓頂部欄保持簡潔) -->
+      <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-700/80">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">📁 本機檔案離線備份 (全科目)</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <button type="button" onclick="window.exportProgress()" class="py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-xs font-medium text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-1.5">
+            <span>💾</span> 匯出備份檔
+          </button>
+          <label class="py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-xs font-medium text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <span>📂</span> 匯入並合併
+            <input type="file" accept=".json" onchange="window.importProgress(this)" class="hidden" />
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -435,15 +429,15 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js?v=20261111_5"></script>
-  <script src="sync.js?v=20261111_5"></script>
+  <script src="firebase-config.js?v=20261111_7"></script>
+  <script src="sync.js?v=20261111_7"></script>
 
   <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js?v=20261111_6"></script>
   <script src="data/junior_maintenance_electrician.js?v=20261111_6"></script>
   <script src="data/junior_equipment_installer.js?v=20261111_6"></script>
   <!-- 引入核心業務腳本 -->
-  <script src="app.js?v=20261111_5"></script>
+  <script src="app.js?v=20261111_7"></script>
 </body>
 </html>
 

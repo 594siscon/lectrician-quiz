@@ -83,20 +83,20 @@
 
       if (!this.isConfigured) {
         text.textContent = "☁️ 雲端同步 (待配置)";
-        btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-medium hover:bg-amber-100 transition";
+        btn.className = "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-medium hover:bg-amber-100 transition whitespace-nowrap shrink-0";
         return;
       }
 
       if (this.isSyncing) {
         text.textContent = "🔄 同步中...";
-        btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-medium animate-pulse";
+        btn.className = "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-medium animate-pulse whitespace-nowrap shrink-0";
       } else if (this.currentUser) {
         const displayName = this.currentUser.displayName || (this.currentUser.email ? this.currentUser.email.split('@')[0] : '已登入');
-        text.textContent = `🟢 已同步 (${displayName})`;
-        btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-xs font-medium hover:bg-green-100 transition";
+        text.textContent = `🟢 ${displayName}`;
+        btn.className = "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-xs font-medium hover:bg-green-100 transition whitespace-nowrap shrink-0 max-w-[140px] sm:max-w-[200px] truncate";
       } else {
-        text.textContent = "☁️ 登入同步";
-        btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition";
+        text.textContent = "☁️ 同步 / 登入";
+        btn.className = "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition whitespace-nowrap shrink-0";
       }
     },
 

@@ -83,6 +83,15 @@ code, kbd, .font-mono {
   cursor: zoom-in;
 }
 
+/* 隱藏橫向滾動條但保留滑動能力 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* 模態框淡入 */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.96); }
