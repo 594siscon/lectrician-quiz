@@ -1,7 +1,32 @@
-// 中級維修電工刷題工具 - 核心業務邏輯
+// 電工技能測試刷題工具 - 核心業務邏輯
 (function() {
+  const SUBJECTS = {
+    'mid_maintenance_electrician': {
+      id: 'mid_maintenance_electrician',
+      name: '中級維修電工',
+      badge: '920 題 · 2026 最新版',
+      getData: () => window.RAW_QUESTION_DATA,
+      file: 'data/mid_maintenance_electrician.json'
+    },
+    'junior_maintenance_electrician': {
+      id: 'junior_maintenance_electrician',
+      name: '初級維修電工',
+      badge: '610 題 · 完整官方題庫',
+      getData: () => window.RAW_JUNIOR_ELECTRICIAN_DATA,
+      file: 'data/junior_maintenance_electrician.json'
+    },
+    'junior_equipment_installer': {
+      id: 'junior_equipment_installer',
+      name: '初級電氣設備安裝工',
+      badge: '328 題 · 完整官方題庫',
+      getData: () => window.RAW_EQUIPMENT_INSTALLER_DATA,
+      file: 'data/junior_equipment_installer.json'
+    }
+  };
+
   // 核心狀態
   const state = {
+    currentSubject: localStorage.getItem('elec_current_subject') || 'mid_maintenance_electrician',
     allQuestions: [],
     categories: [],
     
@@ -49,68 +74,92 @@
     showExamModal: false
   };
 
-  // 載入題庫資料
-  function initData() {
-    let raw = window.RAW_QUESTION_DATA;
-    if (!raw) {
-      console.warn("RAW_QUESTION_DATA not loaded via script, trying fetch...");
-      fetch('data/mid_maintenance_electrician.json')
-        .then(res => res.json())
-        .then(data => {
-          setupApp(data);
-        })
-        .catch(err => {
-          alert("無法載入題庫資料，請確認 data/mid_maintenance_electrician.json 存在！");
-        });
-    } else {
+  // 載入當前科目題庫資料
+  function loadSubjectData(subjId) {
+    state.currentSubject = subjId;
+    localStorage.setItem('elec_current_subject', subjId);
+    
+    const subj = SUBJECTS[subjId];
+    if (!subj) return;
+    
+    // 更新科目下拉框與徽章
+    const sel = document.getElementById('subject-selector');
+    if (sel) sel.value = subjId;
+    const badge = document.getElementById('subject-badge');
+    if (badge) badge.innerText = subj.badge;
+    
+    let raw = subj.getData();
+    if (raw) {
       setupApp(raw);
+    } else {
+      fetch(subj.file)
+        .then(res => res.json())
+        .then(data => setupApp(data))
+        .catch(err => alert("無法載入題庫檔案：" + subj.file));
     }
+  }
+
+  function initData() {
+    loadSubjectData(state.currentSubject);
   }
 
   function setupApp(data) {
     state.allQuestions = data.questions;
     state.categories = data.categories;
     
-    // 讀取 LocalStorage
+    // 動態更新章節篩選下拉框
+    const catSelect = document.getElementById('category-filter');
+    if (catSelect) {
+      let optHtml = `<option value="all">全本題庫 (全部 ${data.categories.length} 大篇章 · ${data.total_count} 題)</option>`;
+      data.categories.forEach((c, idx) => {
+        const cnt = state.allQuestions.filter(q => q.category === c).length;
+        optHtml += `<option value="${c}">${idx + 1}. ${c} (${cnt} 題)</option>`;
+      });
+      catSelect.innerHTML = optHtml;
+      catSelect.value = state.selectedCategory;
+      if (catSelect.value !== state.selectedCategory) {
+        state.selectedCategory = 'all';
+      }
+    }
+
+    // 讀取該科目的 LocalStorage 記錄
     loadUserData();
     
-    // 套用深色模式
     if (state.settings.darkMode) {
       document.documentElement.classList.add('dark');
     }
     
-    // 篩選初始題目列表
+    state.currentIndex = 0;
     updateActiveQuestions();
     
-    // 如果有上次順序練習的題號記憶
-    const savedLastId = localStorage.getItem('elec_last_qid');
+    // 記憶上次該科目的題號
+    const savedLastId = localStorage.getItem(`elec_${state.currentSubject}_last_qid`);
     if (savedLastId && state.currentMode === 'practice') {
       const idx = state.activeQuestions.findIndex(q => q.id === savedLastId);
-      if (idx !== -1) {
-        state.currentIndex = idx;
-      }
+      if (idx !== -1) state.currentIndex = idx;
     }
     
-    // 渲染 UI 與綁定事件
     render();
     bindEvents();
     bindKeyboardShortcuts();
   }
 
-  // 讀取使用者本機歷史
+  // 讀取使用者本機歷史 (按科目隔離)
   function loadUserData() {
     try {
-      const savedHist = localStorage.getItem('elec_history');
-      if (savedHist) state.history = JSON.parse(savedHist);
+      const pfx = `elec_${state.currentSubject}_`;
+      // 相容舊 key
+      const savedHist = localStorage.getItem(pfx + 'history') || (state.currentSubject === 'mid_maintenance_electrician' ? localStorage.getItem('elec_history') : null);
+      state.history = savedHist ? JSON.parse(savedHist) : {};
       
-      const savedMis = localStorage.getItem('elec_mistakes');
-      if (savedMis) state.mistakes = JSON.parse(savedMis);
+      const savedMis = localStorage.getItem(pfx + 'mistakes') || (state.currentSubject === 'mid_maintenance_electrician' ? localStorage.getItem('elec_mistakes') : null);
+      state.mistakes = savedMis ? JSON.parse(savedMis) : {};
       
-      const savedBmk = localStorage.getItem('elec_bookmarks');
-      if (savedBmk) state.bookmarks = new Set(JSON.parse(savedBmk));
+      const savedBmk = localStorage.getItem(pfx + 'bookmarks') || (state.currentSubject === 'mid_maintenance_electrician' ? localStorage.getItem('elec_bookmarks') : null);
+      state.bookmarks = savedBmk ? new Set(JSON.parse(savedBmk)) : new Set();
       
-      const savedNotes = localStorage.getItem('elec_notes');
-      if (savedNotes) state.notes = JSON.parse(savedNotes);
+      const savedNotes = localStorage.getItem(pfx + 'notes') || (state.currentSubject === 'mid_maintenance_electrician' ? localStorage.getItem('elec_notes') : null);
+      state.notes = savedNotes ? JSON.parse(savedNotes) : {};
       
       const savedSet = localStorage.getItem('elec_settings');
       if (savedSet) state.settings = Object.assign(state.settings, JSON.parse(savedSet));
@@ -119,18 +168,18 @@
     }
   }
 
-  // 保存使用者本機資料
+  // 保存使用者本機資料 (按科目隔離)
   function saveUserData() {
     try {
-      localStorage.setItem('elec_history', JSON.stringify(state.history));
-      localStorage.setItem('elec_mistakes', JSON.stringify(state.mistakes));
-      localStorage.setItem('elec_bookmarks', JSON.stringify(Array.from(state.bookmarks)));
-      localStorage.setItem('elec_notes', JSON.stringify(state.notes));
+      const pfx = `elec_${state.currentSubject}_`;
+      localStorage.setItem(pfx + 'history', JSON.stringify(state.history));
+      localStorage.setItem(pfx + 'mistakes', JSON.stringify(state.mistakes));
+      localStorage.setItem(pfx + 'bookmarks', JSON.stringify(Array.from(state.bookmarks)));
+      localStorage.setItem(pfx + 'notes', JSON.stringify(state.notes));
       localStorage.setItem('elec_settings', JSON.stringify(state.settings));
       
-      // 記憶目前題號
       if (state.currentMode === 'practice' && getCurrentQuestion()) {
-        localStorage.setItem('elec_last_qid', getCurrentQuestion().id);
+        localStorage.setItem(`${pfx}last_qid`, getCurrentQuestion().id);
       }
     } catch (e) {
       console.error("Error saving localStorage:", e);
@@ -515,16 +564,62 @@
 
     // 答案揭曉與解析區塊 (練習模式已作答，或交卷後)
     let feedbackHtml = '';
+    const userNote = state.notes[q.id] || '';
+    const builtInExp = q.explanation || '';
+    const hasAnyExp = !!(builtInExp || userNote);
+
     if (hasAnswered && state.currentMode !== 'exam') {
+      let expContentHtml = '';
+      if (builtInExp) {
+        expContentHtml += `
+          <div class="mb-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 bg-white/70 dark:bg-slate-800/70 p-3 rounded-lg border border-slate-200/80 dark:border-slate-700">
+            <span class="font-bold text-blue-600 dark:text-blue-400 mr-1.5">【考點詳解】</span>${builtInExp}
+          </div>
+        `;
+      }
+      if (userNote) {
+        expContentHtml += `
+          <div class="mb-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 bg-amber-50/80 dark:bg-amber-950/40 p-3 rounded-lg border border-amber-200/80 dark:border-amber-800/60">
+            <span class="font-bold text-amber-600 dark:text-amber-400 mr-1.5">【我的筆記/解析】</span>${userNote}
+          </div>
+        `;
+      }
+
       feedbackHtml = `
         <div class="mt-6 p-4 rounded-xl border ${isCorrect ? 'bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800'}">
-          <div class="flex items-center gap-2 mb-1.5 font-bold ${isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-800 dark:text-red-300'}">
-            <span>${isCorrect ? '🎉 回答正確！' : '❌ 回答錯誤！'}</span>
-            <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${q.answer}</strong></span>
+          <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
+            <div class="flex items-center gap-2 font-bold ${isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-800 dark:text-red-300'}">
+              <span>${isCorrect ? '🎉 回答正確！' : '❌ 回答錯誤！'}</span>
+              <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${q.answer}</strong></span>
+            </div>
+            <button onclick="window.toggleNoteEditor('${q.id}')" class="text-xs px-2.5 py-1 rounded-lg bg-white/80 dark:bg-slate-800 hover:bg-white text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium transition flex items-center gap-1 shadow-xs">
+              <span>✏️</span> ${userNote ? '修改解析筆記' : '新增解析/筆記'}
+            </button>
           </div>
-          <div class="text-sm text-slate-600 dark:text-slate-300 mt-2 flex items-center justify-between">
-            <span>章節出處：${q.category}</span>
-            <span class="text-xs text-slate-400">PDF 頁碼：P.${q.page}</span>
+
+          <!-- 詳解內容區塊 -->
+          ${expContentHtml}
+
+          <!-- 解析/筆記編輯器 (預設隱藏，點擊按鈕展開) -->
+          <div id="note-editor-${q.id}" class="hidden mt-3 p-3 bg-white dark:bg-slate-800 rounded-xl border border-blue-200 dark:border-blue-900 shadow-sm animate-fade-in">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-300">為此題添加解答說明 / 記憶心得：</span>
+              <div class="flex gap-1">
+                <button type="button" onclick="window.insertNoteTag('${q.id}', '【法規要點】')" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">#法規</button>
+                <button type="button" onclick="window.insertNoteTag('${q.id}', '【口訣記憶】')" class="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 border border-amber-200 dark:border-amber-800">#口訣</button>
+                <button type="button" onclick="window.insertNoteTag('${q.id}', '【易錯陷阱】')" class="text-[10px] px-1.5 py-0.5 rounded bg-red-50 text-red-700 dark:bg-red-900/40 dark:text-red-300 border border-red-200 dark:border-red-800">#陷阱</button>
+              </div>
+            </div>
+            <textarea id="note-textarea-${q.id}" rows="3" placeholder="例如：依澳門電工規範，PE線截面積不得小於相線的一半；安全電壓36V以下..." class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500">${userNote}</textarea>
+            <div class="flex items-center justify-end gap-2 mt-2">
+              <button onclick="window.toggleNoteEditor('${q.id}')" class="px-3 py-1 text-xs text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition">取消</button>
+              <button onclick="window.saveNote('${q.id}')" class="px-4 py-1 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition shadow-xs">儲存解析</button>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-2.5 flex items-center justify-between border-t border-slate-200/50 dark:border-slate-700/50 pt-2">
+            <span>章節：${q.category}</span>
+            <span>官方手冊頁碼：P.${q.page}</span>
           </div>
         </div>
       `;
@@ -1031,6 +1126,48 @@
   };
   window.closeExamModal = function() {
     document.getElementById('exam-modal')?.classList.add('hidden');
+  };
+
+  // 題目解析/筆記編輯操作
+  window.toggleNoteEditor = function(qid) {
+    const el = document.getElementById(`note-editor-${qid}`);
+    if (el) {
+      el.classList.toggle('hidden');
+      if (!el.classList.contains('hidden')) {
+        const textarea = document.getElementById(`note-textarea-${qid}`);
+        if (textarea) textarea.focus();
+      }
+    }
+  };
+  window.saveNote = function(qid) {
+    const textarea = document.getElementById(`note-textarea-${qid}`);
+    if (!textarea) return;
+    const text = textarea.value.trim();
+    if (text) {
+      state.notes[qid] = text;
+    } else {
+      delete state.notes[qid];
+    }
+    saveUserData();
+    render();
+  };
+  window.insertNoteTag = function(qid, tag) {
+    const textarea = document.getElementById(`note-textarea-${qid}`);
+    if (!textarea) return;
+    textarea.value = tag + ' ' + textarea.value;
+    textarea.focus();
+  };
+
+  // 科目切換
+  window.switchSubject = function(subjId) {
+    if (state.exam.active && !confirm("切換科目將中斷當前考試，確定要切換嗎？")) {
+      const sel = document.getElementById('subject-selector');
+      if (sel) sel.value = state.currentSubject;
+      return;
+    }
+    if (state.exam.timerId) clearInterval(state.exam.timerId);
+    state.exam.active = false;
+    loadSubjectData(subjId);
   };
 
   // 匯出/匯入作答進度備份

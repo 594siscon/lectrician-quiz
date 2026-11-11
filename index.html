@@ -38,18 +38,20 @@
   <header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700/80 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
       
-      <!-- 標題與科目 -->
+      <!-- 標題與科目切換 -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-sm shrink-0">
           ⚡
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">
-              中級維修電工
-            </h1>
-            <span class="px-2 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
-              2026 最新官方題庫 · 920 題
+          <div class="flex items-center gap-2 flex-wrap">
+            <select id="subject-selector" onchange="window.switchSubject(this.value)" class="text-sm sm:text-base font-bold bg-transparent text-slate-900 dark:text-white border-b border-blue-500 focus:outline-none cursor-pointer py-0.5">
+              <option value="mid_maintenance_electrician">⚡ 中級維修電工 (920 題)</option>
+              <option value="junior_maintenance_electrician">⚡ 初級維修電工 (610 題)</option>
+              <option value="junior_equipment_installer">⚡ 初級電氣設備安裝工 (328 題)</option>
+            </select>
+            <span id="subject-badge" class="px-2 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+              官方題庫
             </span>
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">澳門特別行政區政府 勞工事務局技能測試</p>
@@ -304,8 +306,10 @@
     </div>
   </div>
 
-  <!-- 引入題庫資料 (支援免伺服器離線執行) -->
+  <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js"></script>
+  <script src="data/junior_maintenance_electrician.js"></script>
+  <script src="data/junior_equipment_installer.js"></script>
   <!-- 引入核心業務腳本 -->
   <script src="app.js"></script>
 </body>
