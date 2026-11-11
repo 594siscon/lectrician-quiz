@@ -15,11 +15,14 @@
     // 初始化 Firebase
     init() {
       let cfg = window.FIREBASE_CONFIG;
-      const customCfg = localStorage.getItem('elec_custom_firebase_config');
-      if (customCfg) {
-        try {
-          cfg = JSON.parse(customCfg);
-        } catch(e){}
+      // 若檔案未配置，才嘗試從本機 LocalStorage 讀取自訂設定
+      if (!cfg || !cfg.apiKey || cfg.apiKey.includes("YOUR_API_KEY")) {
+        const customCfg = localStorage.getItem('elec_custom_firebase_config');
+        if (customCfg) {
+          try {
+            cfg = JSON.parse(customCfg);
+          } catch(e){}
+        }
       }
 
       if (!cfg || !cfg.apiKey || cfg.apiKey.includes("YOUR_API_KEY")) {
