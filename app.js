@@ -182,6 +182,11 @@
       if (state.currentMode === 'practice' && getCurrentQuestion()) {
         localStorage.setItem(`${pfx}last_qid`, getCurrentQuestion().id);
       }
+
+      // 觸發雲端自動同步 (方案 C: 背景防抖上傳)
+      if (typeof window.triggerCloudSync === 'function') {
+        window.triggerCloudSync();
+      }
     } catch (e) {
       console.error("Error saving localStorage:", e);
     }
@@ -1137,6 +1142,13 @@
       }
     };
     reader.readAsText(file);
+  };
+
+  // 供雲端同步模組 (sync.js) 更新狀態後重新整理介面
+  window.refreshCurrentSubjectData = function() {
+    loadUserData();
+    updateActiveQuestions();
+    render();
   };
 
   // 啟動應用

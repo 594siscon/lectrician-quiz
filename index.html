@@ -87,6 +87,11 @@
           <span id="exam-timer-text" class="text-sm font-mono font-bold text-red-600 dark:text-red-400">60:00</span>
         </div>
 
+        <!-- 雲端同步按鈕 (方案 C) -->
+        <button id="cloud-sync-btn" onclick="window.openCloudSyncModal()" title="雲端帳號同步" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium transition">
+          <span id="cloud-sync-btn-text">☁️ 雲端同步</span>
+        </button>
+
         <!-- 答題卡按鈕 -->
         <button id="open-answer-sheet-btn" title="查看答題卡與全題號跳轉" class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 transition">
           <span>📋</span> 答題卡
@@ -311,6 +316,101 @@
       </div>
     </div>
   </div>
+
+  <!-- 彈出視窗 4: 雲端帳號同步彈窗 (方案 C) -->
+  <div id="cloud-sync-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 animate-fade-in relative">
+      <button onclick="window.closeCloudSyncModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">✕</button>
+
+      <!-- 狀態 1: 尚未填寫 Firebase 配置 -->
+      <div id="sync-unconfigured-view" class="hidden">
+        <div class="text-center mb-4">
+          <span class="text-3xl">⚙️</span>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-2">尚未配置 Firebase 雲端金鑰</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">需在 <code class="bg-slate-100 dark:bg-slate-700 px-1 py-0.5 rounded text-blue-600">firebase-config.js</code> 填入您的 Firebase 專案設定，或直接在下方快速貼上配置代碼。</p>
+        </div>
+        <div class="space-y-3">
+          <textarea id="quick-firebase-config-input" rows="5" placeholder="貼上 Firebase SDK 設定物件，例如：&#10;apiKey: 'AIzaSy...',&#10;authDomain: 'xxx.firebaseapp.com',&#10;projectId: 'xxx'..." class="w-full text-xs font-mono p-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          <button onclick="window.saveQuickFirebaseConfig()" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs shadow transition">儲存並啟用雲端同步</button>
+          <div class="p-3 bg-blue-50 dark:bg-blue-950/40 rounded-xl border border-blue-200 dark:border-blue-800 text-[11px] text-blue-800 dark:text-blue-300 space-y-1">
+            <p class="font-bold">💡 如何免費取得 Firebase 設定？</p>
+            <ol class="list-decimal pl-4 space-y-0.5">
+              <li>前往 <a href="https://console.firebase.google.com/" target="_blank" class="underline font-medium">firebase.google.com</a> 建立新專案（完全免費）。</li>
+              <li>點擊「新增 Web 應用」並複製配置。</li>
+              <li>在專案中啟用「Authentication (電子郵件/密碼)」與「Cloud Firestore 資料庫」。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- 狀態 2: 已配置，未登入 (登入/註冊表單) -->
+      <div id="sync-auth-view" class="hidden">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <span>☁️</span> 雲端刷題帳號
+          </h3>
+          <div class="flex bg-slate-100 dark:bg-slate-700 p-0.5 rounded-lg text-xs font-semibold">
+            <button id="auth-tab-login-btn" onclick="window.switchAuthTab('login')" class="px-3 py-1 rounded-md bg-white dark:bg-slate-800 shadow-xs text-blue-600 dark:text-blue-400 font-bold">登入</button>
+            <button id="auth-tab-register-btn" onclick="window.switchAuthTab('register')" class="px-3 py-1 rounded-md text-slate-500 dark:text-slate-400">註冊</button>
+          </div>
+        </div>
+
+        <form onsubmit="window.handleAuthSubmit(event)" class="space-y-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">電子信箱 (Email)：</label>
+            <input type="email" id="auth-email-input" required placeholder="name@example.com" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">密碼 (Password)：</label>
+            <input type="password" id="auth-password-input" required placeholder="至少 6 位字元" minlength="6" class="w-full text-xs sm:text-sm p-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div id="auth-error-msg" class="hidden text-xs text-red-600 bg-red-50 dark:bg-red-950/40 p-2 rounded-lg border border-red-200 dark:border-red-800"></div>
+          <button type="submit" id="auth-submit-btn" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs sm:text-sm shadow transition flex items-center justify-center gap-1">
+            <span>登入並同步進度</span>
+          </button>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center">
+            登入後，手機與電腦將自動雙向同步所有科目做題紀錄與錯題本。
+          </p>
+        </form>
+      </div>
+
+      <!-- 狀態 3: 已登入 (帳號資訊與手動同步控制) -->
+      <div id="sync-user-view" class="hidden">
+        <div class="text-center pb-4 border-b border-slate-200 dark:border-slate-700">
+          <div class="w-12 h-12 bg-green-100 dark:bg-green-950/60 text-green-600 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🟢</div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white" id="sync-user-email">user@example.com</h3>
+          <p class="text-xs text-green-600 dark:text-green-400 font-medium mt-0.5">● 雲端自動同步已啟動</p>
+        </div>
+
+        <div class="my-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+          <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl">
+            <span>上次同步時間：</span>
+            <span id="sync-last-time" class="font-mono font-semibold text-slate-800 dark:text-slate-200">剛剛</span>
+          </div>
+          <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl">
+            <span>同步科目範圍：</span>
+            <span class="font-semibold text-blue-600 dark:text-blue-400">全部三大科目 (1858題)</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button onclick="window.manualCloudSync()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs sm:text-sm shadow transition flex items-center justify-center gap-1.5">
+            <span>🔄 立即手動雙向同步</span>
+          </button>
+          <button onclick="window.handleCloudLogout()" class="w-full py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-xl text-xs font-medium transition">
+            登出帳號
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入 Firebase 官方相容版 SDK (方案 C) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="sync.js"></script>
 
   <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js"></script>
