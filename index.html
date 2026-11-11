@@ -144,6 +144,12 @@
           <button class="type-filter-btn px-3 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="tf">是非題</button>
           <button class="type-filter-btn px-3 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-type="mc">選擇題</button>
         </div>
+
+        <!-- 只刷未完成題開關 -->
+        <label class="flex items-center gap-1.5 cursor-pointer select-none text-xs text-slate-600 dark:text-slate-300 ml-1">
+          <input type="checkbox" id="only-undone-toggle" onchange="window.toggleOnlyUndone(this.checked)" class="w-3.5 h-3.5 rounded text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-600" />
+          <span>只刷未做題</span>
+        </label>
       </div>
 
       <!-- 關鍵字搜尋框 -->

@@ -34,8 +34,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【倒閘操作規範】斷電拉閘時必須「先斷開負荷開關（斷路器/油開關），後拉開隔離開關（刀閘）」，防止帶負荷拉刀閘引發巨大電弧燒毀設備或傷人。送電時順序相反。"
+      "page": 5
     },
     {
       "id": "mid_tf_002",
@@ -55,8 +54,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【倒閘操作規範】錯誤！送電合閘操作必須「先合上隔離開關，最後閉合負荷開關」，確保隔離開關在無電流狀態下接通。"
+      "page": 5
     },
     {
       "id": "mid_tf_003",
@@ -76,8 +74,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【接觸電阻與防腐】銅在高溫下極易氧化生成不導電的氧化銅薄膜；搪錫可隔絕空氣，防止氧化與電化腐蝕，維持低接觸電阻。"
+      "page": 5
     },
     {
       "id": "mid_tf_004",
@@ -97,8 +94,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【保護零線與中性線安全】錯誤！三相四線制中的中性線（零線）嚴禁加裝熔斷器。若中性線熔斷，會引起三相中性點電位嚴重偏移，導致各相電壓不平衡而燒毀單相用電設備。"
+      "page": 5
     },
     {
       "id": "mid_tf_005",
@@ -118,8 +114,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【驗電筆量程】錯誤！常規低壓驗電筆（氖管試電筆）適用於 60V ~ 500V 的電壓範圍，不可用於超過 500V 的電壓。"
+      "page": 5
     },
     {
       "id": "mid_tf_006",
@@ -139,8 +134,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【驗電筆量程】正確！低壓試電筆是電工常用工具，適用於 500V 及以下低壓系統驗電。"
+      "page": 5
     },
     {
       "id": "mid_tf_007",
@@ -160,8 +154,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 5,
-      "explanation": "【電氣發熱危害】正確！電流流經電阻會產生熱量（焦耳定律 Q=I²Rt），過大電流會加速絕緣老化、引發短路甚至電氣火災。"
+      "page": 5
     },
     {
       "id": "mid_tf_008",
@@ -181,8 +174,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【電容器殘餘電荷】正確！電力電容器斷電後內部儲存大量高壓電荷，必須加裝放電電阻或放電線圈迅速將殘電釋放，以維護檢修人員安全。"
+      "page": 6
     },
     {
       "id": "mid_tf_009",
@@ -202,8 +194,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【環境溫度與載流量】錯誤！環境溫度越高，導線向外散熱條件越差，其安全載流量應相應「折減（變小）」，而非越大。"
+      "page": 6
     },
     {
       "id": "mid_tf_010",
@@ -223,8 +214,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【場所燈具選型】正確！易燃易爆場所嚴防電火花，須用防爆密閉燈具；潮濕腐蝕環境須用防護等級高（IP代號）的防塵防水型燈具。"
+      "page": 6
     },
     {
       "id": "mid_tf_011",
@@ -244,8 +234,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【絕緣電阻標準】正確！低壓設備和線路絕緣電阻不應低於 0.5MΩ（兆歐），潮濕場所或部分照明線路不得低於 0.22MΩ。"
+      "page": 6
     },
     {
       "id": "mid_tf_012",
@@ -265,8 +254,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【插座接線規範】錯誤！嚴禁將插座的保護接地孔與工作零線端子直接短接共用。一旦零線斷路或插頭反接，設備金屬外殼將直接帶上220V市電，引發致命觸電！"
+      "page": 6
     },
     {
       "id": "mid_tf_013",
@@ -286,8 +274,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【工作接地意義】正確！工作接地保證電網正常運行時對地基準電位穩定，並配合過流保護裝置在接地故障時迅速切斷故障回路。"
+      "page": 6
     },
     {
       "id": "mid_tf_014",
@@ -307,8 +294,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【導線焊接技術】錯誤！焊接導線前應先將接頭清潔乾淨、塗助焊劑（松香）並預先搪錫，然後互相纏接再加熱充錫焊接，不可直接堆焊。"
+      "page": 6
     },
     {
       "id": "mid_tf_015",
@@ -328,8 +314,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【低壓照明導線規範】正確！低壓固定佈線燈頭軟線截面積不小於 0.75mm²，耐壓等級不應低於 500V。"
+      "page": 6
     },
     {
       "id": "mid_tf_016",
@@ -349,8 +334,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 6,
-      "explanation": "【特殊危險場所安全電壓】正確！在金屬容器內部、鍋爐、地坑、特別潮濕導電場所作業，安全特低電壓應採用 12V 甚至 6V。"
+      "page": 6
     },
     {
       "id": "mid_tf_017",
@@ -370,8 +354,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【接地導體規範】錯誤！金屬蛇皮管（軟管）機械強度較弱且接頭易鬆脫，電氣連續性差，不可作為保護接地導體使用。"
+      "page": 7
     },
     {
       "id": "mid_tf_018",
@@ -391,8 +374,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【接地幹線敷設】正確！接地導體應耐腐蝕、截面積足夠，且應走最短路徑，並宜以明敷方式便於目視檢查維護。"
+      "page": 7
     },
     {
       "id": "mid_tf_019",
@@ -412,8 +394,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【接地極選材限制】正確！自來水管、燃氣管道等非電力管線嚴禁用作接地體，防止電氣洩漏電流引發爆炸或自來水維修人員觸電。"
+      "page": 7
     },
     {
       "id": "mid_tf_020",
@@ -433,8 +414,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【金屬管路接地】錯誤！只有具有足夠電氣連續性與截面積的合格鋼管等經核准管道才能接地，不可盲目以任何金屬管當接地線。"
+      "page": 7
     },
     {
       "id": "mid_tf_021",
@@ -454,8 +434,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【接地電阻要求】正確！接地電阻越小，接地故障時在金屬外殼上產生的對地故障電壓越低，越安全。"
+      "page": 7
     },
     {
       "id": "mid_tf_022",
@@ -475,8 +454,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": ""
+      "page": 7
     },
     {
       "id": "mid_tf_023",
@@ -496,8 +474,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": ""
+      "page": 7
     },
     {
       "id": "mid_tf_024",
@@ -517,8 +494,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": ""
+      "page": 7
     },
     {
       "id": "mid_tf_025",
@@ -538,8 +514,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 7,
-      "explanation": "【配電室通道寬度】正確！高低壓配電櫃前後的操作與維護通道，淨寬度一般要求不小於 1.5 米，以保證運維巡視與緊急逃生空間。"
+      "page": 7
     },
     {
       "id": "mid_tf_026",
@@ -559,8 +534,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_027",
@@ -580,8 +554,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_028",
@@ -601,8 +574,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_029",
@@ -622,8 +594,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_030",
@@ -643,8 +614,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_031",
@@ -664,8 +634,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_032",
@@ -685,8 +654,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_033",
@@ -706,8 +674,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_034",
@@ -727,8 +694,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 8,
-      "explanation": ""
+      "page": 8
     },
     {
       "id": "mid_tf_035",
@@ -748,8 +714,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_036",
@@ -769,8 +734,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_037",
@@ -790,8 +754,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_038",
@@ -811,8 +774,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_039",
@@ -832,8 +794,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_040",
@@ -853,8 +814,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_041",
@@ -874,8 +834,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_042",
@@ -895,8 +854,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_043",
@@ -916,8 +874,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 9,
-      "explanation": ""
+      "page": 9
     },
     {
       "id": "mid_tf_044",
@@ -937,8 +894,7 @@
       "answer": "X",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_045",
@@ -958,8 +914,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_046",
@@ -979,8 +934,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_047",
@@ -1000,8 +954,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_048",
@@ -1021,8 +974,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_049",
@@ -1042,8 +994,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_050",
@@ -1063,8 +1014,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_051",
@@ -1084,8 +1034,7 @@
       "answer": "O",
       "category": "工作規範與電工安全",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_052",
@@ -1105,8 +1054,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_053",
@@ -1126,8 +1074,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 10,
-      "explanation": ""
+      "page": 10
     },
     {
       "id": "mid_tf_054",
@@ -1147,8 +1094,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_055",
@@ -1168,8 +1114,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_056",
@@ -1189,8 +1134,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_057",
@@ -1210,8 +1154,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_058",
@@ -1231,8 +1174,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_059",
@@ -1252,8 +1194,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_060",
@@ -1273,8 +1214,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_061",
@@ -1294,8 +1234,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_062",
@@ -1315,8 +1254,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_063",
@@ -1336,8 +1274,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_064",
@@ -1357,8 +1294,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_065",
@@ -1378,8 +1314,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 11,
-      "explanation": ""
+      "page": 11
     },
     {
       "id": "mid_tf_066",
@@ -1399,8 +1334,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_067",
@@ -1420,8 +1354,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_068",
@@ -1441,8 +1374,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_069",
@@ -1462,8 +1394,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_070",
@@ -1483,8 +1414,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_071",
@@ -1504,8 +1434,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_072",
@@ -1525,8 +1454,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_073",
@@ -1546,8 +1474,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_074",
@@ -1567,8 +1494,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_075",
@@ -1588,8 +1514,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_076",
@@ -1609,8 +1534,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_077",
@@ -1630,8 +1554,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 12,
-      "explanation": ""
+      "page": 12
     },
     {
       "id": "mid_tf_078",
@@ -1651,8 +1574,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_079",
@@ -1672,8 +1594,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_080",
@@ -1693,8 +1614,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_081",
@@ -1714,8 +1634,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_082",
@@ -1735,8 +1654,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_083",
@@ -1756,8 +1674,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_084",
@@ -1777,8 +1694,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_085",
@@ -1798,8 +1714,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_086",
@@ -1819,8 +1734,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_087",
@@ -1840,8 +1754,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_088",
@@ -1861,8 +1774,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_089",
@@ -1882,8 +1794,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 13,
-      "explanation": ""
+      "page": 13
     },
     {
       "id": "mid_tf_090",
@@ -1903,8 +1814,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_091",
@@ -1924,8 +1834,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_092",
@@ -1945,8 +1854,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_093",
@@ -1966,8 +1874,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_094",
@@ -1987,8 +1894,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_095",
@@ -2008,8 +1914,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_096",
@@ -2029,8 +1934,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_097",
@@ -2050,8 +1954,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_098",
@@ -2071,8 +1974,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_099",
@@ -2092,8 +1994,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_100",
@@ -2113,8 +2014,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_101",
@@ -2134,8 +2034,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 14,
-      "explanation": ""
+      "page": 14
     },
     {
       "id": "mid_tf_102",
@@ -2155,8 +2054,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_103",
@@ -2176,8 +2074,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_104",
@@ -2197,8 +2094,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_105",
@@ -2218,8 +2114,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_106",
@@ -2239,8 +2134,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_107",
@@ -2260,8 +2154,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_108",
@@ -2281,8 +2174,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_109",
@@ -2302,8 +2194,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_110",
@@ -2323,8 +2214,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_111",
@@ -2344,8 +2234,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_112",
@@ -2365,8 +2254,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_113",
@@ -2386,8 +2274,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 15,
-      "explanation": ""
+      "page": 15
     },
     {
       "id": "mid_tf_114",
@@ -2407,8 +2294,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_115",
@@ -2428,8 +2314,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_116",
@@ -2449,8 +2334,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_117",
@@ -2470,8 +2354,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_118",
@@ -2491,8 +2374,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_119",
@@ -2512,8 +2394,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_120",
@@ -2533,8 +2414,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_121",
@@ -2554,8 +2434,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_122",
@@ -2575,8 +2454,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_123",
@@ -2596,8 +2474,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_124",
@@ -2617,8 +2494,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_125",
@@ -2638,8 +2514,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 16,
-      "explanation": ""
+      "page": 16
     },
     {
       "id": "mid_tf_126",
@@ -2659,8 +2534,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_127",
@@ -2680,8 +2554,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_128",
@@ -2701,8 +2574,7 @@
       "answer": "O",
       "category": "電工基礎",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_129",
@@ -2722,8 +2594,7 @@
       "answer": "X",
       "category": "電工基礎",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_130",
@@ -2743,8 +2614,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_131",
@@ -2764,8 +2634,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_132",
@@ -2785,8 +2654,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_133",
@@ -2806,8 +2674,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_134",
@@ -2827,8 +2694,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_135",
@@ -2848,8 +2714,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_136",
@@ -2869,8 +2734,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_137",
@@ -2890,8 +2754,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 17,
-      "explanation": ""
+      "page": 17
     },
     {
       "id": "mid_tf_138",
@@ -2911,8 +2774,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_139",
@@ -2932,8 +2794,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_140",
@@ -2953,8 +2814,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_141",
@@ -2974,8 +2834,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_142",
@@ -2995,8 +2854,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_143",
@@ -3016,8 +2874,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_144",
@@ -3037,8 +2894,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_145",
@@ -3058,8 +2914,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_146",
@@ -3079,8 +2934,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_147",
@@ -3100,8 +2954,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_148",
@@ -3121,8 +2974,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_149",
@@ -3142,8 +2994,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 18,
-      "explanation": ""
+      "page": 18
     },
     {
       "id": "mid_tf_150",
@@ -3163,8 +3014,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_151",
@@ -3184,8 +3034,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_152",
@@ -3205,8 +3054,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_153",
@@ -3226,8 +3074,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_154",
@@ -3247,8 +3094,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_155",
@@ -3268,8 +3114,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_156",
@@ -3289,8 +3134,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_157",
@@ -3310,8 +3154,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_158",
@@ -3331,8 +3174,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_159",
@@ -3352,8 +3194,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_160",
@@ -3373,8 +3214,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_161",
@@ -3394,8 +3234,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 19,
-      "explanation": ""
+      "page": 19
     },
     {
       "id": "mid_tf_162",
@@ -3415,8 +3254,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_163",
@@ -3436,8 +3274,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_164",
@@ -3457,8 +3294,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_165",
@@ -3478,8 +3314,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_166",
@@ -3499,8 +3334,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_167",
@@ -3520,8 +3354,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_168",
@@ -3541,8 +3374,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_169",
@@ -3562,8 +3394,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_170",
@@ -3583,8 +3414,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_171",
@@ -3604,8 +3434,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_172",
@@ -3625,8 +3454,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_173",
@@ -3646,8 +3474,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 20,
-      "explanation": ""
+      "page": 20
     },
     {
       "id": "mid_tf_174",
@@ -3667,8 +3494,7 @@
       "answer": "O",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_175",
@@ -3688,8 +3514,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_176",
@@ -3709,8 +3534,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_177",
@@ -3730,8 +3554,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_178",
@@ -3751,8 +3574,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_179",
@@ -3772,8 +3594,7 @@
       "answer": "X",
       "category": "電工儀錶測量",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_180",
@@ -3793,8 +3614,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_181",
@@ -3814,8 +3634,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_182",
@@ -3835,8 +3654,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_183",
@@ -3856,8 +3674,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 21,
-      "explanation": ""
+      "page": 21
     },
     {
       "id": "mid_tf_184",
@@ -3877,8 +3694,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_185",
@@ -3898,8 +3714,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_186",
@@ -3919,8 +3734,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_187",
@@ -3940,8 +3754,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_188",
@@ -3961,8 +3774,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_189",
@@ -3982,8 +3794,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_190",
@@ -4003,8 +3814,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_191",
@@ -4024,8 +3834,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_192",
@@ -4045,8 +3854,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 22,
-      "explanation": ""
+      "page": 22
     },
     {
       "id": "mid_tf_193",
@@ -4066,8 +3874,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_194",
@@ -4087,8 +3894,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_195",
@@ -4108,8 +3914,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_196",
@@ -4129,8 +3934,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_197",
@@ -4150,8 +3954,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_198",
@@ -4171,8 +3974,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_199",
@@ -4192,8 +3994,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_200",
@@ -4213,8 +4014,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_201",
@@ -4234,8 +4034,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 23,
-      "explanation": ""
+      "page": 23
     },
     {
       "id": "mid_tf_202",
@@ -4255,8 +4054,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_203",
@@ -4276,8 +4074,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_204",
@@ -4297,8 +4094,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_205",
@@ -4318,8 +4114,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_206",
@@ -4339,8 +4134,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_207",
@@ -4360,8 +4154,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_208",
@@ -4381,8 +4174,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_209",
@@ -4402,8 +4194,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_210",
@@ -4423,8 +4214,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 24,
-      "explanation": ""
+      "page": 24
     },
     {
       "id": "mid_tf_211",
@@ -4444,8 +4234,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_212",
@@ -4465,8 +4254,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_213",
@@ -4486,8 +4274,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_214",
@@ -4507,8 +4294,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_215",
@@ -4528,8 +4314,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_216",
@@ -4549,8 +4334,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_217",
@@ -4570,8 +4354,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_218",
@@ -4591,8 +4374,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_219",
@@ -4612,8 +4394,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 25,
-      "explanation": ""
+      "page": 25
     },
     {
       "id": "mid_tf_220",
@@ -4633,8 +4414,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_221",
@@ -4654,8 +4434,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_222",
@@ -4675,8 +4454,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_223",
@@ -4696,8 +4474,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_224",
@@ -4717,8 +4494,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_225",
@@ -4738,8 +4514,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_226",
@@ -4759,8 +4534,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_227",
@@ -4780,8 +4554,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_228",
@@ -4801,8 +4574,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 26,
-      "explanation": ""
+      "page": 26
     },
     {
       "id": "mid_tf_229",
@@ -4822,8 +4594,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_230",
@@ -4843,8 +4614,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_231",
@@ -4864,8 +4634,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_232",
@@ -4885,8 +4654,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_233",
@@ -4906,8 +4674,7 @@
       "answer": "X",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_234",
@@ -4927,8 +4694,7 @@
       "answer": "O",
       "category": "低壓電器與照明電路",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_235",
@@ -4948,8 +4714,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_236",
@@ -4969,8 +4734,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_237",
@@ -4990,8 +4754,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_238",
@@ -5011,8 +4774,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_239",
@@ -5032,8 +4794,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 27,
-      "explanation": ""
+      "page": 27
     },
     {
       "id": "mid_tf_240",
@@ -5053,8 +4814,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_241",
@@ -5074,8 +4834,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_242",
@@ -5095,8 +4854,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_243",
@@ -5116,8 +4874,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_244",
@@ -5137,8 +4894,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_245",
@@ -5158,8 +4914,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_246",
@@ -5179,8 +4934,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_247",
@@ -5200,8 +4954,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_248",
@@ -5221,8 +4974,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_249",
@@ -5242,8 +4994,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_250",
@@ -5263,8 +5014,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_251",
@@ -5284,8 +5034,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 28,
-      "explanation": ""
+      "page": 28
     },
     {
       "id": "mid_tf_252",
@@ -5305,8 +5054,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_253",
@@ -5326,8 +5074,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_254",
@@ -5347,8 +5094,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_255",
@@ -5368,8 +5114,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_256",
@@ -5389,8 +5134,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_257",
@@ -5410,8 +5154,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_258",
@@ -5431,8 +5174,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_259",
@@ -5452,8 +5194,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_260",
@@ -5473,8 +5214,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_261",
@@ -5494,8 +5234,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_262",
@@ -5515,8 +5254,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_263",
@@ -5536,8 +5274,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 29,
-      "explanation": ""
+      "page": 29
     },
     {
       "id": "mid_tf_264",
@@ -5557,8 +5294,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_265",
@@ -5578,8 +5314,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_266",
@@ -5599,8 +5334,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_267",
@@ -5620,8 +5354,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_268",
@@ -5641,8 +5374,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_269",
@@ -5662,8 +5394,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_270",
@@ -5683,8 +5414,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_271",
@@ -5704,8 +5434,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_272",
@@ -5725,8 +5454,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_273",
@@ -5746,8 +5474,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_274",
@@ -5767,8 +5494,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_275",
@@ -5788,8 +5514,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 30,
-      "explanation": ""
+      "page": 30
     },
     {
       "id": "mid_tf_276",
@@ -5809,8 +5534,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_277",
@@ -5830,8 +5554,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_278",
@@ -5851,8 +5574,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_279",
@@ -5872,8 +5594,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_280",
@@ -5893,8 +5614,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_281",
@@ -5914,8 +5634,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_282",
@@ -5935,8 +5654,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_283",
@@ -5956,8 +5674,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_284",
@@ -5977,8 +5694,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_285",
@@ -5998,8 +5714,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_286",
@@ -6019,8 +5734,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_287",
@@ -6040,8 +5754,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 31,
-      "explanation": ""
+      "page": 31
     },
     {
       "id": "mid_tf_288",
@@ -6061,8 +5774,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_289",
@@ -6082,8 +5794,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_290",
@@ -6103,8 +5814,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_291",
@@ -6124,8 +5834,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_292",
@@ -6145,8 +5854,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_293",
@@ -6166,8 +5874,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_294",
@@ -6187,8 +5894,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_295",
@@ -6208,8 +5914,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_296",
@@ -6229,8 +5934,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_297",
@@ -6250,8 +5954,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_298",
@@ -6271,8 +5974,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_299",
@@ -6292,8 +5994,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 32,
-      "explanation": ""
+      "page": 32
     },
     {
       "id": "mid_tf_300",
@@ -6313,8 +6014,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_301",
@@ -6334,8 +6034,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_302",
@@ -6355,8 +6054,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_303",
@@ -6376,8 +6074,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_304",
@@ -6397,8 +6094,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_305",
@@ -6418,8 +6114,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_306",
@@ -6439,8 +6134,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_307",
@@ -6460,8 +6154,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_308",
@@ -6481,8 +6174,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_309",
@@ -6502,8 +6194,7 @@
       "answer": "X",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_310",
@@ -6523,8 +6214,7 @@
       "answer": "O",
       "category": "電機與電氣控制",
       "image": null,
-      "page": 33,
-      "explanation": ""
+      "page": 33
     },
     {
       "id": "mid_tf_311",
@@ -6544,8 +6234,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_312",
@@ -6565,8 +6254,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_313",
@@ -6586,8 +6274,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_314",
@@ -6607,8 +6294,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_315",
@@ -6628,8 +6314,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_316",
@@ -6649,8 +6334,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_317",
@@ -6670,8 +6354,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_318",
@@ -6691,8 +6374,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_319",
@@ -6712,8 +6394,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_320",
@@ -6733,8 +6414,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_321",
@@ -6754,8 +6434,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_322",
@@ -6775,8 +6454,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 34,
-      "explanation": ""
+      "page": 34
     },
     {
       "id": "mid_tf_323",
@@ -6796,8 +6474,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_324",
@@ -6817,8 +6494,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_325",
@@ -6838,8 +6514,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_326",
@@ -6859,8 +6534,7 @@
       "answer": "X",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_327",
@@ -6880,8 +6554,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_328",
@@ -6901,8 +6574,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_329",
@@ -6922,8 +6594,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_330",
@@ -6943,8 +6614,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_331",
@@ -6964,8 +6634,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_332",
@@ -6985,8 +6654,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_333",
@@ -7006,8 +6674,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_tf_334",
@@ -7027,8 +6694,7 @@
       "answer": "O",
       "category": "電子技術基礎",
       "image": null,
-      "page": 35,
-      "explanation": ""
+      "page": 35
     },
     {
       "id": "mid_mc_s1_001",
@@ -7057,8 +6723,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【室外接地線直徑】室外地面明敷或淺埋圓鋼接地線，考慮機械強度及電化腐蝕損耗，最小直徑規範為 6mm（地下埋設通常為 8~10mm）。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_002",
@@ -7087,8 +6752,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【重複接地規範】在 TN 系統（尤其是 TN-C 或 TN-C-S）中，除了電源中性點工作接地外，必須在架空線終端或進戶處將 PE 線或 PEN 線再次接地，稱為「重複接地」。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_003",
@@ -7117,8 +6781,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【接零保護系統選型】TN-S 系統是保護零線（PE）與工作零線（N）全程分開的獨立五線制系統，PE線上平時無任何工作電流，保護靈敏度與安全性最高。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_004",
@@ -7147,8 +6810,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【保護零線截面規格】根據低壓電氣規範，PE保護零線的截面積：當相線S ≤ 16mm²時，PE線等於相線S；當16 < S ≤ 35mm²時，PE線取16mm²；當S > 35mm²時，PE線不少於相線截面的一半（S/2）。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_005",
@@ -7177,8 +6839,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【中性點接地方式】中性點接地方式包含：直接接地、經電阻接地、經消弧線圈（接地變壓器）接地。中性點不採用電容接地。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_006",
@@ -7207,8 +6868,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 36,
-      "explanation": "【工作接地定義】配電變壓器中性點直接接地是為了建立零電位參考點，維持相電壓穩定，屬於系統運行的「工作接地」。"
+      "page": 36
     },
     {
       "id": "mid_mc_s1_007",
@@ -7237,8 +6897,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": "【檢修接地線規格】停電檢修作業時掛接的攜帶型臨時接地封閉線，其材質必須為多股軟銅絞線，截面積不得小於 25mm²，以承受預期短路電流衝擊。"
+      "page": 37
     },
     {
       "id": "mid_mc_s1_008",
@@ -7267,8 +6926,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": "【接地標識規範】明敷接地線表面應塗以 15~100mm 等寬相間的「黃綠雙色」條紋，作為法定安全接地識別標記。"
+      "page": 37
     },
     {
       "id": "mid_mc_s1_009",
@@ -7297,8 +6955,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": ""
+      "page": 37
     },
     {
       "id": "mid_mc_s1_010",
@@ -7327,8 +6984,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": ""
+      "page": 37
     },
     {
       "id": "mid_mc_s1_011",
@@ -7357,8 +7013,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": ""
+      "page": 37
     },
     {
       "id": "mid_mc_s1_012",
@@ -7387,8 +7042,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 37,
-      "explanation": ""
+      "page": 37
     },
     {
       "id": "mid_mc_s1_013",
@@ -7417,8 +7071,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_014",
@@ -7447,8 +7100,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_015",
@@ -7477,8 +7129,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_016",
@@ -7507,8 +7158,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_017",
@@ -7537,8 +7187,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_018",
@@ -7567,8 +7216,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_019",
@@ -7597,8 +7245,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 38,
-      "explanation": ""
+      "page": 38
     },
     {
       "id": "mid_mc_s1_020",
@@ -7627,8 +7274,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_021",
@@ -7657,8 +7303,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_022",
@@ -7687,8 +7332,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_023",
@@ -7717,8 +7361,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_024",
@@ -7747,8 +7390,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_025",
@@ -7777,8 +7419,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 39,
-      "explanation": ""
+      "page": 39
     },
     {
       "id": "mid_mc_s1_026",
@@ -7807,8 +7448,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_027",
@@ -7837,8 +7477,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_028",
@@ -7867,8 +7506,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_029",
@@ -7897,8 +7535,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_030",
@@ -7927,8 +7564,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_031",
@@ -7957,8 +7593,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 40,
-      "explanation": ""
+      "page": 40
     },
     {
       "id": "mid_mc_s1_032",
@@ -7987,8 +7622,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_033",
@@ -8017,8 +7651,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_034",
@@ -8047,8 +7680,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_035",
@@ -8077,8 +7709,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_036",
@@ -8107,8 +7738,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_037",
@@ -8137,8 +7767,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 41,
-      "explanation": ""
+      "page": 41
     },
     {
       "id": "mid_mc_s1_038",
@@ -8167,8 +7796,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_039",
@@ -8197,8 +7825,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_040",
@@ -8227,8 +7854,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_041",
@@ -8257,8 +7883,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_042",
@@ -8287,8 +7912,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_043",
@@ -8317,8 +7941,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 42,
-      "explanation": ""
+      "page": 42
     },
     {
       "id": "mid_mc_s1_044",
@@ -8347,8 +7970,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_045",
@@ -8377,8 +7999,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_046",
@@ -8407,8 +8028,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_047",
@@ -8437,8 +8057,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_048",
@@ -8467,8 +8086,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_049",
@@ -8497,8 +8115,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_050",
@@ -8527,8 +8144,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 43,
-      "explanation": ""
+      "page": 43
     },
     {
       "id": "mid_mc_s1_051",
@@ -8557,8 +8173,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_052",
@@ -8587,8 +8202,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_053",
@@ -8617,8 +8231,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_054",
@@ -8647,8 +8260,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_055",
@@ -8677,8 +8289,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_056",
@@ -8707,8 +8318,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_057",
@@ -8737,8 +8347,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 44,
-      "explanation": ""
+      "page": 44
     },
     {
       "id": "mid_mc_s1_058",
@@ -8767,8 +8376,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_059",
@@ -8797,8 +8405,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_060",
@@ -8827,8 +8434,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_061",
@@ -8857,8 +8463,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_062",
@@ -8887,8 +8492,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_063",
@@ -8917,8 +8521,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_064",
@@ -8947,8 +8550,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 45,
-      "explanation": ""
+      "page": 45
     },
     {
       "id": "mid_mc_s1_065",
@@ -8977,8 +8579,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_066",
@@ -9007,8 +8608,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_067",
@@ -9037,8 +8637,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_068",
@@ -9067,8 +8666,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_069",
@@ -9097,8 +8695,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_070",
@@ -9127,8 +8724,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_071",
@@ -9157,8 +8753,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 46,
-      "explanation": ""
+      "page": 46
     },
     {
       "id": "mid_mc_s1_072",
@@ -9187,8 +8782,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_073",
@@ -9217,8 +8811,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_074",
@@ -9247,8 +8840,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_075",
@@ -9277,8 +8869,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_076",
@@ -9307,8 +8898,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_077",
@@ -9337,8 +8927,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_078",
@@ -9367,8 +8956,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 47,
-      "explanation": ""
+      "page": 47
     },
     {
       "id": "mid_mc_s1_079",
@@ -9397,8 +8985,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_080",
@@ -9427,8 +9014,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_081",
@@ -9457,8 +9043,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_082",
@@ -9487,8 +9072,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_083",
@@ -9517,8 +9101,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_084",
@@ -9547,8 +9130,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_085",
@@ -9577,8 +9159,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 48,
-      "explanation": ""
+      "page": 48
     },
     {
       "id": "mid_mc_s1_086",
@@ -9607,8 +9188,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_087",
@@ -9637,8 +9217,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_088",
@@ -9667,8 +9246,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_089",
@@ -9697,8 +9275,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_090",
@@ -9727,8 +9304,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_091",
@@ -9757,8 +9333,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_092",
@@ -9787,8 +9362,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 49,
-      "explanation": ""
+      "page": 49
     },
     {
       "id": "mid_mc_s1_093",
@@ -9817,8 +9391,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_094",
@@ -9847,8 +9420,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_095",
@@ -9877,8 +9449,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_096",
@@ -9907,8 +9478,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_097",
@@ -9937,8 +9507,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_098",
@@ -9967,8 +9536,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s1_099",
@@ -9997,8 +9565,7 @@
       "category": "工作規範與電工安全",
       "section_index": 1,
       "image": null,
-      "page": 50,
-      "explanation": ""
+      "page": 50
     },
     {
       "id": "mid_mc_s2_001",
@@ -10027,8 +9594,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": "【歐姆定律計算】由歐姆定律 R = U/I = 15V / 3A = 5Ω。當電壓改為 18V 時，電流 I' = U' / R = 18V / 5Ω = 3.6A。"
+      "page": 51
     },
     {
       "id": "mid_mc_s2_002",
@@ -10057,8 +9623,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": ""
+      "page": 51
     },
     {
       "id": "mid_mc_s2_003",
@@ -10087,8 +9652,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": ""
+      "page": 51
     },
     {
       "id": "mid_mc_s2_004",
@@ -10117,8 +9681,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": ""
+      "page": 51
     },
     {
       "id": "mid_mc_s2_005",
@@ -10147,8 +9710,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": ""
+      "page": 51
     },
     {
       "id": "mid_mc_s2_006",
@@ -10177,8 +9739,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 51,
-      "explanation": ""
+      "page": 51
     },
     {
       "id": "mid_mc_s2_007",
@@ -10207,8 +9768,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": "【電阻並聯分段】設切成 n 段，每段電阻為 48/n Ω。將 n 段並聯後的總電阻 R_total = (48/n) / n = 48 / n²。依題意 48 / n² = 3，則 n² = 16，解得 n = 4 段。"
+      "page": 52
     },
     {
       "id": "mid_mc_s2_008",
@@ -10237,8 +9797,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": "【導體電阻公式】導體電阻 R = ρ * (L / A)。半徑減半，截面積 A = πr² 變為原來的 1/4；在長度與材料不變時，電阻變為原來的 4 倍。"
+      "page": 52
     },
     {
       "id": "mid_mc_s2_009",
@@ -10267,8 +9826,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": ""
+      "page": 52
     },
     {
       "id": "mid_mc_s2_010",
@@ -10297,8 +9855,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": "【額定功率與電阻】由 P = U² / R 可得 R = U² / P。在相同額定電壓下，電阻與額定功率成反比。R(10W) / R(100W) = 100W / 10W = 10 倍。"
+      "page": 52
     },
     {
       "id": "mid_mc_s2_011",
@@ -10327,8 +9884,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": ""
+      "page": 52
     },
     {
       "id": "mid_mc_s2_012",
@@ -10357,8 +9913,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p52_img155.png",
-      "page": 52,
-      "explanation": ""
+      "page": 52
     },
     {
       "id": "mid_mc_s2_013",
@@ -10387,8 +9942,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_014",
@@ -10417,8 +9971,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_015",
@@ -10447,8 +10000,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_016",
@@ -10477,8 +10029,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_017",
@@ -10507,8 +10058,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_018",
@@ -10537,8 +10087,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_019",
@@ -10567,8 +10116,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 53,
-      "explanation": ""
+      "page": 53
     },
     {
       "id": "mid_mc_s2_020",
@@ -10597,8 +10145,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_021",
@@ -10627,8 +10174,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_022",
@@ -10657,8 +10203,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_023",
@@ -10687,8 +10232,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_024",
@@ -10717,8 +10261,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_025",
@@ -10747,8 +10290,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_026",
@@ -10777,8 +10319,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 54,
-      "explanation": ""
+      "page": 54
     },
     {
       "id": "mid_mc_s2_027",
@@ -10807,8 +10348,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_028",
@@ -10837,8 +10377,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_029",
@@ -10867,8 +10406,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_030",
@@ -10897,8 +10435,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_031",
@@ -10927,8 +10464,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_032",
@@ -10957,8 +10493,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_033",
@@ -10987,8 +10522,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 55,
-      "explanation": ""
+      "page": 55
     },
     {
       "id": "mid_mc_s2_034",
@@ -11017,8 +10551,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_035",
@@ -11047,8 +10580,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_036",
@@ -11077,8 +10609,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_037",
@@ -11107,8 +10638,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_038",
@@ -11137,8 +10667,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_039",
@@ -11167,8 +10696,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_040",
@@ -11197,8 +10725,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 56,
-      "explanation": ""
+      "page": 56
     },
     {
       "id": "mid_mc_s2_041",
@@ -11227,8 +10754,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_042",
@@ -11257,8 +10783,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_043",
@@ -11287,8 +10812,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_044",
@@ -11317,8 +10841,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_045",
@@ -11347,8 +10870,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_046",
@@ -11377,8 +10899,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_047",
@@ -11407,8 +10928,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 57,
-      "explanation": ""
+      "page": 57
     },
     {
       "id": "mid_mc_s2_048",
@@ -11437,8 +10957,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_049",
@@ -11467,8 +10986,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_050",
@@ -11497,8 +11015,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_051",
@@ -11527,8 +11044,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_052",
@@ -11557,8 +11073,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_053",
@@ -11587,8 +11102,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_054",
@@ -11617,8 +11131,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 58,
-      "explanation": ""
+      "page": 58
     },
     {
       "id": "mid_mc_s2_055",
@@ -11647,8 +11160,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img178.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_056",
@@ -11677,8 +11189,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img180.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_057",
@@ -11707,8 +11218,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img179.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_058",
@@ -11737,8 +11247,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img178.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_059",
@@ -11767,8 +11276,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img178.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_060",
@@ -11797,8 +11305,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p59_img178.png",
-      "page": 59,
-      "explanation": ""
+      "page": 59
     },
     {
       "id": "mid_mc_s2_061",
@@ -11827,8 +11334,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img183.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_062",
@@ -11857,8 +11363,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img184.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_063",
@@ -11887,8 +11392,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img185.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_064",
@@ -11917,8 +11421,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img183.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_065",
@@ -11947,8 +11450,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img183.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_066",
@@ -11977,8 +11479,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img183.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_067",
@@ -12007,8 +11508,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p60_img183.png",
-      "page": 60,
-      "explanation": ""
+      "page": 60
     },
     {
       "id": "mid_mc_s2_068",
@@ -12037,8 +11537,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_069",
@@ -12067,8 +11566,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_070",
@@ -12097,8 +11595,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_071",
@@ -12127,8 +11624,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_072",
@@ -12157,8 +11653,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_073",
@@ -12187,8 +11682,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_074",
@@ -12217,8 +11711,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 61,
-      "explanation": ""
+      "page": 61
     },
     {
       "id": "mid_mc_s2_075",
@@ -12247,8 +11740,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_076",
@@ -12277,8 +11769,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_077",
@@ -12307,8 +11798,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_078",
@@ -12337,8 +11827,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_079",
@@ -12367,8 +11856,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_080",
@@ -12397,8 +11885,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 62,
-      "explanation": ""
+      "page": 62
     },
     {
       "id": "mid_mc_s2_081",
@@ -12427,8 +11914,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_082",
@@ -12457,8 +11943,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_083",
@@ -12487,8 +11972,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_084",
@@ -12517,8 +12001,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_085",
@@ -12547,8 +12030,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_086",
@@ -12577,8 +12059,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_087",
@@ -12607,8 +12088,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 63,
-      "explanation": ""
+      "page": 63
     },
     {
       "id": "mid_mc_s2_088",
@@ -12637,8 +12117,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_089",
@@ -12667,8 +12146,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_090",
@@ -12697,8 +12175,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_091",
@@ -12727,8 +12204,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_092",
@@ -12757,8 +12233,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_093",
@@ -12787,8 +12262,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 64,
-      "explanation": ""
+      "page": 64
     },
     {
       "id": "mid_mc_s2_094",
@@ -12817,8 +12291,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_095",
@@ -12847,8 +12320,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_096",
@@ -12877,8 +12349,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_097",
@@ -12907,8 +12378,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_098",
@@ -12937,8 +12407,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_099",
@@ -12967,8 +12436,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_100",
@@ -12997,8 +12465,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 65,
-      "explanation": ""
+      "page": 65
     },
     {
       "id": "mid_mc_s2_101",
@@ -13027,8 +12494,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_102",
@@ -13057,8 +12523,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_103",
@@ -13087,8 +12552,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_104",
@@ -13117,8 +12581,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_105",
@@ -13147,8 +12610,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_106",
@@ -13177,8 +12639,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 66,
-      "explanation": ""
+      "page": 66
     },
     {
       "id": "mid_mc_s2_107",
@@ -13207,8 +12668,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_108",
@@ -13237,8 +12697,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_109",
@@ -13267,8 +12726,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_110",
@@ -13297,8 +12755,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_111",
@@ -13327,8 +12784,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_112",
@@ -13357,8 +12813,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_113",
@@ -13387,8 +12842,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 67,
-      "explanation": ""
+      "page": 67
     },
     {
       "id": "mid_mc_s2_114",
@@ -13417,8 +12871,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_115",
@@ -13447,8 +12900,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_116",
@@ -13477,8 +12929,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_117",
@@ -13507,8 +12958,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_118",
@@ -13537,8 +12987,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_119",
@@ -13567,8 +13016,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_120",
@@ -13597,8 +13045,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 68,
-      "explanation": ""
+      "page": 68
     },
     {
       "id": "mid_mc_s2_121",
@@ -13627,8 +13074,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_122",
@@ -13657,8 +13103,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_123",
@@ -13687,8 +13132,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_124",
@@ -13717,8 +13161,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_125",
@@ -13747,8 +13190,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_126",
@@ -13777,8 +13219,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_127",
@@ -13807,8 +13248,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 69,
-      "explanation": ""
+      "page": 69
     },
     {
       "id": "mid_mc_s2_128",
@@ -13837,8 +13277,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_129",
@@ -13867,8 +13306,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_130",
@@ -13897,8 +13335,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_131",
@@ -13927,8 +13364,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_132",
@@ -13957,8 +13393,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_133",
@@ -13987,8 +13422,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_134",
@@ -14017,8 +13451,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 70,
-      "explanation": ""
+      "page": 70
     },
     {
       "id": "mid_mc_s2_135",
@@ -14047,8 +13480,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_136",
@@ -14077,8 +13509,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_137",
@@ -14107,8 +13538,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_138",
@@ -14137,8 +13567,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_139",
@@ -14167,8 +13596,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_140",
@@ -14197,8 +13625,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_141",
@@ -14227,8 +13654,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 71,
-      "explanation": ""
+      "page": 71
     },
     {
       "id": "mid_mc_s2_142",
@@ -14257,8 +13683,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_143",
@@ -14287,8 +13712,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_144",
@@ -14317,8 +13741,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_145",
@@ -14347,8 +13770,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_146",
@@ -14377,8 +13799,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_147",
@@ -14407,8 +13828,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 72,
-      "explanation": ""
+      "page": 72
     },
     {
       "id": "mid_mc_s2_148",
@@ -14437,8 +13857,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img214.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_149",
@@ -14467,8 +13886,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img214.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_150",
@@ -14497,8 +13915,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img214.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_151",
@@ -14527,8 +13944,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img213.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_152",
@@ -14557,8 +13973,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img214.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_153",
@@ -14587,8 +14002,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": "assets/images/mid_electrician/p73_img214.png",
-      "page": 73,
-      "explanation": ""
+      "page": 73
     },
     {
       "id": "mid_mc_s2_154",
@@ -14617,8 +14031,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 74,
-      "explanation": ""
+      "page": 74
     },
     {
       "id": "mid_mc_s2_155",
@@ -14647,8 +14060,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 74,
-      "explanation": ""
+      "page": 74
     },
     {
       "id": "mid_mc_s2_156",
@@ -14677,8 +14089,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 74,
-      "explanation": ""
+      "page": 74
     },
     {
       "id": "mid_mc_s2_157",
@@ -14707,8 +14118,7 @@
       "category": "電工基礎",
       "section_index": 2,
       "image": null,
-      "page": 74,
-      "explanation": ""
+      "page": 74
     },
     {
       "id": "mid_mc_s3_001",
@@ -14737,8 +14147,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p75_img219.png",
-      "page": 75,
-      "explanation": "【電阻測量接線】測量低電阻時，電流錶分壓影響較大，應採用「電流錶外接法」（伏特錶並聯在待測電阻兩端），以消除電流錶內阻造成的誤差。"
+      "page": 75
     },
     {
       "id": "mid_mc_s3_002",
@@ -14767,8 +14176,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p75_img220.png",
-      "page": 75,
-      "explanation": ""
+      "page": 75
     },
     {
       "id": "mid_mc_s3_003",
@@ -14797,8 +14205,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p75_img219.png",
-      "page": 75,
-      "explanation": ""
+      "page": 75
     },
     {
       "id": "mid_mc_s3_004",
@@ -14827,8 +14234,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p75_img219.png",
-      "page": 75,
-      "explanation": ""
+      "page": 75
     },
     {
       "id": "mid_mc_s3_005",
@@ -14857,8 +14263,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_006",
@@ -14887,8 +14292,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_007",
@@ -14917,8 +14321,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_008",
@@ -14947,8 +14350,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_009",
@@ -14977,8 +14379,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_010",
@@ -15007,8 +14408,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 76,
-      "explanation": ""
+      "page": 76
     },
     {
       "id": "mid_mc_s3_011",
@@ -15037,8 +14437,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_012",
@@ -15067,8 +14466,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_013",
@@ -15097,8 +14495,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_014",
@@ -15127,8 +14524,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_015",
@@ -15157,8 +14553,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_016",
@@ -15187,8 +14582,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p77_img225.png",
-      "page": 77,
-      "explanation": ""
+      "page": 77
     },
     {
       "id": "mid_mc_s3_017",
@@ -15217,8 +14611,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_018",
@@ -15247,8 +14640,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_019",
@@ -15277,8 +14669,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_020",
@@ -15307,8 +14698,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_021",
@@ -15337,8 +14727,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_022",
@@ -15367,8 +14756,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_023",
@@ -15397,8 +14785,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p78_img228.jpeg",
-      "page": 78,
-      "explanation": ""
+      "page": 78
     },
     {
       "id": "mid_mc_s3_024",
@@ -15427,8 +14814,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_025",
@@ -15457,8 +14843,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_026",
@@ -15487,8 +14872,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_027",
@@ -15517,8 +14901,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_028",
@@ -15547,8 +14930,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_029",
@@ -15577,8 +14959,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 79,
-      "explanation": ""
+      "page": 79
     },
     {
       "id": "mid_mc_s3_030",
@@ -15607,8 +14988,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img233.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_031",
@@ -15637,8 +15017,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img233.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_032",
@@ -15667,8 +15046,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img233.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_033",
@@ -15697,8 +15075,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img234.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_034",
@@ -15727,8 +15104,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img233.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_035",
@@ -15757,8 +15133,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p80_img233.png",
-      "page": 80,
-      "explanation": ""
+      "page": 80
     },
     {
       "id": "mid_mc_s3_036",
@@ -15787,8 +15162,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_037",
@@ -15817,8 +15191,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_038",
@@ -15847,8 +15220,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_039",
@@ -15877,8 +15249,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_040",
@@ -15907,8 +15278,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_041",
@@ -15937,8 +15307,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p81_img237.png",
-      "page": 81,
-      "explanation": ""
+      "page": 81
     },
     {
       "id": "mid_mc_s3_042",
@@ -15967,8 +15336,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_043",
@@ -15997,8 +15365,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_044",
@@ -16027,8 +15394,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_045",
@@ -16057,8 +15423,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_046",
@@ -16087,8 +15452,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_047",
@@ -16117,8 +15481,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_048",
@@ -16147,8 +15510,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 82,
-      "explanation": ""
+      "page": 82
     },
     {
       "id": "mid_mc_s3_049",
@@ -16177,8 +15539,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_050",
@@ -16207,8 +15568,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_051",
@@ -16237,8 +15597,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_052",
@@ -16267,8 +15626,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_053",
@@ -16297,8 +15655,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_054",
@@ -16327,8 +15684,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 83,
-      "explanation": ""
+      "page": 83
     },
     {
       "id": "mid_mc_s3_055",
@@ -16357,8 +15713,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_056",
@@ -16387,8 +15742,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_057",
@@ -16417,8 +15771,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_058",
@@ -16447,8 +15800,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_059",
@@ -16477,8 +15829,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_060",
@@ -16507,8 +15858,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 84,
-      "explanation": ""
+      "page": 84
     },
     {
       "id": "mid_mc_s3_061",
@@ -16537,8 +15887,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_062",
@@ -16567,8 +15916,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_063",
@@ -16597,8 +15945,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_064",
@@ -16627,8 +15974,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_065",
@@ -16657,8 +16003,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_066",
@@ -16687,8 +16032,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_067",
@@ -16717,8 +16061,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": null,
-      "page": 85,
-      "explanation": ""
+      "page": 85
     },
     {
       "id": "mid_mc_s3_068",
@@ -16747,8 +16090,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img248.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_069",
@@ -16777,8 +16119,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img248.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_070",
@@ -16807,8 +16148,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img248.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_071",
@@ -16837,8 +16177,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img248.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_072",
@@ -16867,8 +16206,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img248.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_073",
@@ -16897,8 +16235,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p86_img249.png",
-      "page": 86,
-      "explanation": ""
+      "page": 86
     },
     {
       "id": "mid_mc_s3_074",
@@ -16927,8 +16264,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_075",
@@ -16957,8 +16293,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_076",
@@ -16987,8 +16322,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_077",
@@ -17017,8 +16351,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_078",
@@ -17047,8 +16380,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_079",
@@ -17077,8 +16409,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s3_080",
@@ -17107,8 +16438,7 @@
       "category": "電工儀錶測量",
       "section_index": 3,
       "image": "assets/images/mid_electrician/p87_img252.png",
-      "page": 87,
-      "explanation": ""
+      "page": 87
     },
     {
       "id": "mid_mc_s4_001",
@@ -17137,8 +16467,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 88,
-      "explanation": ""
+      "page": 88
     },
     {
       "id": "mid_mc_s4_002",
@@ -17167,8 +16496,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 88,
-      "explanation": ""
+      "page": 88
     },
     {
       "id": "mid_mc_s4_003",
@@ -17197,8 +16525,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_004",
@@ -17227,8 +16554,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_005",
@@ -17257,8 +16583,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_006",
@@ -17287,8 +16612,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_007",
@@ -17317,8 +16641,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_008",
@@ -17347,8 +16670,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_009",
@@ -17377,8 +16699,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 89,
-      "explanation": ""
+      "page": 89
     },
     {
       "id": "mid_mc_s4_010",
@@ -17407,8 +16728,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_011",
@@ -17437,8 +16757,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_012",
@@ -17467,8 +16786,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_013",
@@ -17497,8 +16815,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_014",
@@ -17527,8 +16844,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_015",
@@ -17557,8 +16873,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_016",
@@ -17587,8 +16902,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 90,
-      "explanation": ""
+      "page": 90
     },
     {
       "id": "mid_mc_s4_017",
@@ -17617,8 +16931,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_018",
@@ -17647,8 +16960,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_019",
@@ -17677,8 +16989,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_020",
@@ -17707,8 +17018,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_021",
@@ -17737,8 +17047,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_022",
@@ -17767,8 +17076,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_023",
@@ -17797,8 +17105,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 91,
-      "explanation": ""
+      "page": 91
     },
     {
       "id": "mid_mc_s4_024",
@@ -17827,8 +17134,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_025",
@@ -17857,8 +17163,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_026",
@@ -17887,8 +17192,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_027",
@@ -17917,8 +17221,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_028",
@@ -17947,8 +17250,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_029",
@@ -17977,8 +17279,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_030",
@@ -18007,8 +17308,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 92,
-      "explanation": ""
+      "page": 92
     },
     {
       "id": "mid_mc_s4_031",
@@ -18037,8 +17337,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_032",
@@ -18067,8 +17366,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_033",
@@ -18097,8 +17395,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_034",
@@ -18127,8 +17424,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_035",
@@ -18157,8 +17453,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_036",
@@ -18187,8 +17482,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 93,
-      "explanation": ""
+      "page": 93
     },
     {
       "id": "mid_mc_s4_037",
@@ -18217,8 +17511,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_038",
@@ -18247,8 +17540,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_039",
@@ -18277,8 +17569,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_040",
@@ -18307,8 +17598,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_041",
@@ -18337,8 +17627,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_042",
@@ -18367,8 +17656,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 94,
-      "explanation": ""
+      "page": 94
     },
     {
       "id": "mid_mc_s4_043",
@@ -18397,8 +17685,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_044",
@@ -18427,8 +17714,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_045",
@@ -18457,8 +17743,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_046",
@@ -18487,8 +17772,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img276.png",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_047",
@@ -18517,8 +17801,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_048",
@@ -18547,8 +17830,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_049",
@@ -18577,8 +17859,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p95_img277.jpeg",
-      "page": 95,
-      "explanation": ""
+      "page": 95
     },
     {
       "id": "mid_mc_s4_050",
@@ -18607,8 +17888,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_051",
@@ -18637,8 +17917,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_052",
@@ -18667,8 +17946,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_053",
@@ -18697,8 +17975,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_054",
@@ -18727,8 +18004,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_055",
@@ -18757,8 +18033,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_056",
@@ -18787,8 +18062,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 96,
-      "explanation": ""
+      "page": 96
     },
     {
       "id": "mid_mc_s4_057",
@@ -18817,8 +18091,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_058",
@@ -18847,8 +18120,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_059",
@@ -18877,8 +18149,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_060",
@@ -18907,8 +18178,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_061",
@@ -18937,8 +18207,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_062",
@@ -18967,8 +18236,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 97,
-      "explanation": ""
+      "page": 97
     },
     {
       "id": "mid_mc_s4_063",
@@ -18997,8 +18265,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_064",
@@ -19027,8 +18294,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_065",
@@ -19057,8 +18323,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_066",
@@ -19087,8 +18352,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_067",
@@ -19117,8 +18381,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_068",
@@ -19147,8 +18410,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 98,
-      "explanation": ""
+      "page": 98
     },
     {
       "id": "mid_mc_s4_069",
@@ -19177,8 +18439,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_070",
@@ -19207,8 +18468,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_071",
@@ -19237,8 +18497,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_072",
@@ -19267,8 +18526,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_073",
@@ -19297,8 +18555,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_074",
@@ -19327,8 +18584,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_075",
@@ -19357,8 +18613,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": null,
-      "page": 99,
-      "explanation": ""
+      "page": 99
     },
     {
       "id": "mid_mc_s4_076",
@@ -19387,8 +18642,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img291.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_077",
@@ -19417,8 +18671,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img291.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_078",
@@ -19447,8 +18700,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img291.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_079",
@@ -19477,8 +18729,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img291.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_080",
@@ -19507,8 +18758,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img290.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_081",
@@ -19537,8 +18787,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img289.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_082",
@@ -19567,8 +18816,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p100_img288.png",
-      "page": 100,
-      "explanation": ""
+      "page": 100
     },
     {
       "id": "mid_mc_s4_083",
@@ -19597,8 +18845,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img299.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_084",
@@ -19627,8 +18874,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img298.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_085",
@@ -19657,8 +18903,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img297.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_086",
@@ -19687,8 +18932,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img296.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_087",
@@ -19717,8 +18961,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img300.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_088",
@@ -19747,8 +18990,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p101_img301.png",
-      "page": 101,
-      "explanation": ""
+      "page": 101
     },
     {
       "id": "mid_mc_s4_089",
@@ -19777,8 +19019,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p102_img304.png",
-      "page": 102,
-      "explanation": ""
+      "page": 102
     },
     {
       "id": "mid_mc_s4_090",
@@ -19807,8 +19048,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p102_img306.jpeg",
-      "page": 102,
-      "explanation": ""
+      "page": 102
     },
     {
       "id": "mid_mc_s4_091",
@@ -19837,8 +19077,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p102_img307.jpeg",
-      "page": 102,
-      "explanation": ""
+      "page": 102
     },
     {
       "id": "mid_mc_s4_092",
@@ -19867,8 +19106,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p102_img308.png",
-      "page": 102,
-      "explanation": ""
+      "page": 102
     },
     {
       "id": "mid_mc_s4_093",
@@ -19897,8 +19135,7 @@
       "category": "低壓電器與照明電路",
       "section_index": 4,
       "image": "assets/images/mid_electrician/p103_img311.png",
-      "page": 103,
-      "explanation": ""
+      "page": 103
     },
     {
       "id": "mid_mc_s5_001",
@@ -19927,8 +19164,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p103_img311.png",
-      "page": 103,
-      "explanation": ""
+      "page": 103
     },
     {
       "id": "mid_mc_s5_002",
@@ -19957,8 +19193,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p103_img311.png",
-      "page": 103,
-      "explanation": ""
+      "page": 103
     },
     {
       "id": "mid_mc_s5_003",
@@ -19987,8 +19222,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p103_img311.png",
-      "page": 103,
-      "explanation": ""
+      "page": 103
     },
     {
       "id": "mid_mc_s5_004",
@@ -20017,8 +19251,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p103_img311.png",
-      "page": 103,
-      "explanation": ""
+      "page": 103
     },
     {
       "id": "mid_mc_s5_005",
@@ -20047,8 +19280,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_006",
@@ -20077,8 +19309,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_007",
@@ -20107,8 +19338,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_008",
@@ -20137,8 +19367,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_009",
@@ -20167,8 +19396,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_010",
@@ -20197,8 +19425,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_011",
@@ -20227,8 +19454,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 104,
-      "explanation": ""
+      "page": 104
     },
     {
       "id": "mid_mc_s5_012",
@@ -20257,8 +19483,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_013",
@@ -20287,8 +19512,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_014",
@@ -20317,8 +19541,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_015",
@@ -20347,8 +19570,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_016",
@@ -20377,8 +19599,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_017",
@@ -20407,8 +19628,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_018",
@@ -20437,8 +19657,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 105,
-      "explanation": ""
+      "page": 105
     },
     {
       "id": "mid_mc_s5_019",
@@ -20467,8 +19686,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_020",
@@ -20497,8 +19715,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_021",
@@ -20527,8 +19744,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_022",
@@ -20557,8 +19773,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_023",
@@ -20587,8 +19802,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_024",
@@ -20617,8 +19831,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p106_img318.png",
-      "page": 106,
-      "explanation": ""
+      "page": 106
     },
     {
       "id": "mid_mc_s5_025",
@@ -20647,8 +19860,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_026",
@@ -20677,8 +19889,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_027",
@@ -20707,8 +19918,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_028",
@@ -20737,8 +19947,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_029",
@@ -20767,8 +19976,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_030",
@@ -20797,8 +20005,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 107,
-      "explanation": ""
+      "page": 107
     },
     {
       "id": "mid_mc_s5_031",
@@ -20827,8 +20034,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_032",
@@ -20857,8 +20063,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_033",
@@ -20887,8 +20092,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_034",
@@ -20917,8 +20121,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_035",
@@ -20947,8 +20150,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_036",
@@ -20977,8 +20179,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p108_img325.png",
-      "page": 108,
-      "explanation": ""
+      "page": 108
     },
     {
       "id": "mid_mc_s5_037",
@@ -21007,8 +20208,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_038",
@@ -21037,8 +20237,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_039",
@@ -21067,8 +20266,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_040",
@@ -21097,8 +20295,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_041",
@@ -21127,8 +20324,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_042",
@@ -21157,8 +20353,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 109,
-      "explanation": ""
+      "page": 109
     },
     {
       "id": "mid_mc_s5_043",
@@ -21187,8 +20382,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_044",
@@ -21217,8 +20411,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_045",
@@ -21247,8 +20440,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_046",
@@ -21277,8 +20469,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_047",
@@ -21307,8 +20498,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_048",
@@ -21337,8 +20527,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_049",
@@ -21367,8 +20556,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 110,
-      "explanation": ""
+      "page": 110
     },
     {
       "id": "mid_mc_s5_050",
@@ -21397,8 +20585,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_051",
@@ -21427,8 +20614,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_052",
@@ -21457,8 +20643,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_053",
@@ -21487,8 +20672,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_054",
@@ -21517,8 +20701,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_055",
@@ -21547,8 +20730,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_056",
@@ -21577,8 +20759,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 111,
-      "explanation": ""
+      "page": 111
     },
     {
       "id": "mid_mc_s5_057",
@@ -21607,8 +20788,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_058",
@@ -21637,8 +20817,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_059",
@@ -21667,8 +20846,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_060",
@@ -21697,8 +20875,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_061",
@@ -21727,8 +20904,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_062",
@@ -21757,8 +20933,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 112,
-      "explanation": ""
+      "page": 112
     },
     {
       "id": "mid_mc_s5_063",
@@ -21787,8 +20962,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_064",
@@ -21817,8 +20991,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_065",
@@ -21847,8 +21020,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_066",
@@ -21877,8 +21049,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_067",
@@ -21907,8 +21078,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_068",
@@ -21937,8 +21107,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p113_img338.png",
-      "page": 113,
-      "explanation": ""
+      "page": 113
     },
     {
       "id": "mid_mc_s5_069",
@@ -21967,8 +21136,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_070",
@@ -21997,8 +21165,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_071",
@@ -22027,8 +21194,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_072",
@@ -22057,8 +21223,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_073",
@@ -22087,8 +21252,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_074",
@@ -22117,8 +21281,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_075",
@@ -22147,8 +21310,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": null,
-      "page": 114,
-      "explanation": ""
+      "page": 114
     },
     {
       "id": "mid_mc_s5_076",
@@ -22177,8 +21339,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p115_img345.png",
-      "page": 115,
-      "explanation": ""
+      "page": 115
     },
     {
       "id": "mid_mc_s5_077",
@@ -22207,8 +21368,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p115_img343.png",
-      "page": 115,
-      "explanation": ""
+      "page": 115
     },
     {
       "id": "mid_mc_s5_078",
@@ -22237,8 +21397,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p115_img344.png",
-      "page": 115,
-      "explanation": ""
+      "page": 115
     },
     {
       "id": "mid_mc_s5_079",
@@ -22267,8 +21426,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p116_img349.png",
-      "page": 116,
-      "explanation": ""
+      "page": 116
     },
     {
       "id": "mid_mc_s5_080",
@@ -22297,8 +21455,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p116_img349.png",
-      "page": 116,
-      "explanation": ""
+      "page": 116
     },
     {
       "id": "mid_mc_s5_081",
@@ -22327,8 +21484,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p116_img349.png",
-      "page": 116,
-      "explanation": ""
+      "page": 116
     },
     {
       "id": "mid_mc_s5_082",
@@ -22357,8 +21513,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p116_img348.png",
-      "page": 116,
-      "explanation": ""
+      "page": 116
     },
     {
       "id": "mid_mc_s5_083",
@@ -22387,8 +21542,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p116_img349.png",
-      "page": 116,
-      "explanation": ""
+      "page": 116
     },
     {
       "id": "mid_mc_s5_084",
@@ -22417,8 +21571,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p117_img355.png",
-      "page": 117,
-      "explanation": ""
+      "page": 117
     },
     {
       "id": "mid_mc_s5_085",
@@ -22447,8 +21600,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p117_img354.png",
-      "page": 117,
-      "explanation": ""
+      "page": 117
     },
     {
       "id": "mid_mc_s5_086",
@@ -22477,8 +21629,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p117_img353.png",
-      "page": 117,
-      "explanation": ""
+      "page": 117
     },
     {
       "id": "mid_mc_s5_087",
@@ -22507,8 +21658,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p117_img352.png",
-      "page": 117,
-      "explanation": ""
+      "page": 117
     },
     {
       "id": "mid_mc_s5_088",
@@ -22537,8 +21687,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p118_img361.png",
-      "page": 118,
-      "explanation": ""
+      "page": 118
     },
     {
       "id": "mid_mc_s5_089",
@@ -22567,8 +21716,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p118_img358.png",
-      "page": 118,
-      "explanation": ""
+      "page": 118
     },
     {
       "id": "mid_mc_s5_090",
@@ -22597,8 +21745,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p118_img360.png",
-      "page": 118,
-      "explanation": ""
+      "page": 118
     },
     {
       "id": "mid_mc_s5_091",
@@ -22627,8 +21774,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p118_img359.png",
-      "page": 118,
-      "explanation": ""
+      "page": 118
     },
     {
       "id": "mid_mc_s5_092",
@@ -22657,8 +21803,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p119_img364.png",
-      "page": 119,
-      "explanation": ""
+      "page": 119
     },
     {
       "id": "mid_mc_s5_093",
@@ -22687,8 +21832,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p119_img365.png",
-      "page": 119,
-      "explanation": ""
+      "page": 119
     },
     {
       "id": "mid_mc_s5_094",
@@ -22717,8 +21861,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p119_img366.png",
-      "page": 119,
-      "explanation": ""
+      "page": 119
     },
     {
       "id": "mid_mc_s5_095",
@@ -22747,8 +21890,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p119_img367.png",
-      "page": 119,
-      "explanation": ""
+      "page": 119
     },
     {
       "id": "mid_mc_s5_096",
@@ -22777,8 +21919,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p120_img412.png",
-      "page": 120,
-      "explanation": ""
+      "page": 120
     },
     {
       "id": "mid_mc_s5_097",
@@ -22807,8 +21948,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p120_img411.png",
-      "page": 120,
-      "explanation": ""
+      "page": 120
     },
     {
       "id": "mid_mc_s5_098",
@@ -22837,8 +21977,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p120_img413.png",
-      "page": 120,
-      "explanation": ""
+      "page": 120
     },
     {
       "id": "mid_mc_s5_099",
@@ -22867,8 +22006,7 @@
       "category": "電機與電氣控制",
       "section_index": 5,
       "image": "assets/images/mid_electrician/p121_img416.png",
-      "page": 121,
-      "explanation": ""
+      "page": 121
     },
     {
       "id": "mid_mc_s6_001",
@@ -22897,8 +22035,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_002",
@@ -22927,8 +22064,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_003",
@@ -22957,8 +22093,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_004",
@@ -22987,8 +22122,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_005",
@@ -23017,8 +22151,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_006",
@@ -23047,8 +22180,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 122,
-      "explanation": ""
+      "page": 122
     },
     {
       "id": "mid_mc_s6_007",
@@ -23077,8 +22209,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_008",
@@ -23107,8 +22238,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_009",
@@ -23137,8 +22267,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_010",
@@ -23167,8 +22296,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_011",
@@ -23197,8 +22325,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_012",
@@ -23227,8 +22354,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_013",
@@ -23257,8 +22383,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 123,
-      "explanation": ""
+      "page": 123
     },
     {
       "id": "mid_mc_s6_014",
@@ -23287,8 +22412,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_015",
@@ -23317,8 +22441,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_016",
@@ -23347,8 +22470,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_017",
@@ -23377,8 +22499,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_018",
@@ -23407,8 +22528,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_019",
@@ -23437,8 +22557,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_020",
@@ -23467,8 +22586,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 124,
-      "explanation": ""
+      "page": 124
     },
     {
       "id": "mid_mc_s6_021",
@@ -23497,8 +22615,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_022",
@@ -23527,8 +22644,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_023",
@@ -23557,8 +22673,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_024",
@@ -23587,8 +22702,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_025",
@@ -23617,8 +22731,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_026",
@@ -23647,8 +22760,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_027",
@@ -23677,8 +22789,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 125,
-      "explanation": ""
+      "page": 125
     },
     {
       "id": "mid_mc_s6_028",
@@ -23707,8 +22818,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_029",
@@ -23737,8 +22847,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_030",
@@ -23767,8 +22876,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_031",
@@ -23797,8 +22905,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_032",
@@ -23827,8 +22934,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_033",
@@ -23857,8 +22963,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_034",
@@ -23887,8 +22992,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 126,
-      "explanation": ""
+      "page": 126
     },
     {
       "id": "mid_mc_s6_035",
@@ -23917,8 +23021,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_036",
@@ -23947,8 +23050,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_037",
@@ -23977,8 +23079,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_038",
@@ -24007,8 +23108,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_039",
@@ -24037,8 +23137,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_040",
@@ -24067,8 +23166,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_041",
@@ -24097,8 +23195,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 127,
-      "explanation": ""
+      "page": 127
     },
     {
       "id": "mid_mc_s6_042",
@@ -24127,8 +23224,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_043",
@@ -24157,8 +23253,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_044",
@@ -24187,8 +23282,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_045",
@@ -24217,8 +23311,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_046",
@@ -24247,8 +23340,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_047",
@@ -24277,8 +23369,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_048",
@@ -24307,8 +23398,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": null,
-      "page": 128,
-      "explanation": ""
+      "page": 128
     },
     {
       "id": "mid_mc_s6_049",
@@ -24337,8 +23427,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_050",
@@ -24367,8 +23456,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_051",
@@ -24397,8 +23485,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_052",
@@ -24427,8 +23514,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_053",
@@ -24457,8 +23543,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_054",
@@ -24487,8 +23572,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_055",
@@ -24517,8 +23601,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p129_img433.png",
-      "page": 129,
-      "explanation": ""
+      "page": 129
     },
     {
       "id": "mid_mc_s6_056",
@@ -24547,8 +23630,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p130_img437.png",
-      "page": 130,
-      "explanation": ""
+      "page": 130
     },
     {
       "id": "mid_mc_s6_057",
@@ -24577,8 +23659,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p130_img436.png",
-      "page": 130,
-      "explanation": ""
+      "page": 130
     },
     {
       "id": "mid_mc_s6_058",
@@ -24607,8 +23688,7 @@
       "category": "電子技術基礎",
       "section_index": 6,
       "image": "assets/images/mid_electrician/p130_img438.png",
-      "page": 130,
-      "explanation": ""
+      "page": 130
     }
   ]
 }

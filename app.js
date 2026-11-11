@@ -34,6 +34,7 @@
     currentMode: 'practice', // 'practice' | 'shuffle' | 'exam' | 'mistakes' | 'bookmarks' | 'search'
     selectedCategory: 'all',
     selectedType: 'all', // 'all' | 'tf' | 'mc'
+    onlyUndone: false,
     searchKeyword: '',
     
     // 當前模式題目列表與索引
@@ -213,6 +214,9 @@
       }
       if (state.selectedType !== 'all') {
         list = list.filter(q => q.type === state.selectedType);
+      }
+      if (state.onlyUndone) {
+        list = list.filter(q => !state.history[q.id]);
       }
     }
     
@@ -562,63 +566,17 @@
       `;
     });
 
-    // 答案揭曉與解析區塊 (練習模式已作答，或交卷後)
+    // 答案揭曉與反饋區塊 (練習模式已作答，或交卷後)
     let feedbackHtml = '';
-    const userNote = state.notes[q.id] || '';
-    const builtInExp = q.explanation || '';
-    const hasAnyExp = !!(builtInExp || userNote);
-
     if (hasAnswered && state.currentMode !== 'exam') {
-      let expContentHtml = '';
-      if (builtInExp) {
-        expContentHtml += `
-          <div class="mb-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200 bg-white/70 dark:bg-slate-800/70 p-3 rounded-lg border border-slate-200/80 dark:border-slate-700">
-            <span class="font-bold text-blue-600 dark:text-blue-400 mr-1.5">【考點詳解】</span>${builtInExp}
-          </div>
-        `;
-      }
-      if (userNote) {
-        expContentHtml += `
-          <div class="mb-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 bg-amber-50/80 dark:bg-amber-950/40 p-3 rounded-lg border border-amber-200/80 dark:border-amber-800/60">
-            <span class="font-bold text-amber-600 dark:text-amber-400 mr-1.5">【我的筆記/解析】</span>${userNote}
-          </div>
-        `;
-      }
-
       feedbackHtml = `
         <div class="mt-6 p-4 rounded-xl border ${isCorrect ? 'bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800'}">
-          <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-            <div class="flex items-center gap-2 font-bold ${isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-800 dark:text-red-300'}">
-              <span>${isCorrect ? '🎉 回答正確！' : '❌ 回答錯誤！'}</span>
-              <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${q.answer}</strong></span>
-            </div>
-            <button onclick="window.toggleNoteEditor('${q.id}')" class="text-xs px-2.5 py-1 rounded-lg bg-white/80 dark:bg-slate-800 hover:bg-white text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium transition flex items-center gap-1 shadow-xs">
-              <span>✏️</span> ${userNote ? '修改解析筆記' : '新增解析/筆記'}
-            </button>
+          <div class="flex items-center gap-2 mb-1.5 font-bold ${isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-800 dark:text-red-300'}">
+            <span>${isCorrect ? '🎉 回答正確！' : '❌ 回答錯誤！'}</span>
+            <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${q.answer}</strong></span>
           </div>
-
-          <!-- 詳解內容區塊 -->
-          ${expContentHtml}
-
-          <!-- 解析/筆記編輯器 (預設隱藏，點擊按鈕展開) -->
-          <div id="note-editor-${q.id}" class="hidden mt-3 p-3 bg-white dark:bg-slate-800 rounded-xl border border-blue-200 dark:border-blue-900 shadow-sm animate-fade-in">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold text-slate-700 dark:text-slate-300">為此題添加解答說明 / 記憶心得：</span>
-              <div class="flex gap-1">
-                <button type="button" onclick="window.insertNoteTag('${q.id}', '【法規要點】')" class="text-[10px] px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">#法規</button>
-                <button type="button" onclick="window.insertNoteTag('${q.id}', '【口訣記憶】')" class="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 border border-amber-200 dark:border-amber-800">#口訣</button>
-                <button type="button" onclick="window.insertNoteTag('${q.id}', '【易錯陷阱】')" class="text-[10px] px-1.5 py-0.5 rounded bg-red-50 text-red-700 dark:bg-red-900/40 dark:text-red-300 border border-red-200 dark:border-red-800">#陷阱</button>
-              </div>
-            </div>
-            <textarea id="note-textarea-${q.id}" rows="3" placeholder="例如：依澳門電工規範，PE線截面積不得小於相線的一半；安全電壓36V以下..." class="w-full text-xs sm:text-sm p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500">${userNote}</textarea>
-            <div class="flex items-center justify-end gap-2 mt-2">
-              <button onclick="window.toggleNoteEditor('${q.id}')" class="px-3 py-1 text-xs text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition">取消</button>
-              <button onclick="window.saveNote('${q.id}')" class="px-4 py-1 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition shadow-xs">儲存解析</button>
-            </div>
-          </div>
-
-          <div class="text-xs text-slate-500 dark:text-slate-400 mt-2.5 flex items-center justify-between border-t border-slate-200/50 dark:border-slate-700/50 pt-2">
-            <span>章節：${q.category}</span>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-2 flex items-center justify-between">
+            <span>章節出處：${q.category}</span>
             <span>官方手冊頁碼：P.${q.page}</span>
           </div>
         </div>
@@ -1129,35 +1087,6 @@
   };
 
   // 題目解析/筆記編輯操作
-  window.toggleNoteEditor = function(qid) {
-    const el = document.getElementById(`note-editor-${qid}`);
-    if (el) {
-      el.classList.toggle('hidden');
-      if (!el.classList.contains('hidden')) {
-        const textarea = document.getElementById(`note-textarea-${qid}`);
-        if (textarea) textarea.focus();
-      }
-    }
-  };
-  window.saveNote = function(qid) {
-    const textarea = document.getElementById(`note-textarea-${qid}`);
-    if (!textarea) return;
-    const text = textarea.value.trim();
-    if (text) {
-      state.notes[qid] = text;
-    } else {
-      delete state.notes[qid];
-    }
-    saveUserData();
-    render();
-  };
-  window.insertNoteTag = function(qid, tag) {
-    const textarea = document.getElementById(`note-textarea-${qid}`);
-    if (!textarea) return;
-    textarea.value = tag + ' ' + textarea.value;
-    textarea.focus();
-  };
-
   // 科目切換
   window.switchSubject = function(subjId) {
     if (state.exam.active && !confirm("切換科目將中斷當前考試，確定要切換嗎？")) {
