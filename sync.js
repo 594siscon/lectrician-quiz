@@ -39,6 +39,11 @@
         this.db = firebase.firestore();
         this.isConfigured = true;
 
+        // 處理手機 Redirect 登入返回結果
+        this.auth.getRedirectResult().catch(err => {
+          console.error("Redirect 登入處理失敗:", err);
+        });
+
         // 監聽登入狀態改變
         this.auth.onAuthStateChanged(user => {
           this.currentUser = user;
@@ -49,6 +54,18 @@
             this.pullAndMerge();
           } else {
             console.log("⚪ 尚未登入雲端帳號");
+          }
+        });
+
+        // 當使用者從背景切換回分頁或手機桌面重啟 PWA 時，自動從雲端拉取最新進度
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && this.currentUser && !this.isSyncing) {
+            const now = Date.now();
+            const last = this.lastSyncTime ? this.lastSyncTime.getTime() : 0;
+            if (now - last > 5000) {
+              console.log("🔄 偵測到切換回應用，自動執行雲端雙向同步...");
+              this.pullAndMerge();
+            }
           }
         });
       } catch (err) {
