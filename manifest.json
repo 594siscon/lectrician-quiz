@@ -1,7 +1,7 @@
 {
-  "name": "中級維修電工 刷題系統",
+  "name": "澳門電工技能測試 刷題系統",
   "short_name": "電工刷題",
-  "description": "澳門勞工事務局 2026 最新版技能測試題庫",
+  "description": "澳門勞工事務局 官方技能測試題庫 (中級維修電工/初級維修電工/初級設備安裝工)",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
