@@ -1104,20 +1104,40 @@
     loadSubjectData(subjId);
   };
 
-  // 匯出/匯入作答進度備份
+  // 匯出/匯入作答進度備份 (支援全科目完整備份與跨裝置智慧合併)
   window.exportProgress = function() {
+    const subjects = ['mid_maintenance_electrician', 'junior_maintenance_electrician', 'junior_equipment_installer'];
     const backup = {
-      history: state.history,
-      mistakes: state.mistakes,
-      bookmarks: Array.from(state.bookmarks),
-      notes: state.notes,
-      exportDate: new Date().toISOString()
+      version: '2.0',
+      exportDate: new Date().toISOString(),
+      currentSubject: state.currentSubject,
+      subjects: {}
     };
+
+    subjects.forEach(subj => {
+      const pfx = `elec_${subj}_`;
+      let hist = {};
+      let mis = {};
+      let bmk = [];
+      try {
+        if (subj === state.currentSubject) {
+          hist = state.history;
+          mis = state.mistakes;
+          bmk = Array.from(state.bookmarks);
+        } else {
+          hist = JSON.parse(localStorage.getItem(pfx + 'history') || '{}');
+          mis = JSON.parse(localStorage.getItem(pfx + 'mistakes') || '{}');
+          bmk = JSON.parse(localStorage.getItem(pfx + 'bookmarks') || '[]');
+        }
+      } catch (e) {}
+      backup.subjects[subj] = { history: hist, mistakes: mis, bookmarks: bmk };
+    });
+
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `電工刷題備份_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `電工全題庫進度備份_${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -1129,17 +1149,57 @@
     reader.onload = (e) => {
       try {
         const data = JSON.parse(e.target.result);
-        if (data.history) state.history = data.history;
-        if (data.mistakes) state.mistakes = data.mistakes;
-        if (data.bookmarks) state.bookmarks = new Set(data.bookmarks);
-        if (data.notes) state.notes = data.notes;
-        saveUserData();
+        const subjects = ['mid_maintenance_electrician', 'junior_maintenance_electrician', 'junior_equipment_installer'];
+
+        if (data.subjects) {
+          // 全科目格式 (v2.0)
+          subjects.forEach(subj => {
+            const pfx = `elec_${subj}_`;
+            const remote = data.subjects[subj];
+            if (!remote) return;
+            
+            let localHist = {};
+            let localMis = {};
+            let localBmk = [];
+            try {
+              localHist = JSON.parse(localStorage.getItem(pfx + 'history') || '{}');
+              localMis = JSON.parse(localStorage.getItem(pfx + 'mistakes') || '{}');
+              localBmk = JSON.parse(localStorage.getItem(pfx + 'bookmarks') || '[]');
+            } catch (err) {}
+
+            const mergedHist = Object.assign({}, remote.history || {}, localHist);
+            const mergedMis = Object.assign({}, remote.mistakes || {});
+            Object.keys(localMis).forEach(qid => {
+              mergedMis[qid] = Math.max(mergedMis[qid] || 0, localMis[qid]);
+            });
+            const mergedBmk = Array.from(new Set([...(remote.bookmarks || []), ...localBmk]));
+
+            localStorage.setItem(pfx + 'history', JSON.stringify(mergedHist));
+            localStorage.setItem(pfx + 'mistakes', JSON.stringify(mergedMis));
+            localStorage.setItem(pfx + 'bookmarks', JSON.stringify(mergedBmk));
+          });
+        } else {
+          // 單一科目相容格式 (v1.0)
+          if (data.history) state.history = Object.assign({}, data.history, state.history);
+          if (data.mistakes) {
+            Object.keys(data.mistakes).forEach(qid => {
+              state.mistakes[qid] = Math.max(state.mistakes[qid] || 0, data.mistakes[qid]);
+            });
+          }
+          if (data.bookmarks) {
+            data.bookmarks.forEach(id => state.bookmarks.add(id));
+          }
+          saveUserData();
+        }
+
+        loadUserData();
         updateActiveQuestions();
         render();
-        alert("進度匯入成功！");
+        alert("進度已成功匯入並與本機智慧合併！");
       } catch (err) {
         alert("匯入失敗：檔案格式不正確！");
       }
+      input.value = '';
     };
     reader.readAsText(file);
   };
