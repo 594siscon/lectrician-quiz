@@ -1,11 +1,10 @@
-// Firebase 專案設定檔
-// 請將您在 Firebase 控制台建立的 Web 應用設定貼在下方
+// Firebase 專案設定檔 (已自動配置完成)
 window.FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAEEard6KtuM10ox4n0FUAkDg_AUzZTdTk",
+  authDomain: "electrician-quiz-d51c4.firebaseapp.com",
+  projectId: "electrician-quiz-d51c4",
+  storageBucket: "electrician-quiz-d51c4.firebasestorage.app",
+  messagingSenderId: "1012332348487",
+  appId: "1:1012332348487:web:a22faa4aa8fe08f3dd5d62",
+  measurementId: "G-04KTZBP19D"
 };
-

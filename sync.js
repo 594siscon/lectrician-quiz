@@ -349,12 +349,15 @@
     if (!raw) return alert("請先貼上 Firebase 設定！");
 
     try {
-      // 嘗試解析物件字串 (支援標準 JSON 或 JS 物件寫法)
+      // 嘗試解析物件字串 (自動剝離 const/let/var 宣告，支援標準 JSON 或 JS 物件寫法)
+      let clean = raw.replace(/^(const|let|var)\s+[a-zA-Z0-9_$]+\s*=\s*/, '').trim();
+      if (clean.endsWith(';')) clean = clean.slice(0, -1).trim();
+
       let parsed = null;
       try {
-        parsed = JSON.parse(raw);
+        parsed = JSON.parse(clean);
       } catch (e) {
-        const objStr = raw.startsWith('{') ? raw : '{' + raw + '}';
+        const objStr = clean.startsWith('{') ? clean : '{' + clean + '}';
         parsed = new Function('return ' + objStr)();
       }
 
