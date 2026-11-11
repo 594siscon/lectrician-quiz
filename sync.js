@@ -241,12 +241,27 @@
       return await this.auth.signInWithEmailAndPassword(email, password);
     },
 
-    // Google 一鍵登入
-    async signInWithGoogle() {
+    // Google 一鍵登入 (支援彈窗與跳轉)
+    async signInWithGoogle(useRedirect = false) {
       if (!this.isConfigured || !this.auth) throw new Error("Firebase 尚未配置");
       const provider = new firebase.auth.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
-      return await this.auth.signInWithPopup(provider);
+      
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (useRedirect || isMobile) {
+        console.log("📲 檢測為行動裝置或指定跳轉模式，使用 signInWithRedirect...");
+        return await this.auth.signInWithRedirect(provider);
+      } else {
+        try {
+          return await this.auth.signInWithPopup(provider);
+        } catch (popupErr) {
+          if (popupErr.code === 'auth/popup-blocked' || popupErr.code === 'auth/cancelled-popup-request') {
+            console.warn("彈窗被封鎖，自動切換至跳轉模式 (signInWithRedirect)...");
+            return await this.auth.signInWithRedirect(provider);
+          }
+          throw popupErr;
+        }
+      }
     },
 
     // 帳號登出
@@ -372,28 +387,58 @@
   };
 
   // Google 一鍵登入處理
-  window.handleGoogleSignIn = async function() {
-    const errEl = document.getElementById('auth-error-msg');
-    if (errEl) errEl.classList.add('hidden');
+  window.handleGoogleSignIn = async function(forceRedirect = false) {
+    const googleBtn = document.getElementById('google-signin-btn');
+    const errEl = document.getElementById('google-error-msg') || document.getElementById('auth-error-msg');
+    if (errEl) {
+      errEl.classList.add('hidden');
+      errEl.textContent = '';
+    }
+
+    const origBtnHtml = googleBtn ? googleBtn.innerHTML : '';
+    if (googleBtn) {
+      googleBtn.disabled = true;
+      googleBtn.innerHTML = `
+        <svg class="w-4 h-4 shrink-0 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" stroke-width="4" class="opacity-25"></circle>
+          <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" class="opacity-75"></path>
+        </svg>
+        <span>正在連線 Google 授權...</span>
+      `;
+    }
 
     try {
-      await CloudSync.signInWithGoogle();
+      await CloudSync.signInWithGoogle(forceRedirect);
       window.openCloudSyncModal();
     } catch (err) {
       console.error("Google 登入失敗:", err);
       let msg = err.message || "Google 登入失敗";
+      let isConfigIssue = false;
+
       if (err.code === 'auth/popup-closed-by-user') {
-        msg = "登入視窗已被關閉，請重新點擊。";
+        msg = "登入視窗已關閉。若您使用的是手機或受到彈窗阻擋，請點擊下方「改用全頁跳轉登入」。";
+      } else if (err.code === 'auth/popup-blocked') {
+        msg = "瀏覽器封鎖了彈出式視窗，正為您自動切換至跳轉模式...";
+        setTimeout(() => CloudSync.signInWithGoogle(true), 1000);
       } else if (err.code === 'auth/unauthorized-domain') {
-        msg = "網域未授權：請至 Firebase 控制台 ➔ Authentication ➔ 設定 (Settings) ➔ 已授權網域，新增 594siscon.github.io";
+        isConfigIssue = true;
+        msg = "⚠️ 網域未授權：請至 Firebase 控制台 ➔ Authentication ➔ 設定 (Settings) ➔ 已授權網域，新增 594siscon.github.io";
       } else if (err.code === 'auth/operation-not-allowed') {
-        msg = "尚未啟用 Google 登入：請至 Firebase 控制台 ➔ Authentication ➔ 登入方法 (Sign-in method)，啟用 Google 提供者。";
+        isConfigIssue = true;
+        msg = "⚠️ 尚未在 Firebase 啟用 Google 登入：請至 Firebase 控制台 ➔ Authentication ➔ 登入方法 (Sign-in method)，啟用 Google 提供者。";
       }
+
       if (errEl) {
         errEl.classList.remove('hidden');
         errEl.textContent = msg;
-      } else {
+      }
+      if (isConfigIssue) {
         alert(msg);
+      }
+    } finally {
+      if (googleBtn) {
+        googleBtn.disabled = false;
+        googleBtn.innerHTML = origBtnHtml;
       }
     }
   };
@@ -444,7 +489,9 @@
   };
 
   // 頁面載入完成後初始化
-  window.addEventListener('DOMContentLoaded', () => {
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => CloudSync.init());
+  } else {
     CloudSync.init();
-  });
+  }
 })();

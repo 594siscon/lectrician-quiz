@@ -356,7 +356,7 @@
         </div>
 
         <!-- Google 一鍵快速登入按鈕 -->
-        <button type="button" onclick="window.handleGoogleSignIn()" class="w-full py-2.5 px-4 mb-4 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700/60 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-100 transition shadow-xs flex items-center justify-center gap-2.5 bg-white dark:bg-slate-800">
+        <button id="google-signin-btn" type="button" onclick="window.handleGoogleSignIn(false)" class="w-full py-2.5 px-4 mb-2 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700/60 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-100 transition shadow-xs flex items-center justify-center gap-2.5 bg-white dark:bg-slate-800">
           <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -365,6 +365,14 @@
           </svg>
           <span>使用 Google 帳號一鍵登入同步</span>
         </button>
+
+        <!-- 彈窗降級選項與 Google 錯誤提示 -->
+        <div class="text-right mb-3">
+          <button type="button" onclick="window.handleGoogleSignIn(true)" class="text-[11px] text-blue-600 dark:text-blue-400 hover:underline">
+            點擊無反應或被攔截？點此改用網頁跳轉登入 ➔
+          </button>
+        </div>
+        <div id="google-error-msg" class="hidden mb-3 text-xs text-red-600 bg-red-50 dark:bg-red-950/40 p-2.5 rounded-lg border border-red-200 dark:border-red-800 leading-relaxed"></div>
 
         <div class="relative flex items-center justify-center my-3.5">
           <div class="border-t border-slate-200 dark:border-slate-700 w-full"></div>
@@ -427,15 +435,15 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="sync.js"></script>
+  <script src="firebase-config.js?v=20261111_5"></script>
+  <script src="sync.js?v=20261111_5"></script>
 
   <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js"></script>
   <script src="data/junior_maintenance_electrician.js"></script>
   <script src="data/junior_equipment_installer.js"></script>
   <!-- 引入核心業務腳本 -->
-  <script src="app.js"></script>
+  <script src="app.js?v=20261111_5"></script>
 </body>
 </html>
 
