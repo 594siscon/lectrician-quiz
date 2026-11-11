@@ -71,8 +71,8 @@
         text.textContent = "🔄 同步中...";
         btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-medium animate-pulse";
       } else if (this.currentUser) {
-        const shortEmail = this.currentUser.email ? this.currentUser.email.split('@')[0] : '已登入';
-        text.textContent = `🟢 已同步 (${shortEmail})`;
+        const displayName = this.currentUser.displayName || (this.currentUser.email ? this.currentUser.email.split('@')[0] : '已登入');
+        text.textContent = `🟢 已同步 (${displayName})`;
         btn.className = "flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-xs font-medium hover:bg-green-100 transition";
       } else {
         text.textContent = "☁️ 登入同步";
@@ -221,6 +221,14 @@
       return await this.auth.signInWithEmailAndPassword(email, password);
     },
 
+    // Google 一鍵登入
+    async signInWithGoogle() {
+      if (!this.isConfigured || !this.auth) throw new Error("Firebase 尚未配置");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
+      return await this.auth.signInWithPopup(provider);
+    },
+
     // 帳號登出
     async logout() {
       if (!this.isConfigured || !this.auth) return;
@@ -261,6 +269,20 @@
         userView.classList.remove('hidden');
         document.getElementById('sync-user-email').textContent = CloudSync.currentUser.email || '已登入';
         document.getElementById('sync-last-time').textContent = CloudSync.lastSyncTime ? CloudSync.lastSyncTime.toLocaleTimeString() : '剛剛';
+
+        const nameEl = document.getElementById('sync-user-name');
+        if (nameEl) nameEl.textContent = CloudSync.currentUser.displayName || '';
+
+        const avatarImg = document.getElementById('sync-user-avatar');
+        const avatarPlaceholder = document.getElementById('sync-user-avatar-placeholder');
+        if (CloudSync.currentUser.photoURL && avatarImg) {
+          avatarImg.src = CloudSync.currentUser.photoURL;
+          avatarImg.classList.remove('hidden');
+          if (avatarPlaceholder) avatarPlaceholder.classList.add('hidden');
+        } else {
+          if (avatarImg) avatarImg.classList.add('hidden');
+          if (avatarPlaceholder) avatarPlaceholder.classList.remove('hidden');
+        }
       }
     } else {
       if (unconfiguredView) unconfiguredView.classList.add('hidden');
@@ -326,6 +348,33 @@
     } finally {
       submitBtn.disabled = false;
       window.switchAuthTab(currentAuthTab);
+    }
+  };
+
+  // Google 一鍵登入處理
+  window.handleGoogleSignIn = async function() {
+    const errEl = document.getElementById('auth-error-msg');
+    if (errEl) errEl.classList.add('hidden');
+
+    try {
+      await CloudSync.signInWithGoogle();
+      window.openCloudSyncModal();
+    } catch (err) {
+      console.error("Google 登入失敗:", err);
+      let msg = err.message || "Google 登入失敗";
+      if (err.code === 'auth/popup-closed-by-user') {
+        msg = "登入視窗已被關閉，請重新點擊。";
+      } else if (err.code === 'auth/unauthorized-domain') {
+        msg = "網域未授權：請至 Firebase 控制台 ➔ Authentication ➔ 設定 (Settings) ➔ 已授權網域，新增 594siscon.github.io";
+      } else if (err.code === 'auth/operation-not-allowed') {
+        msg = "尚未啟用 Google 登入：請至 Firebase 控制台 ➔ Authentication ➔ 登入方法 (Sign-in method)，啟用 Google 提供者。";
+      }
+      if (errEl) {
+        errEl.classList.remove('hidden');
+        errEl.textContent = msg;
+      } else {
+        alert(msg);
+      }
     }
   };
 
