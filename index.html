@@ -297,7 +297,7 @@
 
   <!-- 彈出視窗 4: 雲端帳號同步彈窗 (方案 C) -->
   <div id="cloud-sync-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 animate-fade-in relative">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 dark:border-slate-700 animate-fade-in relative">
       <button onclick="window.closeCloudSyncModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">✕</button>
 
       <!-- 狀態 1: 尚未填寫 Firebase 配置 -->
@@ -331,6 +331,10 @@
             <button id="auth-tab-login-btn" onclick="window.switchAuthTab('login')" class="px-3 py-1 rounded-md bg-white dark:bg-slate-800 shadow-xs text-blue-600 dark:text-blue-400 font-bold">登入</button>
             <button id="auth-tab-register-btn" onclick="window.switchAuthTab('register')" class="px-3 py-1 rounded-md text-slate-500 dark:text-slate-400">註冊</button>
           </div>
+        </div>
+
+        <div id="webview-warning-msg" class="hidden mb-3 text-xs text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-lg border border-amber-300 dark:border-amber-700 leading-relaxed">
+          ⚠️ 偵測到您正使用 App 內建瀏覽器（如 LINE／微信／FB），Google 安全政策不支援在內建視窗登入。請點擊右上或右下選單選擇「使用 Safari／Chrome 開啟」，或直接用下方 Email 帳號登入。
         </div>
 
         <!-- Google 一鍵快速登入按鈕 -->
@@ -397,6 +401,8 @@
           </div>
         </div>
 
+        <div id="sync-user-error-msg" class="hidden mb-3 text-xs text-red-600 dark:text-red-300 bg-red-50 dark:bg-red-950/40 p-2.5 rounded-lg border border-red-200 dark:border-red-800 leading-relaxed"></div>
+
         <div class="space-y-2 pt-2">
           <button onclick="window.manualCloudSync()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-xs sm:text-sm shadow transition flex items-center justify-center gap-1.5">
             <span>🔄 立即手動雙向同步</span>
@@ -430,7 +436,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="firebase-config.js?v=20261111_7"></script>
-  <script src="sync.js?v=20261111_7"></script>
+  <script src="sync.js?v=20261112_2"></script>
 
   <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js?v=20261112_1"></script>
