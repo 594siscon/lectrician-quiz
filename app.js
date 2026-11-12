@@ -583,21 +583,27 @@
 
     if (state.currentMode === 'exam' && state.exam.active) {
       const answeredCount = Object.keys(state.exam.answers || {}).length;
-      const total = state.activeQuestions.length;
-      banner.className = "mb-4 px-4 py-2.5 rounded-xl bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 flex items-center justify-between gap-2 flex-wrap shadow-sm";
+      const total = state.activeQuestions.length || 1;
+      const pct = Math.round((answeredCount / total) * 100);
+      banner.className = "mb-4 px-4 py-3 rounded-2xl bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 flex flex-col gap-2.5 shadow-sm";
       banner.innerHTML = `
-        <div class="flex items-center gap-2 text-xs sm:text-sm text-blue-900 dark:text-blue-200 font-medium">
-          <span>📝</span>
-          <span>模擬考試進行中</span>
-          <span class="px-2 py-0.5 text-[11px] font-mono font-semibold rounded-md bg-blue-100 dark:bg-blue-900/70 text-blue-700 dark:text-blue-300">已作答 ${answeredCount} / ${total} 題</span>
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-blue-900 dark:text-blue-200 font-medium flex-wrap">
+            <span>📝</span>
+            <span>模擬考試進行中</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono font-semibold rounded-md bg-blue-100 dark:bg-blue-900/70 text-blue-700 dark:text-blue-300">已作答 ${answeredCount} / ${total} 題 (${pct}%)</span>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" onclick="window.pauseExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100/70 dark:hover:bg-slate-700 transition">
+              ⏸ 暫停退出
+            </button>
+            <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
+              🗑️ 捨棄考試
+            </button>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button type="button" onclick="window.pauseExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100/70 dark:hover:bg-slate-700 transition">
-            ⏸ 暫停退出
-          </button>
-          <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
-            🗑️ 捨棄考試
-          </button>
+        <div class="w-full h-2 bg-blue-200/70 dark:bg-blue-900/60 rounded-full overflow-hidden" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100">
+          <div style="width: ${pct}%" class="h-full bg-blue-600 dark:bg-blue-400 rounded-full transition-all duration-300"></div>
         </div>
       `;
       return;
@@ -606,19 +612,25 @@
     if (state.currentMode !== 'exam') {
       const summary = getUnfinishedExamSummary();
       if (summary) {
-        banner.className = "mb-4 px-4 py-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 flex items-center justify-between gap-2 flex-wrap shadow-sm";
+        const pct = Math.round((summary.answeredCount / Math.max(1, summary.total)) * 100);
+        banner.className = "mb-4 px-4 py-3 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 flex flex-col gap-2.5 shadow-sm";
         banner.innerHTML = `
-          <div class="flex items-center gap-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-medium">
-            <span>⏸</span>
-            <span>正在進行的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）</span>
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-medium">
+              <span>⏸</span>
+              <span>正在進行的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）</span>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" onclick="window.resumeExam()" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
+                ▶ 繼續考試
+              </button>
+              <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
+                🗑️ 捨棄
+              </button>
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <button type="button" onclick="window.resumeExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
-              ▶ 繼續考試
-            </button>
-            <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
-              🗑️ 捨棄
-            </button>
+          <div class="w-full h-1.5 bg-amber-200/70 dark:bg-amber-900/60 rounded-full overflow-hidden">
+            <div style="width: ${pct}%" class="h-full bg-amber-500 dark:bg-amber-400 rounded-full transition-all duration-300"></div>
           </div>
         `;
         return;
@@ -822,17 +834,24 @@
       `;
     }
 
+    const isSequenceMode = state.currentMode === 'exam' || state.currentMode === 'shuffle';
+    const displayNum = isSequenceMode ? (state.currentIndex + 1) : q.num;
+    const origNumBadge = isSequenceMode
+      ? `<span class="text-xs px-2 py-0.5 rounded-md bg-slate-100/90 text-slate-500 dark:bg-slate-700/80 dark:text-slate-400 font-mono">原題 #${q.num}</span>`
+      : '';
+
     container.innerHTML = `
       <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 sm:p-8 animate-fade-in">
         <!-- 頂部資訊列 -->
         <div class="flex items-center justify-between mb-5 flex-wrap gap-2 pb-4 border-b border-slate-100 dark:border-slate-700/60">
-          <div class="flex items-center gap-2.5">
+          <div class="flex items-center gap-2 flex-wrap">
             ${typeBadge}
             <span class="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 font-medium">
               ${q.category}
             </span>
+            ${origNumBadge}
           </div>
-          <div class="flex items-center gap-2.5">
+          <div class="flex items-center gap-2 shrink-0">
             <!-- 快速跳轉指定題號小元件 -->
             <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-700/60 px-2.5 py-1 rounded-xl border border-slate-200/80 dark:border-slate-600/60 shadow-inner">
               <span class="text-xs font-medium text-slate-500 dark:text-slate-400">第</span>
@@ -851,7 +870,7 @@
 
         <!-- 題目內文 -->
         <div class="text-base sm:text-lg md:text-xl font-medium text-slate-900 dark:text-slate-100 leading-relaxed tracking-wide mb-6">
-          <span class="text-blue-600 dark:text-blue-400 font-bold font-mono mr-1.5">#${q.num}.</span>
+          <span class="text-blue-600 dark:text-blue-400 font-bold font-mono mr-1.5">#${displayNum}.</span>
           ${q.question}
         </div>
 
@@ -1300,27 +1319,51 @@
 
   function updateExamResumeCard() {
     const card = document.getElementById('exam-resume-card');
-    if (!card) return;
+    const startBtn = document.getElementById('exam-start-btn');
     const summary = getUnfinishedExamSummary();
+
     if (!summary) {
-      card.classList.add('hidden');
-      card.innerHTML = '';
+      if (card) {
+        card.classList.add('hidden');
+        card.innerHTML = '';
+      }
+      if (startBtn) {
+        startBtn.innerText = '開始考試';
+        startBtn.className = 'px-5 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition shadow-sm';
+      }
       return;
     }
-    card.classList.remove('hidden');
-    card.innerHTML = `
-      <div class="text-xs font-semibold text-amber-900 dark:text-amber-200 mb-2">
-        ⏸ 目前有一場尚未交卷的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）
-      </div>
-      <div class="flex items-center gap-2 flex-wrap">
-        <button type="button" onclick="window.resumeExam()" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
-          ▶ 繼續考試
-        </button>
-        <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
-          🗑️ 捨棄此試卷
-        </button>
-      </div>
-    `;
+
+    const pct = Math.round((summary.answeredCount / Math.max(1, summary.total)) * 100);
+    if (card) {
+      card.classList.remove('hidden');
+      card.innerHTML = `
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="text-xs sm:text-sm font-bold text-blue-900 dark:text-blue-100">
+            ⏸ 正在進行的模擬考試
+          </span>
+          <span class="text-xs font-mono font-semibold text-blue-700 dark:text-blue-300">
+            ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}
+          </span>
+        </div>
+        <div class="w-full h-1.5 bg-blue-200/80 dark:bg-blue-900/70 rounded-full overflow-hidden mb-3">
+          <div style="width: ${pct}%" class="h-full bg-blue-600 dark:bg-blue-400 rounded-full transition-all duration-300"></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.resumeExam()" class="flex-1 py-2.5 px-4 text-sm font-bold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md transition flex items-center justify-center gap-1.5">
+            <span>▶</span> 繼續考試
+          </button>
+          <button type="button" onclick="window.discardExam()" class="py-2.5 px-3 text-xs font-semibold rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition shrink-0">
+            🗑️ 捨棄
+          </button>
+        </div>
+      `;
+    }
+
+    if (startBtn) {
+      startBtn.innerText = '重新開始考試';
+      startBtn.className = 'px-4 py-2 text-sm font-semibold border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/50 rounded-xl transition';
+    }
   }
 
   function openExamSetupModal() {
@@ -1420,6 +1463,10 @@
   };
   window.resumeExam = function() {
     document.getElementById('exam-modal')?.classList.add('hidden');
+    if (state.currentMode === 'exam' && state.exam.active && !state.exam.submitted) {
+      render();
+      return;
+    }
     if (!restoreExamState(true)) {
       alert("找不到可恢復的模擬考試紀錄，請重新開始測驗。");
       render();
