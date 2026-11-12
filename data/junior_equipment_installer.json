@@ -1721,7 +1721,8 @@
       ],
       "answer": "O",
       "category": "電工基礎",
-      "page": 15
+      "page": 15,
+      "image": "assets/images/equipment_installer/p15_q10.png"
     },
     {
       "id": "eq_tf_s3_011",
@@ -6007,25 +6008,26 @@
       "options": [
         {
           "key": "A",
-          "text": ""
+          "text": "見選項圖A"
         },
         {
           "key": "B",
-          "text": ""
+          "text": "見選項圖B"
         },
         {
           "key": "C",
-          "text": ""
+          "text": "見選項圖C"
         },
         {
           "key": "D",
-          "text": ""
+          "text": "見選項圖D"
         }
       ],
       "answer": "D",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 53
+      "page": 53,
+      "image": "assets/images/equipment_installer/p53_q26.png"
     },
     {
       "id": "eq_mc_s3_027",
@@ -6259,25 +6261,26 @@
       "options": [
         {
           "key": "A",
-          "text": ""
+          "text": "見選項圖A"
         },
         {
           "key": "B",
-          "text": ""
+          "text": "見選項圖B"
         },
         {
           "key": "C",
-          "text": ""
+          "text": "見選項圖C"
         },
         {
           "key": "D",
-          "text": ""
+          "text": "見選項圖D"
         }
       ],
       "answer": "C",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 55
+      "page": 55,
+      "image": "assets/images/equipment_installer/p55_q35.png"
     },
     {
       "id": "eq_mc_s3_036",
@@ -6287,25 +6290,26 @@
       "options": [
         {
           "key": "A",
-          "text": ""
+          "text": "見選項圖A"
         },
         {
           "key": "B",
-          "text": ""
+          "text": "見選項圖B"
         },
         {
           "key": "C",
-          "text": ""
+          "text": "見選項圖C"
         },
         {
           "key": "D",
-          "text": ""
+          "text": "見選項圖D"
         }
       ],
       "answer": "D",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 55
+      "page": 55,
+      "image": "assets/images/equipment_installer/p55_q36.png"
     },
     {
       "id": "eq_mc_s3_037",
@@ -6585,7 +6589,8 @@
       "answer": "C",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 58
+      "page": 58,
+      "image": "assets/images/equipment_installer/p58_q46.png"
     },
     {
       "id": "eq_mc_s3_047",
@@ -6613,7 +6618,8 @@
       "answer": "D",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 58
+      "page": 58,
+      "image": "assets/images/equipment_installer/p58_q47.png"
     },
     {
       "id": "eq_mc_s3_048",
@@ -6641,7 +6647,8 @@
       "answer": "B",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 58
+      "page": 58,
+      "image": "assets/images/equipment_installer/p58_q48.png"
     },
     {
       "id": "eq_mc_s3_049",
@@ -6669,7 +6676,8 @@
       "answer": "A",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 59
+      "page": 59,
+      "image": "assets/images/equipment_installer/p59_q49.png"
     },
     {
       "id": "eq_mc_s3_050",
@@ -6697,7 +6705,8 @@
       "answer": "B",
       "category": "電工基礎",
       "section_index": 3,
-      "page": 59
+      "page": 59,
+      "image": "assets/images/equipment_installer/p59_q50.png"
     },
     {
       "id": "eq_mc_s4_001",

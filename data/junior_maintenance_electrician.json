@@ -1608,7 +1608,8 @@
       ],
       "answer": "O",
       "category": "電工基礎",
-      "page": 15
+      "page": 15,
+      "image": "assets/images/junior_electrician/p15_q29.png"
     },
     {
       "id": "jun_tf_s2_030",
@@ -8914,11 +8915,11 @@
       "id": "jun_mc_s2_083",
       "num": 83,
       "type": "mc",
-      "question": "如電路圖中所示，當開關S斷開後，則燈炮A的亮度有何變化？R",
+      "question": "如電路圖中所示，當開關S斷開後，則燈炮A的亮度有何變化？",
       "options": [
         {
           "key": "A",
-          "text": "較原來暗A S"
+          "text": "較原來暗"
         },
         {
           "key": "B",
@@ -8926,7 +8927,7 @@
         },
         {
           "key": "C",
-          "text": "較原來亮B"
+          "text": "較原來亮"
         },
         {
           "key": "D",
@@ -8936,7 +8937,8 @@
       "answer": "C",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 76
+      "page": 76,
+      "image": "assets/images/junior_electrician/p76_q83.png"
     },
     {
       "id": "jun_mc_s2_084",
@@ -9440,7 +9442,8 @@
       "answer": "B",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 81
+      "page": 81,
+      "image": "assets/images/junior_electrician/p81_q101.png"
     },
     {
       "id": "jun_mc_s2_102",
@@ -9468,7 +9471,8 @@
       "answer": "C",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 81
+      "page": 81,
+      "image": "assets/images/junior_electrician/p81_q102.png"
     },
     {
       "id": "jun_mc_s2_103",
@@ -9496,7 +9500,8 @@
       "answer": "D",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 81
+      "page": 81,
+      "image": "assets/images/junior_electrician/p81_q103.png"
     },
     {
       "id": "jun_mc_s2_104",
@@ -9524,7 +9529,8 @@
       "answer": "B",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 81
+      "page": 81,
+      "image": "assets/images/junior_electrician/p81_q104.png"
     },
     {
       "id": "jun_mc_s2_105",
@@ -9552,7 +9558,8 @@
       "answer": "A",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 82
+      "page": 82,
+      "image": "assets/images/junior_electrician/p82_q105.png"
     },
     {
       "id": "jun_mc_s2_106",
@@ -9580,7 +9587,8 @@
       "answer": "B",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 82
+      "page": 82,
+      "image": "assets/images/junior_electrician/p82_q106.png"
     },
     {
       "id": "jun_mc_s2_107",
@@ -9608,7 +9616,8 @@
       "answer": "D",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 82
+      "page": 82,
+      "image": "assets/images/junior_electrician/p82_q107.png"
     },
     {
       "id": "jun_mc_s2_108",
@@ -9636,7 +9645,8 @@
       "answer": "D",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 82
+      "page": 82,
+      "image": "assets/images/junior_electrician/p82_q108.png"
     },
     {
       "id": "jun_mc_s2_109",
@@ -9664,7 +9674,8 @@
       "answer": "C",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 83
+      "page": 83,
+      "image": "assets/images/junior_electrician/p83_q109.png"
     },
     {
       "id": "jun_mc_s2_110",
@@ -9692,7 +9703,8 @@
       "answer": "A",
       "category": "電工基礎",
       "section_index": 2,
-      "page": 83
+      "page": 83,
+      "image": "assets/images/junior_electrician/p83_q110.png"
     },
     {
       "id": "jun_mc_s3_001",
@@ -11042,7 +11054,7 @@
       "id": "jun_mc_s3_049",
       "num": 49,
       "type": "mc",
-      "question": "電工儀錶常用符號標記中，“ ”符號用於表示甚麼？",
+      "question": "電工儀錶常用符號標記中，“⊥”符號用於表示甚麼？",
       "options": [
         {
           "key": "A",
@@ -11064,7 +11076,8 @@
       "answer": "C",
       "category": "電工儀錶測量",
       "section_index": 3,
-      "page": 97
+      "page": 97,
+      "image": "assets/images/junior_electrician/p97_q49.png"
     },
     {
       "id": "jun_mc_s3_050",
