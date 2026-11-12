@@ -44,7 +44,7 @@
     // 模擬考試狀態
     exam: {
       active: false,
-      totalQuestions: 100, // 50 是非 + 50 選擇
+      totalQuestions: 60, // 20 是非 + 40 選擇
       durationSeconds: 3600, // 60分鐘
       remainingSeconds: 3600,
       timerId: null,
@@ -130,14 +130,27 @@
       document.documentElement.classList.add('dark');
     }
     
-    state.currentIndex = 0;
-    updateActiveQuestions();
-    
-    // 記憶上次該科目的題號
-    const savedLastId = localStorage.getItem(`elec_${state.currentSubject}_last_qid`);
-    if (savedLastId && state.currentMode === 'practice') {
-      const idx = state.activeQuestions.findIndex(q => q.id === savedLastId);
-      if (idx !== -1) state.currentIndex = idx;
+    if (state.exam.timerId) {
+      clearInterval(state.exam.timerId);
+      state.exam.timerId = null;
+    }
+
+    if (!restoreExamState()) {
+      if (state.currentMode === 'exam') {
+        state.currentMode = 'practice';
+      }
+      state.exam.active = false;
+      state.exam.submitted = false;
+      state.exam.result = null;
+      state.currentIndex = 0;
+      updateActiveQuestions();
+
+      // 記憶上次該科目的題號
+      const savedLastId = localStorage.getItem(`elec_${state.currentSubject}_last_qid`);
+      if (savedLastId && state.currentMode === 'practice') {
+        const idx = state.activeQuestions.findIndex(q => q.id === savedLastId);
+        if (idx !== -1) state.currentIndex = idx;
+      }
     }
     
     render();
@@ -194,6 +207,7 @@
 
   // 篩選啟用模式的題目
   function updateActiveQuestions() {
+    if (state.currentMode === 'exam') return;
     let list = [...state.allQuestions];
     
     // 模式篩選
@@ -250,8 +264,110 @@
     return state.activeQuestions[state.currentIndex];
   }
 
+  function getExamStorageKey(subjId = state.currentSubject) {
+    return `elec_${subjId}_active_exam`;
+  }
+
+  // 保存當前模擬考試進度至 LocalStorage，避免重新整理頁面後遺失
+  function saveExamState() {
+    if (state.currentMode !== 'exam' || !state.activeQuestions || state.activeQuestions.length === 0) {
+      return;
+    }
+    try {
+      const payload = {
+        subject: state.currentSubject,
+        questionIds: state.activeQuestions.map(q => q.id),
+        currentIndex: state.currentIndex,
+        totalQuestions: state.exam.totalQuestions,
+        durationSeconds: state.exam.durationSeconds,
+        remainingSeconds: state.exam.remainingSeconds,
+        active: state.exam.active,
+        submitted: state.exam.submitted,
+        answers: state.exam.answers,
+        result: state.exam.result,
+        updatedAt: Date.now()
+      };
+      localStorage.setItem(getExamStorageKey(), JSON.stringify(payload));
+    } catch (e) {
+      console.error("Error saving exam state:", e);
+    }
+  }
+
+  function clearExamState(subjId = state.currentSubject) {
+    try {
+      localStorage.removeItem(getExamStorageKey(subjId));
+    } catch (e) {
+      console.error("Error clearing exam state:", e);
+    }
+  }
+
+  function startExamTimer() {
+    if (state.exam.timerId) clearInterval(state.exam.timerId);
+    state.exam.timerId = setInterval(() => {
+      if (state.exam.remainingSeconds > 0) {
+        state.exam.remainingSeconds--;
+        renderTimer();
+        saveExamState();
+      } else {
+        clearInterval(state.exam.timerId);
+        state.exam.timerId = null;
+        submitExam(true);
+      }
+    }, 1000);
+  }
+
+  function restoreExamState() {
+    try {
+      const raw = localStorage.getItem(getExamStorageKey());
+      if (!raw) return false;
+      const saved = JSON.parse(raw);
+      if (!saved || !Array.isArray(saved.questionIds) || saved.questionIds.length === 0) {
+        clearExamState();
+        return false;
+      }
+      if (!saved.active && !(saved.submitted && saved.result)) {
+        clearExamState();
+        return false;
+      }
+
+      const qMap = new Map(state.allQuestions.map(q => [q.id, q]));
+      const restoredQuestions = saved.questionIds.map(id => qMap.get(id)).filter(Boolean);
+      if (restoredQuestions.length !== saved.questionIds.length) {
+        clearExamState();
+        return false;
+      }
+
+      state.currentMode = 'exam';
+      state.activeQuestions = restoredQuestions;
+      state.currentIndex = Math.min(
+        Math.max(0, Number(saved.currentIndex) || 0),
+        restoredQuestions.length - 1
+      );
+      state.exam.totalQuestions = restoredQuestions.length;
+      state.exam.durationSeconds = Number(saved.durationSeconds) || 3600;
+      state.exam.remainingSeconds = Math.max(0, Number(saved.remainingSeconds ?? state.exam.durationSeconds));
+      state.exam.active = Boolean(saved.active);
+      state.exam.submitted = Boolean(saved.submitted);
+      state.exam.answers = (saved.answers && typeof saved.answers === 'object') ? saved.answers : {};
+      state.exam.result = saved.result || null;
+
+      if (state.exam.active && !state.exam.submitted) {
+        if (state.exam.remainingSeconds <= 0) {
+          submitExam(true);
+        } else {
+          startExamTimer();
+        }
+      }
+      return true;
+    } catch (e) {
+      console.error("Error restoring exam state:", e);
+      clearExamState();
+      return false;
+    }
+  }
+
   // 啟動模擬考試
-  function startExam(customTfCount = 50, customMcCount = 50) {
+  function startExam(customTfCount = 20, customMcCount = 40) {
     const tfList = shuffleArray(state.allQuestions.filter(q => q.type === 'tf')).slice(0, customTfCount);
     const mcList = shuffleArray(state.allQuestions.filter(q => q.type === 'mc')).slice(0, customMcCount);
     
@@ -259,23 +375,15 @@
     state.currentIndex = 0;
     state.currentMode = 'exam';
     
+    state.exam.totalQuestions = state.activeQuestions.length;
     state.exam.active = true;
     state.exam.submitted = false;
     state.exam.answers = {};
     state.exam.result = null;
     state.exam.remainingSeconds = state.exam.durationSeconds;
     
-    if (state.exam.timerId) clearInterval(state.exam.timerId);
-    state.exam.timerId = setInterval(() => {
-      if (state.exam.remainingSeconds > 0) {
-        state.exam.remainingSeconds--;
-        renderTimer();
-      } else {
-        clearInterval(state.exam.timerId);
-        submitExam(true);
-      }
-    }, 1000);
-    
+    startExamTimer();
+    saveExamState();
     render();
   }
 
@@ -286,6 +394,7 @@
     }
     
     clearInterval(state.exam.timerId);
+    state.exam.timerId = null;
     state.exam.active = false;
     state.exam.submitted = true;
     
@@ -318,6 +427,7 @@
       usedTimeSeconds: state.exam.durationSeconds - state.exam.remainingSeconds
     };
     
+    saveExamState();
     saveUserData();
     render();
   }
@@ -352,11 +462,14 @@
     if (state.currentMode === 'exam') {
       if (state.exam.submitted) return; // 已交卷不可改
       state.exam.answers[state.currentIndex] = selectedKey;
+      saveExamState();
       render();
       
       if (state.settings.autoNext && state.currentIndex < state.activeQuestions.length - 1) {
         setTimeout(() => {
-          goToNext();
+          if (state.currentMode === 'exam' && state.exam.active) {
+            goToNext();
+          }
         }, 300);
       }
       return;
@@ -381,6 +494,7 @@
   function goToPrev() {
     if (state.currentIndex > 0) {
       state.currentIndex--;
+      if (state.currentMode === 'exam') saveExamState();
       render();
     }
   }
@@ -388,6 +502,7 @@
   function goToNext() {
     if (state.currentIndex < state.activeQuestions.length - 1) {
       state.currentIndex++;
+      if (state.currentMode === 'exam') saveExamState();
       render();
     }
   }
@@ -1046,14 +1161,29 @@
     if (clearSearchBtn && !clearSearchBtn.getAttribute('onclick')) {
       clearSearchBtn.addEventListener('click', () => window.clearSearch());
     }
+
+    // 頁面重新整理或關閉前立即保存模擬考試狀態
+    const persistExamBeforeUnload = () => {
+      if (state.currentMode === 'exam' && state.exam.active) {
+        saveExamState();
+      }
+    };
+    window.addEventListener('beforeunload', persistExamBeforeUnload);
+    window.addEventListener('pagehide', persistExamBeforeUnload);
   }
 
   function switchMode(newMode) {
     if (state.exam.active && !confirm("切換模式將退出當前模擬考試，確定要切換嗎？")) {
       return;
     }
-    if (state.exam.timerId) clearInterval(state.exam.timerId);
+    if (state.exam.timerId) {
+      clearInterval(state.exam.timerId);
+      state.exam.timerId = null;
+    }
     state.exam.active = false;
+    state.exam.submitted = false;
+    state.exam.result = null;
+    clearExamState();
     
     state.currentMode = newMode;
     state.currentIndex = 0;
@@ -1062,6 +1192,12 @@
   }
 
   function openExamSetupModal() {
+    const totalEl = document.getElementById('exam-modal-total-count');
+    if (totalEl) totalEl.innerText = state.allQuestions.length;
+    const tfSelect = document.getElementById('exam-tf-count');
+    const mcSelect = document.getElementById('exam-mc-count');
+    if (tfSelect) tfSelect.value = '20';
+    if (mcSelect) mcSelect.value = '40';
     const modal = document.getElementById('exam-modal');
     if (modal) modal.classList.remove('hidden');
   }
@@ -1096,12 +1232,14 @@
   window.jumpToQuestion = function(idx) {
     state.currentIndex = idx;
     state.showAnswerSheet = false;
+    if (state.currentMode === 'exam') saveExamState();
     render();
   };
   window.handleQuickJump = function(val) {
     const num = parseInt(val, 10);
     if (!isNaN(num) && num >= 1 && num <= state.activeQuestions.length) {
       state.currentIndex = num - 1;
+      if (state.currentMode === 'exam') saveExamState();
       render();
     }
   };
@@ -1122,7 +1260,7 @@
   };
   window.switchToMode = switchMode;
   window.startNewExam = function() {
-    startExam(50, 50);
+    startExam(20, 40);
   };
   window.reviewExamMistakes = function() {
     switchMode('mistakes');
@@ -1140,8 +1278,8 @@
     if (modal) modal.classList.add('hidden');
   };
   window.confirmStartExam = function() {
-    const tfCount = parseInt(document.getElementById('exam-tf-count')?.value || 50, 10);
-    const mcCount = parseInt(document.getElementById('exam-mc-count')?.value || 50, 10);
+    const tfCount = parseInt(document.getElementById('exam-tf-count')?.value || 20, 10);
+    const mcCount = parseInt(document.getElementById('exam-mc-count')?.value || 40, 10);
     document.getElementById('exam-modal')?.classList.add('hidden');
     startExam(tfCount, mcCount);
   };
@@ -1157,8 +1295,17 @@
       if (sel) sel.value = state.currentSubject;
       return;
     }
-    if (state.exam.timerId) clearInterval(state.exam.timerId);
+    if (state.exam.timerId) {
+      clearInterval(state.exam.timerId);
+      state.exam.timerId = null;
+    }
+    if (state.currentMode === 'exam') {
+      clearExamState(state.currentSubject);
+      state.currentMode = 'practice';
+    }
     state.exam.active = false;
+    state.exam.submitted = false;
+    state.exam.result = null;
     loadSubjectData(subjId);
   };
 
