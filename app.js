@@ -610,11 +610,11 @@
         banner.innerHTML = `
           <div class="flex items-center gap-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-medium">
             <span>⏸</span>
-            <span>有一場進行到一半的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）</span>
+            <span>正在進行的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）</span>
           </div>
           <div class="flex items-center gap-2">
             <button type="button" onclick="window.resumeExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
-              ▶ 返回繼續考試
+              ▶ 繼續考試
             </button>
             <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
               🗑️ 捨棄
@@ -1314,7 +1314,7 @@
       </div>
       <div class="flex items-center gap-2 flex-wrap">
         <button type="button" onclick="window.resumeExam()" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
-          ▶ 返回繼續考試
+          ▶ 繼續考試
         </button>
         <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
           🗑️ 捨棄此試卷
