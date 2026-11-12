@@ -268,13 +268,50 @@
     return `elec_${subjId}_active_exam`;
   }
 
-  // 保存當前模擬考試進度至 LocalStorage，避免重新整理頁面後遺失
-  function saveExamState() {
+  function formatExamTime(totalSeconds) {
+    const safeSec = Math.max(0, Number(totalSeconds) || 0);
+    const mins = Math.floor(safeSec / 60);
+    const secs = safeSec % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  function readSavedExam(subjId = state.currentSubject) {
+    try {
+      const raw = localStorage.getItem(getExamStorageKey(subjId));
+      if (!raw) return null;
+      const saved = JSON.parse(raw);
+      if (!saved || !Array.isArray(saved.questionIds) || saved.questionIds.length === 0) {
+        return null;
+      }
+      if (!saved.active && !saved.paused && !(saved.submitted && saved.result)) {
+        return null;
+      }
+      return saved;
+    } catch (e) {
+      console.error("Error reading saved exam:", e);
+      return null;
+    }
+  }
+
+  function getUnfinishedExamSummary(subjId = state.currentSubject) {
+    const saved = readSavedExam(subjId);
+    if (!saved || saved.submitted || (!saved.active && !saved.paused)) return null;
+    const answers = (saved.answers && typeof saved.answers === 'object') ? saved.answers : {};
+    return {
+      total: saved.questionIds.length,
+      answeredCount: Object.keys(answers).length,
+      remainingSeconds: Math.max(0, Number(saved.remainingSeconds ?? saved.durationSeconds ?? 3600)),
+      currentIndex: Math.max(0, Number(saved.currentIndex) || 0)
+    };
+  }
+
+  // 保存當前模擬考試進度至 LocalStorage，避免重新整理或中途退出後遺失
+  function saveExamState(overrides = {}) {
     if (state.currentMode !== 'exam' || !state.activeQuestions || state.activeQuestions.length === 0) {
       return;
     }
     try {
-      const payload = {
+      const payload = Object.assign({
         subject: state.currentSubject,
         questionIds: state.activeQuestions.map(q => q.id),
         currentIndex: state.currentIndex,
@@ -282,11 +319,12 @@
         durationSeconds: state.exam.durationSeconds,
         remainingSeconds: state.exam.remainingSeconds,
         active: state.exam.active,
+        paused: false,
         submitted: state.exam.submitted,
         answers: state.exam.answers,
         result: state.exam.result,
         updatedAt: Date.now()
-      };
+      }, overrides);
       localStorage.setItem(getExamStorageKey(), JSON.stringify(payload));
     } catch (e) {
       console.error("Error saving exam state:", e);
@@ -298,6 +336,25 @@
       localStorage.removeItem(getExamStorageKey(subjId));
     } catch (e) {
       console.error("Error clearing exam state:", e);
+    }
+  }
+
+  function pauseExamState() {
+    if (state.exam.timerId) {
+      clearInterval(state.exam.timerId);
+      state.exam.timerId = null;
+    }
+    if (state.currentMode === 'exam' && state.exam.active && !state.exam.submitted) {
+      saveExamState({ active: false, paused: true });
+      state.exam.active = false;
+    }
+  }
+
+  function restoreLastPracticeIndex() {
+    const savedLastId = localStorage.getItem(`elec_${state.currentSubject}_last_qid`);
+    if (savedLastId && state.currentMode === 'practice') {
+      const idx = state.activeQuestions.findIndex(q => q.id === savedLastId);
+      if (idx !== -1) state.currentIndex = idx;
     }
   }
 
@@ -316,54 +373,48 @@
     }, 1000);
   }
 
-  function restoreExamState() {
-    try {
-      const raw = localStorage.getItem(getExamStorageKey());
-      if (!raw) return false;
-      const saved = JSON.parse(raw);
-      if (!saved || !Array.isArray(saved.questionIds) || saved.questionIds.length === 0) {
-        clearExamState();
-        return false;
-      }
-      if (!saved.active && !(saved.submitted && saved.result)) {
-        clearExamState();
-        return false;
-      }
-
-      const qMap = new Map(state.allQuestions.map(q => [q.id, q]));
-      const restoredQuestions = saved.questionIds.map(id => qMap.get(id)).filter(Boolean);
-      if (restoredQuestions.length !== saved.questionIds.length) {
-        clearExamState();
-        return false;
-      }
-
-      state.currentMode = 'exam';
-      state.activeQuestions = restoredQuestions;
-      state.currentIndex = Math.min(
-        Math.max(0, Number(saved.currentIndex) || 0),
-        restoredQuestions.length - 1
-      );
-      state.exam.totalQuestions = restoredQuestions.length;
-      state.exam.durationSeconds = Number(saved.durationSeconds) || 3600;
-      state.exam.remainingSeconds = Math.max(0, Number(saved.remainingSeconds ?? state.exam.durationSeconds));
-      state.exam.active = Boolean(saved.active);
-      state.exam.submitted = Boolean(saved.submitted);
-      state.exam.answers = (saved.answers && typeof saved.answers === 'object') ? saved.answers : {};
-      state.exam.result = saved.result || null;
-
-      if (state.exam.active && !state.exam.submitted) {
-        if (state.exam.remainingSeconds <= 0) {
-          submitExam(true);
-        } else {
-          startExamTimer();
-        }
-      }
-      return true;
-    } catch (e) {
-      console.error("Error restoring exam state:", e);
+  function restoreExamState(forceResume = false) {
+    const saved = readSavedExam();
+    if (!saved) {
       clearExamState();
       return false;
     }
+    // 若使用者先前已主動「暫停退出」，重整頁面時維持停留在練習模式並顯示返回橫幅
+    if (!forceResume && saved.paused && !saved.active && !saved.submitted) {
+      return false;
+    }
+
+    const qMap = new Map(state.allQuestions.map(q => [q.id, q]));
+    const restoredQuestions = saved.questionIds.map(id => qMap.get(id)).filter(Boolean);
+    if (restoredQuestions.length !== saved.questionIds.length) {
+      clearExamState();
+      return false;
+    }
+
+    const isSubmitted = Boolean(saved.submitted && saved.result);
+    state.currentMode = 'exam';
+    state.activeQuestions = restoredQuestions;
+    state.currentIndex = Math.min(
+      Math.max(0, Number(saved.currentIndex) || 0),
+      restoredQuestions.length - 1
+    );
+    state.exam.totalQuestions = restoredQuestions.length;
+    state.exam.durationSeconds = Number(saved.durationSeconds) || 3600;
+    state.exam.remainingSeconds = Math.max(0, Number(saved.remainingSeconds ?? state.exam.durationSeconds));
+    state.exam.active = !isSubmitted;
+    state.exam.submitted = isSubmitted;
+    state.exam.answers = (saved.answers && typeof saved.answers === 'object') ? saved.answers : {};
+    state.exam.result = saved.result || null;
+
+    if (state.exam.active) {
+      saveExamState({ active: true, paused: false });
+      if (state.exam.remainingSeconds <= 0) {
+        submitExam(true);
+      } else {
+        startExamTimer();
+      }
+    }
+    return true;
   }
 
   // 啟動模擬考試
@@ -520,9 +571,62 @@
   // 渲染主介面
   function render() {
     renderHeader();
+    renderExamStatusBanner();
     renderMainCard();
     renderFooter();
     renderModals();
+  }
+
+  function renderExamStatusBanner() {
+    const banner = document.getElementById('exam-status-banner');
+    if (!banner) return;
+
+    if (state.currentMode === 'exam' && state.exam.active) {
+      const answeredCount = Object.keys(state.exam.answers || {}).length;
+      const total = state.activeQuestions.length;
+      banner.className = "mb-4 px-4 py-2.5 rounded-xl bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 flex items-center justify-between gap-2 flex-wrap shadow-sm";
+      banner.innerHTML = `
+        <div class="flex items-center gap-2 text-xs sm:text-sm text-blue-900 dark:text-blue-200 font-medium">
+          <span>📝</span>
+          <span>模擬考試進行中</span>
+          <span class="px-2 py-0.5 text-[11px] font-mono font-semibold rounded-md bg-blue-100 dark:bg-blue-900/70 text-blue-700 dark:text-blue-300">已作答 ${answeredCount} / ${total} 題</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.pauseExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100/70 dark:hover:bg-slate-700 transition">
+            ⏸ 暫停退出
+          </button>
+          <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
+            🗑️ 捨棄考試
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    if (state.currentMode !== 'exam') {
+      const summary = getUnfinishedExamSummary();
+      if (summary) {
+        banner.className = "mb-4 px-4 py-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 flex items-center justify-between gap-2 flex-wrap shadow-sm";
+        banner.innerHTML = `
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-medium">
+            <span>⏸</span>
+            <span>有一場進行到一半的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="window.resumeExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
+              ▶ 返回繼續考試
+            </button>
+            <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
+              🗑️ 捨棄
+            </button>
+          </div>
+        `;
+        return;
+      }
+    }
+
+    banner.className = "hidden mb-4";
+    banner.innerHTML = '';
   }
 
   function renderHeader() {
@@ -573,9 +677,7 @@
   function renderTimer() {
     const timerText = document.getElementById('exam-timer-text');
     if (!timerText) return;
-    const mins = Math.floor(state.exam.remainingSeconds / 60);
-    const secs = state.exam.remainingSeconds % 60;
-    timerText.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    timerText.innerText = formatExamTime(state.exam.remainingSeconds);
     
     if (state.exam.remainingSeconds <= 300) {
       timerText.classList.add('text-red-500', 'animate-pulse');
@@ -1173,22 +1275,52 @@
   }
 
   function switchMode(newMode) {
-    if (state.exam.active && !confirm("切換模式將退出當前模擬考試，確定要切換嗎？")) {
-      return;
+    if (state.currentMode === 'exam') {
+      if (state.exam.active && !state.exam.submitted) {
+        // 中途切換到其他模式時自動暫停並保留進度，之後可返回繼續或捨棄
+        pauseExamState();
+      } else {
+        if (state.exam.timerId) {
+          clearInterval(state.exam.timerId);
+          state.exam.timerId = null;
+        }
+        state.exam.active = false;
+        state.exam.submitted = false;
+        state.exam.result = null;
+        clearExamState();
+      }
     }
-    if (state.exam.timerId) {
-      clearInterval(state.exam.timerId);
-      state.exam.timerId = null;
-    }
-    state.exam.active = false;
-    state.exam.submitted = false;
-    state.exam.result = null;
-    clearExamState();
     
     state.currentMode = newMode;
     state.currentIndex = 0;
     updateActiveQuestions();
+    restoreLastPracticeIndex();
     render();
+  }
+
+  function updateExamResumeCard() {
+    const card = document.getElementById('exam-resume-card');
+    if (!card) return;
+    const summary = getUnfinishedExamSummary();
+    if (!summary) {
+      card.classList.add('hidden');
+      card.innerHTML = '';
+      return;
+    }
+    card.classList.remove('hidden');
+    card.innerHTML = `
+      <div class="text-xs font-semibold text-amber-900 dark:text-amber-200 mb-2">
+        ⏸ 目前有一場尚未交卷的模擬考試（已作答 ${summary.answeredCount} / ${summary.total} 題 · 剩餘 ${formatExamTime(summary.remainingSeconds)}）
+      </div>
+      <div class="flex items-center gap-2 flex-wrap">
+        <button type="button" onclick="window.resumeExam()" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition">
+          ▶ 返回繼續考試
+        </button>
+        <button type="button" onclick="window.discardExam()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50 transition">
+          🗑️ 捨棄此試卷
+        </button>
+      </div>
+    `;
   }
 
   function openExamSetupModal() {
@@ -1198,6 +1330,7 @@
     const mcSelect = document.getElementById('exam-mc-count');
     if (tfSelect) tfSelect.value = '20';
     if (mcSelect) mcSelect.value = '40';
+    updateExamResumeCard();
     const modal = document.getElementById('exam-modal');
     if (modal) modal.classList.remove('hidden');
   }
@@ -1277,7 +1410,51 @@
     const modal = document.getElementById('image-modal');
     if (modal) modal.classList.add('hidden');
   };
+  window.pauseExam = function() {
+    pauseExamState();
+    state.currentMode = 'practice';
+    state.currentIndex = 0;
+    updateActiveQuestions();
+    restoreLastPracticeIndex();
+    render();
+  };
+  window.resumeExam = function() {
+    document.getElementById('exam-modal')?.classList.add('hidden');
+    if (!restoreExamState(true)) {
+      alert("找不到可恢復的模擬考試紀錄，請重新開始測驗。");
+      render();
+      return;
+    }
+    render();
+  };
+  window.discardExam = function() {
+    const hasUnfinished = Boolean(getUnfinishedExamSummary()) || (state.currentMode === 'exam' && state.exam.active);
+    if (hasUnfinished && !confirm("確定要捨棄目前的模擬考試嗎？已作答紀錄與剩餘時間將會清除，無法復原。")) {
+      return;
+    }
+    if (state.exam.timerId) {
+      clearInterval(state.exam.timerId);
+      state.exam.timerId = null;
+    }
+    clearExamState();
+    state.exam.active = false;
+    state.exam.submitted = false;
+    state.exam.answers = {};
+    state.exam.result = null;
+    updateExamResumeCard();
+
+    if (state.currentMode === 'exam') {
+      state.currentMode = 'practice';
+      state.currentIndex = 0;
+      updateActiveQuestions();
+      restoreLastPracticeIndex();
+    }
+    render();
+  };
   window.confirmStartExam = function() {
+    if (getUnfinishedExamSummary() && !confirm("目前有一場尚未交卷的模擬考試，確定要捨棄舊試卷並開始新考試嗎？")) {
+      return;
+    }
     const tfCount = parseInt(document.getElementById('exam-tf-count')?.value || 20, 10);
     const mcCount = parseInt(document.getElementById('exam-mc-count')?.value || 40, 10);
     document.getElementById('exam-modal')?.classList.add('hidden');
@@ -1290,18 +1467,18 @@
   // 題目解析/筆記編輯操作
   // 科目切換
   window.switchSubject = function(subjId) {
-    if (state.exam.active && !confirm("切換科目將中斷當前考試，確定要切換嗎？")) {
-      const sel = document.getElementById('subject-selector');
-      if (sel) sel.value = state.currentSubject;
-      return;
+    if (state.currentMode === 'exam') {
+      if (state.exam.active && !state.exam.submitted) {
+        // 切換科目時保留原科目的未交卷模擬考試為暫停狀態，切回該科目時仍可繼續
+        pauseExamState();
+      } else if (state.exam.submitted) {
+        clearExamState(state.currentSubject);
+      }
+      state.currentMode = 'practice';
     }
     if (state.exam.timerId) {
       clearInterval(state.exam.timerId);
       state.exam.timerId = null;
-    }
-    if (state.currentMode === 'exam') {
-      clearExamState(state.currentSubject);
-      state.currentMode = 'practice';
     }
     state.exam.active = false;
     state.exam.submitted = false;
