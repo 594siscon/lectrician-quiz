@@ -75,6 +75,17 @@
     showExamModal: false
   };
 
+  // 安全跳脫 HTML 特殊字元，防止題目與選項中含 <, >, & 被解析為 HTML 標籤（如 <U 被解析為 <u> 底線標籤）
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // 載入當前科目題庫資料
   function loadSubjectData(subjId) {
     state.currentSubject = subjId;
@@ -802,7 +813,7 @@
       // 快速鍵提示標籤
       const kbdKey = opt.key;
       const optionTextHtml = (opt.text && opt.text.trim())
-        ? opt.text
+        ? escapeHtml(opt.text)
         : '<span class="text-slate-400 dark:text-slate-500 italic text-sm">（請參考題目附圖選項）</span>';
       optionsHtml += `
         <div class="option-card flex items-center p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition select-none ${cardStyle}"
@@ -824,10 +835,10 @@
         <div class="mt-6 p-4 rounded-xl border ${isCorrect ? 'bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800'}">
           <div class="flex items-center gap-2 mb-1.5 font-bold ${isCorrect ? 'text-green-800 dark:text-green-300' : 'text-red-800 dark:text-red-300'}">
             <span>${isCorrect ? '🎉 回答正確！' : '❌ 回答錯誤！'}</span>
-            <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${q.answer}</strong></span>
+            <span class="text-sm font-normal text-slate-600 dark:text-slate-400 ml-2">標準答案：<strong class="text-base text-blue-600 dark:text-blue-400">${escapeHtml(q.answer)}</strong></span>
           </div>
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-2 flex items-center justify-between">
-            <span>章節出處：${q.category}</span>
+            <span>章節出處：${escapeHtml(q.category)}</span>
             <span>官方手冊頁碼：P.${q.page}</span>
           </div>
         </div>
@@ -847,7 +858,7 @@
           <div class="flex items-center gap-2 flex-wrap">
             ${typeBadge}
             <span class="text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 font-medium">
-              ${q.category}
+              ${escapeHtml(q.category)}
             </span>
             ${origNumBadge}
           </div>
@@ -871,7 +882,7 @@
         <!-- 題目內文 -->
         <div class="text-base sm:text-lg md:text-xl font-medium text-slate-900 dark:text-slate-100 leading-relaxed tracking-wide mb-6">
           <span class="text-blue-600 dark:text-blue-400 font-bold font-mono mr-1.5">#${displayNum}.</span>
-          ${q.question}
+          ${escapeHtml(q.question)}
         </div>
 
         <!-- 題目圖形 (如有) -->
