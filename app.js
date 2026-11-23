@@ -40,6 +40,7 @@
     // 當前模式題目列表與索引
     activeQuestions: [],
     currentIndex: 0,
+    shuffleOrderIds: null,
     
     // 模擬考試狀態
     exam: {
@@ -88,15 +89,16 @@
 
   // 載入當前科目題庫資料
   function loadSubjectData(subjId) {
-    state.currentSubject = subjId;
-    localStorage.setItem('elec_current_subject', subjId);
+    const safeSubjId = SUBJECTS[subjId] ? subjId : 'mid_maintenance_electrician';
+    state.currentSubject = safeSubjId;
+    localStorage.setItem('elec_current_subject', safeSubjId);
     
-    const subj = SUBJECTS[subjId];
+    const subj = SUBJECTS[safeSubjId];
     if (!subj) return;
     
     // 更新科目下拉框與徽章
     const sel = document.getElementById('subject-selector');
-    if (sel) sel.value = subjId;
+    if (sel) sel.value = safeSubjId;
     const badge = document.getElementById('subject-badge');
     if (badge) badge.innerText = subj.badge;
     
@@ -115,6 +117,143 @@
     loadSubjectData(state.currentSubject);
   }
 
+  function getViewStateKey(subjId = state.currentSubject) {
+    return `elec_${subjId}_view_state`;
+  }
+
+  function readSavedViewState(subjId = state.currentSubject) {
+    try {
+      const raw = localStorage.getItem(getViewStateKey(subjId));
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : null;
+    } catch (e) {
+      console.error("Error reading view state:", e);
+      return null;
+    }
+  }
+
+  function syncFilterControlsUI() {
+    const subjSel = document.getElementById('subject-selector');
+    if (subjSel) subjSel.value = state.currentSubject;
+
+    const catSel = document.getElementById('category-filter');
+    if (catSel) {
+      catSel.value = state.selectedCategory;
+      if (catSel.value !== state.selectedCategory) {
+        state.selectedCategory = 'all';
+        catSel.value = 'all';
+      }
+    }
+
+    document.querySelectorAll('.type-filter-btn').forEach(btn => {
+      btn.className = btn.dataset.type === state.selectedType
+        ? "type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white whitespace-nowrap transition"
+        : "type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap transition";
+    });
+
+    const undoneToggle = document.getElementById('only-undone-toggle');
+    if (undoneToggle) undoneToggle.checked = Boolean(state.onlyUndone);
+
+    const searchInput = document.getElementById('search-input');
+    if (searchInput && searchInput.value !== state.searchKeyword) {
+      searchInput.value = state.searchKeyword;
+    }
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    if (clearSearchBtn) {
+      clearSearchBtn.classList.toggle('hidden', !state.searchKeyword.length);
+    }
+  }
+
+  function saveViewState() {
+    try {
+      const pfx = `elec_${state.currentSubject}_`;
+      const currentQ = getCurrentQuestion();
+      const payload = {
+        currentMode: state.currentMode,
+        selectedCategory: state.selectedCategory,
+        selectedType: state.selectedType,
+        onlyUndone: Boolean(state.onlyUndone),
+        searchKeyword: state.searchKeyword || '',
+        currentIndex: state.currentIndex,
+        currentQuestionId: currentQ ? currentQ.id : null,
+        shuffleOrderIds: (state.currentMode === 'shuffle' && Array.isArray(state.shuffleOrderIds))
+          ? state.shuffleOrderIds
+          : null,
+        showAnswerSheet: Boolean(state.showAnswerSheet),
+        sheetFilter: state.sheetFilter || 'all',
+        scrollY: Math.max(0, Math.round(window.scrollY || 0)),
+        updatedAt: Date.now()
+      };
+      localStorage.setItem(getViewStateKey(), JSON.stringify(payload));
+      if (state.currentMode === 'practice' && currentQ) {
+        localStorage.setItem(`${pfx}last_qid`, currentQ.id);
+      }
+    } catch (e) {
+      console.error("Error saving view state:", e);
+    }
+  }
+
+  function restoreViewState() {
+    const saved = readSavedViewState();
+    state.exam.active = false;
+    state.exam.submitted = false;
+    state.exam.result = null;
+
+    if (!saved) {
+      state.currentMode = 'practice';
+      state.selectedCategory = 'all';
+      state.selectedType = 'all';
+      state.onlyUndone = false;
+      state.searchKeyword = '';
+      state.shuffleOrderIds = null;
+      state.showAnswerSheet = false;
+      state.sheetFilter = 'all';
+      state.currentIndex = 0;
+      syncFilterControlsUI();
+      updateActiveQuestions({ preserveShuffle: false });
+      restoreLastPracticeIndex();
+      return;
+    }
+
+    const validModes = ['practice', 'shuffle', 'mistakes', 'bookmarks', 'search'];
+    state.currentMode = validModes.includes(saved.currentMode) ? saved.currentMode : 'practice';
+    state.selectedCategory = (typeof saved.selectedCategory === 'string') ? saved.selectedCategory : 'all';
+    state.selectedType = ['all', 'tf', 'mc'].includes(saved.selectedType) ? saved.selectedType : 'all';
+    state.onlyUndone = Boolean(saved.onlyUndone);
+    state.searchKeyword = (typeof saved.searchKeyword === 'string') ? saved.searchKeyword : '';
+
+    if (state.currentMode === 'search' && !state.searchKeyword.trim()) {
+      state.currentMode = 'practice';
+    }
+
+    state.shuffleOrderIds = (state.currentMode === 'shuffle' && Array.isArray(saved.shuffleOrderIds))
+      ? saved.shuffleOrderIds
+      : null;
+    state.sheetFilter = ['all', 'done', 'undone', 'wrong'].includes(saved.sheetFilter) ? saved.sheetFilter : 'all';
+    state.showAnswerSheet = Boolean(saved.showAnswerSheet);
+
+    syncFilterControlsUI();
+    state.currentIndex = 0;
+    updateActiveQuestions({ preserveShuffle: true });
+
+    if (state.activeQuestions.length > 0) {
+      let targetIdx = -1;
+      if (saved.currentQuestionId) {
+        targetIdx = state.activeQuestions.findIndex(q => q.id === saved.currentQuestionId);
+      }
+      if (targetIdx !== -1) {
+        state.currentIndex = targetIdx;
+      } else if (typeof saved.currentIndex === 'number' && !isNaN(saved.currentIndex)) {
+        state.currentIndex = Math.min(Math.max(0, Math.floor(saved.currentIndex)), state.activeQuestions.length - 1);
+      } else {
+        restoreLastPracticeIndex();
+      }
+    } else {
+      state.showAnswerSheet = false;
+    }
+  }
+
   function setupApp(data) {
     state.allQuestions = data.questions;
     state.categories = data.categories;
@@ -128,10 +267,6 @@
         optHtml += `<option value="${c}">${idx + 1}. ${c} (${cnt} 題)</option>`;
       });
       catSelect.innerHTML = optHtml;
-      catSelect.value = state.selectedCategory;
-      if (catSelect.value !== state.selectedCategory) {
-        state.selectedCategory = 'all';
-      }
     }
 
     // 讀取該科目的 LocalStorage 記錄
@@ -139,6 +274,8 @@
     
     if (state.settings.darkMode) {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
     
     if (state.exam.timerId) {
@@ -146,25 +283,25 @@
       state.exam.timerId = null;
     }
 
-    if (!restoreExamState()) {
-      if (state.currentMode === 'exam') {
-        state.currentMode = 'practice';
-      }
-      state.exam.active = false;
-      state.exam.submitted = false;
-      state.exam.result = null;
-      state.currentIndex = 0;
-      updateActiveQuestions();
+    const savedView = readSavedViewState();
+    const pendingScrollY = (savedView && typeof savedView.scrollY === 'number') ? savedView.scrollY : 0;
 
-      // 記憶上次該科目的題號
-      const savedLastId = localStorage.getItem(`elec_${state.currentSubject}_last_qid`);
-      if (savedLastId && state.currentMode === 'practice') {
-        const idx = state.activeQuestions.findIndex(q => q.id === savedLastId);
-        if (idx !== -1) state.currentIndex = idx;
+    if (!restoreExamState()) {
+      restoreViewState();
+    } else {
+      syncFilterControlsUI();
+      if (savedView) {
+        state.sheetFilter = ['all', 'done', 'undone', 'wrong'].includes(savedView.sheetFilter) ? savedView.sheetFilter : 'all';
+        state.showAnswerSheet = Boolean(savedView.showAnswerSheet);
       }
     }
     
     render();
+    if (pendingScrollY > 0) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, pendingScrollY);
+      });
+    }
     bindEvents();
     bindKeyboardShortcuts();
   }
@@ -202,10 +339,7 @@
       localStorage.setItem(pfx + 'bookmarks', JSON.stringify(Array.from(state.bookmarks)));
       localStorage.setItem(pfx + 'notes', JSON.stringify(state.notes));
       localStorage.setItem('elec_settings', JSON.stringify(state.settings));
-      
-      if (state.currentMode === 'practice' && getCurrentQuestion()) {
-        localStorage.setItem(`${pfx}last_qid`, getCurrentQuestion().id);
-      }
+      saveViewState();
 
       // 觸發雲端自動同步 (方案 C: 背景防抖上傳)
       if (typeof window.triggerCloudSync === 'function') {
@@ -217,8 +351,9 @@
   }
 
   // 篩選啟用模式的題目
-  function updateActiveQuestions() {
+  function updateActiveQuestions(options = {}) {
     if (state.currentMode === 'exam') return;
+    const preserveShuffle = Boolean(options && options.preserveShuffle);
     let list = [...state.allQuestions];
     
     // 模式篩選
@@ -250,9 +385,29 @@
       }
     }
     
-    // 隨機模式打亂順序
+    // 隨機模式打亂順序（刷新頁面或背景同步時保留原洗牌序列）
     if (state.currentMode === 'shuffle') {
-      list = shuffleArray(list);
+      if (preserveShuffle && Array.isArray(state.shuffleOrderIds) && state.shuffleOrderIds.length > 0) {
+        const itemMap = new Map(list.map(q => [q.id, q]));
+        const ordered = [];
+        const usedIds = new Set();
+        state.shuffleOrderIds.forEach(id => {
+          const item = itemMap.get(id);
+          if (item && !usedIds.has(id)) {
+            ordered.push(item);
+            usedIds.add(id);
+          }
+        });
+        list.forEach(q => {
+          if (!usedIds.has(q.id)) ordered.push(q);
+        });
+        list = ordered;
+      } else {
+        list = shuffleArray(list);
+      }
+      state.shuffleOrderIds = list.map(q => q.id);
+    } else {
+      state.shuffleOrderIds = null;
     }
     
     state.activeQuestions = list;
@@ -557,6 +712,7 @@
     if (state.currentIndex > 0) {
       state.currentIndex--;
       if (state.currentMode === 'exam') saveExamState();
+      else saveViewState();
       render();
     }
   }
@@ -565,6 +721,7 @@
     if (state.currentIndex < state.activeQuestions.length - 1) {
       state.currentIndex++;
       if (state.currentMode === 'exam') saveExamState();
+      else saveViewState();
       render();
     }
   }
@@ -733,20 +890,11 @@
         state.selectedType = 'all';
         state.onlyUndone = false;
         state.searchKeyword = '';
-        const sInput = document.getElementById('search-input');
-        if (sInput) sInput.value = '';
-        const clrBtn = document.getElementById('clear-search-btn');
-        if (clrBtn) clrBtn.classList.add('hidden');
-        const undoneToggle = document.getElementById('only-undone-toggle');
-        if (undoneToggle) undoneToggle.checked = false;
-        const catSel = document.getElementById('category-filter');
-        if (catSel) catSel.value = 'all';
-        document.querySelectorAll('.type-filter-btn').forEach(b => {
-          b.className = b.dataset.type === 'all'
-            ? "type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white"
-            : "type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
-        });
-        updateActiveQuestions();
+        state.currentIndex = 0;
+        syncFilterControlsUI();
+        updateActiveQuestions({ preserveShuffle: false });
+        restoreLastPracticeIndex();
+        saveViewState();
         render();
       });
       return;
@@ -1214,7 +1362,8 @@
       catSelect.addEventListener('change', (e) => {
         state.selectedCategory = e.target.value;
         state.currentIndex = 0;
-        updateActiveQuestions();
+        updateActiveQuestions({ preserveShuffle: false });
+        saveViewState();
         render();
       });
     }
@@ -1223,13 +1372,10 @@
     document.querySelectorAll('.type-filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         state.selectedType = btn.dataset.type;
-        document.querySelectorAll('.type-filter-btn').forEach(b => {
-          b.className = b.dataset.type === state.selectedType 
-            ? "type-filter-btn px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 text-white whitespace-nowrap transition" 
-            : "type-filter-btn px-2.5 py-1 text-xs font-medium rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap transition";
-        });
+        syncFilterControlsUI();
         state.currentIndex = 0;
-        updateActiveQuestions();
+        updateActiveQuestions({ preserveShuffle: false });
+        saveViewState();
         render();
       });
     });
@@ -1258,10 +1404,12 @@
     // 答題卡按鈕
     document.getElementById('open-answer-sheet-btn')?.addEventListener('click', () => {
       state.showAnswerSheet = true;
+      saveViewState();
       renderAnswerSheetModal();
     });
     document.getElementById('close-answer-sheet-btn')?.addEventListener('click', () => {
       state.showAnswerSheet = false;
+      saveViewState();
       renderAnswerSheetModal();
     });
 
@@ -1286,7 +1434,11 @@
           state.currentMode = 'practice';
           state.currentIndex = 0;
         }
-        updateActiveQuestions();
+        updateActiveQuestions({ preserveShuffle: false });
+        if (state.currentMode === 'practice') {
+          restoreLastPracticeIndex();
+        }
+        saveViewState();
         render();
       });
     }
@@ -1294,14 +1446,16 @@
       clearSearchBtn.addEventListener('click', () => window.clearSearch());
     }
 
-    // 頁面重新整理或關閉前立即保存模擬考試狀態
-    const persistExamBeforeUnload = () => {
+    // 頁面重新整理或關閉前立即保存當前頁面與模擬考試狀態
+    const persistBeforeUnload = () => {
       if (state.currentMode === 'exam' && state.exam.active) {
         saveExamState();
+      } else if (state.currentMode !== 'exam') {
+        saveViewState();
       }
     };
-    window.addEventListener('beforeunload', persistExamBeforeUnload);
-    window.addEventListener('pagehide', persistExamBeforeUnload);
+    window.addEventListener('beforeunload', persistBeforeUnload);
+    window.addEventListener('pagehide', persistBeforeUnload);
   }
 
   function switchMode(newMode) {
@@ -1323,8 +1477,9 @@
     
     state.currentMode = newMode;
     state.currentIndex = 0;
-    updateActiveQuestions();
+    updateActiveQuestions({ preserveShuffle: false });
     restoreLastPracticeIndex();
+    saveViewState();
     render();
   }
 
@@ -1395,7 +1550,8 @@
   window.toggleOnlyUndone = function(checked) {
     state.onlyUndone = Boolean(checked);
     state.currentIndex = 0;
-    updateActiveQuestions();
+    updateActiveQuestions({ preserveShuffle: false });
+    saveViewState();
     render();
   };
   window.clearSearch = function() {
@@ -1413,13 +1569,18 @@
       state.currentMode = 'practice';
       state.currentIndex = 0;
     }
-    updateActiveQuestions();
+    updateActiveQuestions({ preserveShuffle: false });
+    if (state.currentMode === 'practice') {
+      restoreLastPracticeIndex();
+    }
+    saveViewState();
     render();
   };
   window.jumpToQuestion = function(idx) {
     state.currentIndex = idx;
     state.showAnswerSheet = false;
     if (state.currentMode === 'exam') saveExamState();
+    else saveViewState();
     render();
   };
   window.handleQuickJump = function(val) {
@@ -1427,11 +1588,13 @@
     if (!isNaN(num) && num >= 1 && num <= state.activeQuestions.length) {
       state.currentIndex = num - 1;
       if (state.currentMode === 'exam') saveExamState();
+      else saveViewState();
       render();
     }
   };
   window.setAnswerSheetFilter = function(filter) {
     state.sheetFilter = filter;
+    saveViewState();
     renderAnswerSheetModal();
   };
   window.jumpBySheetInput = function() {
@@ -1468,8 +1631,9 @@
     pauseExamState();
     state.currentMode = 'practice';
     state.currentIndex = 0;
-    updateActiveQuestions();
+    updateActiveQuestions({ preserveShuffle: false });
     restoreLastPracticeIndex();
+    saveViewState();
     render();
   };
   window.resumeExam = function() {
@@ -1504,8 +1668,9 @@
     if (state.currentMode === 'exam') {
       state.currentMode = 'practice';
       state.currentIndex = 0;
-      updateActiveQuestions();
+      updateActiveQuestions({ preserveShuffle: false });
       restoreLastPracticeIndex();
+      saveViewState();
     }
     render();
   };
@@ -1533,6 +1698,8 @@
         clearExamState(state.currentSubject);
       }
       state.currentMode = 'practice';
+    } else {
+      saveViewState();
     }
     if (state.exam.timerId) {
       clearInterval(state.exam.timerId);
@@ -1541,6 +1708,13 @@
     state.exam.active = false;
     state.exam.submitted = false;
     state.exam.result = null;
+    state.selectedCategory = 'all';
+    state.selectedType = 'all';
+    state.onlyUndone = false;
+    state.searchKeyword = '';
+    state.shuffleOrderIds = null;
+    state.showAnswerSheet = false;
+    state.sheetFilter = 'all';
     loadSubjectData(subjId);
   };
 
@@ -1632,8 +1806,13 @@
           saveUserData();
         }
 
+        const prevQid = getCurrentQuestion()?.id;
         loadUserData();
-        updateActiveQuestions();
+        updateActiveQuestions({ preserveShuffle: true });
+        if (state.currentMode !== 'exam' && prevQid) {
+          const keptIdx = state.activeQuestions.findIndex(q => q.id === prevQid);
+          if (keptIdx !== -1) state.currentIndex = keptIdx;
+        }
         render();
         alert("進度已成功匯入並與本機智慧合併！");
       } catch (err) {
@@ -1646,8 +1825,13 @@
 
   // 供雲端同步模組 (sync.js) 更新狀態後重新整理介面
   window.refreshCurrentSubjectData = function() {
+    const prevQid = getCurrentQuestion()?.id;
     loadUserData();
-    updateActiveQuestions();
+    updateActiveQuestions({ preserveShuffle: true });
+    if (state.currentMode !== 'exam' && prevQid) {
+      const keptIdx = state.activeQuestions.findIndex(q => q.id === prevQid);
+      if (keptIdx !== -1) state.currentIndex = keptIdx;
+    }
     render();
   };
 
