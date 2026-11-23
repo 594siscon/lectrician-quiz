@@ -7,6 +7,7 @@
   const STORAGE_KEY_API = 'elec_gemini_api_key';
   const STORAGE_KEY_MODEL = 'elec_gemini_model';
   const DEFAULT_MODEL = 'gemini-3.8-flash';
+  const FREE_FALLBACK_MODELS = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-4-hydrogen'];
   const VALID_MODELS = [
     'gemini-3.8-flash',
     'gemini-4-hydrogen',
@@ -30,6 +31,7 @@
   let activeQuestionId = null;
   let activeContext = null;
   let isLoading = false;
+  let loadingStatusText = '';
   let showSettingsPanel = false;
   let pendingAskAfterConfig = false;
 
@@ -300,9 +302,10 @@
     return lines.join('\n');
   }
 
-  function formatApiError(status, errJson, errMsg) {
+  function formatApiError(status, errJson, errMsg, modelName) {
     const msg = (errJson && errJson.error && errJson.error.message) ? errJson.error.message : (errMsg || '');
     const lower = msg.toLowerCase();
+    const targetModel = modelName || getModel();
 
     if (status === 400 && (lower.includes('api key') || lower.includes('api_key'))) {
       return 'API Key 格式不正確或無效，請點擊右上角「⚙️ 設定」檢查您輸入的 Gemini API Key。';
@@ -311,10 +314,13 @@
       return 'Gemini API Key 驗證失敗或權限不足；若使用付費限定旗艦模型（如 argon/carbon/neon），請確認專案已綁定付款帳單或改選免費可用的 gemini-3.8-flash / gemini-4-hydrogen。';
     }
     if (status === 404) {
-      return `找不到所選模型（${getModel()}），建議點擊右上角「⚙️ 設定」改用 gemini-3.8-flash 或 gemini-4-hydrogen。`;
+      return `找不到所選模型（${targetModel}），建議切換為 gemini-3.8-flash、gemini-2.5-flash 或 gemini-4-hydrogen。`;
+    }
+    if (status === 503 || lower.includes('high demand') || lower.includes('overloaded') || lower.includes('unavailable')) {
+      return `Google 伺服器目前使用人數過多，模型（${targetModel}）暫時高負載 (503)。這通常是短暫現象，您可以稍候點擊重試，或直接點下方按鈕改用其他免費模型！`;
     }
     if (status === 429 || lower.includes('quota') || lower.includes('rate limit')) {
-      return '已達 Gemini API 請求頻率或免費額度上限（部分高階模型於免費層無可用配額），請稍候重試或於「⚙️ 設定」切換為 gemini-3.8-flash。';
+      return `已達模型（${targetModel}）的請求頻率或免費額度上限，請稍候重試或點下方切換其他免費模型。`;
     }
     if (msg) {
       return `請求失敗 (${status || 'Network'})：${msg}`;
@@ -322,7 +328,11 @@
     return '無法連線至 Gemini 伺服器，請確認網路連線正常後再試一次。';
   }
 
-  async function callGeminiApi(contents, apiKey, model) {
+  function delayMs(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function callGeminiSingle(contents, apiKey, model) {
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
     const body = {
       systemInstruction: {
@@ -346,7 +356,9 @@
     } catch (e) {}
 
     if (!resp.ok) {
-      throw new Error(formatApiError(resp.status, data, resp.statusText));
+      const err = new Error(formatApiError(resp.status, data, resp.statusText, model));
+      err.httpStatus = resp.status;
+      throw err;
     }
 
     const candidate = data && Array.isArray(data.candidates) ? data.candidates[0] : null;
@@ -365,6 +377,51 @@
     }
 
     return replyText;
+  }
+
+  // 具備暫時性 503/500 自動重試與免費模型安全備援降級機制
+  async function callGeminiApi(contents, apiKey, primaryModel) {
+    try {
+      const text = await callGeminiSingle(contents, apiKey, primaryModel);
+      return { text, usedModel: primaryModel, isFallback: false };
+    } catch (firstErr) {
+      const st = firstErr && firstErr.httpStatus;
+      const isTransient = (st === 503 || st === 500 || st === 502 || st === 504);
+      if (!isTransient) {
+        throw firstErr;
+      }
+
+      // 第 1 步：短暫退避後對原模型重試一次
+      loadingStatusText = `所選模型 (${primaryModel}) 目前流量較大 (${st})，正在自動重試...`;
+      renderModalUI();
+      await delayMs(1200);
+
+      try {
+        const retryText = await callGeminiSingle(contents, apiKey, primaryModel);
+        return { text: retryText, usedModel: primaryModel, isFallback: false };
+      } catch (retryErr) {
+        const retryStatus = retryErr && retryErr.httpStatus;
+        // 僅在所選模型本身屬於免費層模型時，自動嘗試其他免費備援模型（絕不擅自升級到付費限定模型）
+        const canAutoFallback = FREE_FALLBACK_MODELS.includes(primaryModel) && (retryStatus === 503 || retryStatus === 500 || retryStatus === 429);
+        if (!canAutoFallback) {
+          throw retryErr;
+        }
+
+        const backups = FREE_FALLBACK_MODELS.filter(m => m !== primaryModel);
+        let lastErr = retryErr;
+        for (const fallbackModel of backups) {
+          loadingStatusText = `模型 (${primaryModel}) 持續忙碌，正自動改用免費備援模型 (${fallbackModel}) 解析...`;
+          renderModalUI();
+          try {
+            const fbText = await callGeminiSingle(contents, apiKey, fallbackModel);
+            return { text: fbText, usedModel: fallbackModel, isFallback: true };
+          } catch (fbErr) {
+            lastErr = fbErr;
+          }
+        }
+        throw lastErr;
+      }
+    }
   }
 
   function renderModalUI() {
@@ -478,11 +535,14 @@
               </div>
             `;
           } else {
+            const modelTag = msg.model
+              ? `<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-100/80 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-normal">${escapeHtml(msg.model)}${msg.isFallback ? ' · 自動備援' : ''}</span>`
+              : '';
             html += `
               <div class="bg-slate-50 dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 shadow-xs">
-                <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-200/70 dark:border-slate-700/60">
-                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-                    <span>✨</span> Gemini 解析回覆
+                <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-slate-200/70 dark:border-slate-700/60 flex-wrap">
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 flex-wrap">
+                    <span>✨</span> <span>Gemini 解析回覆</span> ${modelTag}
                   </span>
                   <button type="button" onclick="window.copyGeminiMessage(${idx}, this)" class="text-[11px] px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-700 transition">
                     📋 複製
@@ -495,25 +555,31 @@
         });
 
         if (session.error) {
+          const quickSwitchBtns = FREE_FALLBACK_MODELS
+            .filter(m => m !== model)
+            .map(m => `<button type="button" onclick="window.switchGeminiModelAndRetry('${m}')" class="px-2.5 py-1 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-indigo-300 dark:border-indigo-700 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition">⚡ 改用 ${m}</button>`)
+            .join('');
           html += `
-            <div class="p-3.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs sm:text-sm text-red-700 dark:text-red-300 space-y-2">
+            <div class="p-3.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs sm:text-sm text-red-700 dark:text-red-300 space-y-2.5">
               <div class="font-semibold">⚠️ ${escapeHtml(session.error)}</div>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 flex-wrap">
                 <button type="button" onclick="window.retryAskGemini()" class="px-3 py-1 text-xs font-semibold rounded-lg bg-red-600 hover:bg-red-700 text-white transition">🔄 重試</button>
-                <button type="button" onclick="window.toggleGeminiSettings(true)" class="px-3 py-1 text-xs font-medium rounded-lg border border-red-300 dark:border-red-700 hover:bg-red-100 dark:hover:bg-red-900/40 transition">⚙️ 檢查 API 設定</button>
+                ${quickSwitchBtns}
+                <button type="button" onclick="window.toggleGeminiSettings(true)" class="px-3 py-1 text-xs font-medium rounded-lg border border-red-300 dark:border-red-700 hover:bg-red-100 dark:hover:bg-red-900/40 transition">⚙️ 設定</button>
               </div>
             </div>
           `;
         }
 
         if (isLoading) {
+          const statusMsg = loadingStatusText || `Gemini 正在分析題目${activeContext && activeContext.question.image ? '與圖片' : ''}，請稍候...`;
           html += `
             <div class="flex items-center gap-2.5 p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/70 dark:border-indigo-800/60 text-xs sm:text-sm text-indigo-700 dark:text-indigo-300">
               <svg class="w-4 h-4 animate-spin shrink-0" viewBox="0 0 24 24" fill="none">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
               </svg>
-              <span>Gemini 正在分析題目${activeContext && activeContext.question.image ? '與圖片' : ''}，請稍候...</span>
+              <span>${escapeHtml(statusMsg)}</span>
             </div>
           `;
         }
@@ -558,7 +624,8 @@
         apiContents: [],
         displayMessages: [],
         imageResult: null,
-        error: null
+        error: null,
+        lastFailedFollowUp: null
       };
       questionSessions.set(q.id, session);
     }
@@ -570,6 +637,7 @@
     }
 
     isLoading = true;
+    loadingStatusText = `Gemini 正在分析題目${q.image ? '與圖片' : ''}，請稍候...`;
     session.error = null;
     if (session.displayMessages.length === 0) {
       session.displayMessages.push({
@@ -597,18 +665,25 @@
       userParts.push({ text: promptText });
 
       const requestContents = [{ role: 'user', parts: userParts }];
-      const replyText = await callGeminiApi(requestContents, apiKey, getModel());
+      const res = await callGeminiApi(requestContents, apiKey, getModel());
 
       session.apiContents = [
         { role: 'user', parts: userParts },
-        { role: 'model', parts: [{ text: replyText }] }
+        { role: 'model', parts: [{ text: res.text }] }
       ];
-      session.displayMessages.push({ role: 'model', text: replyText });
+      session.displayMessages.push({
+        role: 'model',
+        text: res.text,
+        model: res.usedModel,
+        isFallback: res.isFallback
+      });
       session.error = null;
+      session.lastFailedFollowUp = null;
     } catch (err) {
       session.error = err && err.message ? err.message : '詢問 Gemini 時發生錯誤';
     } finally {
       isLoading = false;
+      loadingStatusText = '';
       renderModalUI();
     }
   }
@@ -715,12 +790,26 @@
     renderModalUI();
   };
 
-  window.retryAskGemini = function() {
+  window.retryAskGemini = function(forceFull = false) {
     if (isLoading) return;
+    const session = activeQuestionId ? questionSessions.get(activeQuestionId) : null;
+    if (!forceFull && session && session.error && session.lastFailedFollowUp && session.apiContents.length >= 2) {
+      const pendingText = session.lastFailedFollowUp;
+      session.lastFailedFollowUp = null;
+      window.sendGeminiFollowUp(pendingText, true);
+      return;
+    }
     runInitialQuestionRequest(true);
   };
 
-  window.sendGeminiFollowUp = async function(presetPrompt) {
+  window.switchGeminiModelAndRetry = function(targetModel) {
+    if (isLoading || !targetModel) return;
+    setModel(targetModel);
+    showSettingsPanel = false;
+    window.retryAskGemini(false);
+  };
+
+  window.sendGeminiFollowUp = async function(presetPrompt, isRetry = false) {
     if (isLoading || !activeQuestionId) return;
     const session = questionSessions.get(activeQuestionId);
     if (!session || session.apiContents.length < 2) return;
@@ -742,9 +831,13 @@
       inputEl.value = '';
     }
 
-    session.displayMessages.push({ role: 'user', label: text });
+    if (!isRetry) {
+      session.displayMessages.push({ role: 'user', label: text });
+    }
     session.error = null;
+    session.lastFailedFollowUp = null;
     isLoading = true;
+    loadingStatusText = 'Gemini 正在思考您的追問，請稍候...';
     renderModalUI();
 
     const nextContents = [
@@ -753,16 +846,23 @@
     ];
 
     try {
-      const replyText = await callGeminiApi(nextContents, apiKey, getModel());
+      const res = await callGeminiApi(nextContents, apiKey, getModel());
       session.apiContents = [
         ...nextContents,
-        { role: 'model', parts: [{ text: replyText }] }
+        { role: 'model', parts: [{ text: res.text }] }
       ];
-      session.displayMessages.push({ role: 'model', text: replyText });
+      session.displayMessages.push({
+        role: 'model',
+        text: res.text,
+        model: res.usedModel,
+        isFallback: res.isFallback
+      });
     } catch (err) {
       session.error = err && err.message ? err.message : '追問 Gemini 失敗，請重試。';
+      session.lastFailedFollowUp = text;
     } finally {
       isLoading = false;
+      loadingStatusText = '';
       renderModalUI();
     }
   };
