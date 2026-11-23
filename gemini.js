@@ -6,8 +6,16 @@
 (function() {
   const STORAGE_KEY_API = 'elec_gemini_api_key';
   const STORAGE_KEY_MODEL = 'elec_gemini_model';
-  const DEFAULT_MODEL = 'gemini-2.5-flash';
-  const VALID_MODELS = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash'];
+  const DEFAULT_MODEL = 'gemini-3.8-flash';
+  const VALID_MODELS = [
+    'gemini-3.8-flash',
+    'gemini-4-hydrogen',
+    'gemini-2.5-flash',
+    'gemini-4-argon',
+    'gemini-4-carbon',
+    'gemini-4-neon',
+    'gemini-3.1-pro-preview'
+  ];
 
   const SYSTEM_INSTRUCTION = [
     '你是一位專精於澳門勞工事務局「中級維修電工」、「初級維修電工」及「初級電氣設備安裝工」技能測試的資深電工講師。',
@@ -300,13 +308,13 @@
       return 'API Key 格式不正確或無效，請點擊右上角「⚙️ 設定」檢查您輸入的 Gemini API Key。';
     }
     if (status === 401 || status === 403 || lower.includes('permission') || lower.includes('unauthenticated')) {
-      return 'Gemini API Key 驗證失敗或權限不足，請確認金鑰未過期且已啟用 Generative Language API。';
+      return 'Gemini API Key 驗證失敗或權限不足；若使用付費限定旗艦模型（如 argon/carbon/neon），請確認專案已綁定付款帳單或改選免費可用的 gemini-3.8-flash / gemini-4-hydrogen。';
     }
     if (status === 404) {
-      return `找不到所選模型（${getModel()}），建議點擊右上角「⚙️ 設定」改用 gemini-2.5-flash。`;
+      return `找不到所選模型（${getModel()}），建議點擊右上角「⚙️ 設定」改用 gemini-3.8-flash 或 gemini-4-hydrogen。`;
     }
     if (status === 429 || lower.includes('quota') || lower.includes('rate limit')) {
-      return '已達 Gemini API 請求頻率或免費額度上限，請稍候片刻再點擊「重試」。';
+      return '已達 Gemini API 請求頻率或免費額度上限（部分高階模型於免費層無可用配額），請稍候重試或於「⚙️ 設定」切換為 gemini-3.8-flash。';
     }
     if (msg) {
       return `請求失敗 (${status || 'Network'})：${msg}`;
@@ -384,14 +392,21 @@
         keyInput.value = apiKey;
       }
       const modelSelect = document.getElementById('gemini-model-select');
+      const customModelInput = document.getElementById('gemini-custom-model-input');
       if (modelSelect) {
-        if (!Array.from(modelSelect.options).some(o => o.value === model)) {
-          const opt = document.createElement('option');
-          opt.value = model;
-          opt.textContent = model;
-          modelSelect.appendChild(opt);
+        const isBuiltIn = Array.from(modelSelect.options).some(o => o.value === model && o.value !== '__custom__');
+        if (isBuiltIn) {
+          modelSelect.value = model;
+          if (customModelInput) customModelInput.classList.add('hidden');
+        } else {
+          modelSelect.value = '__custom__';
+          if (customModelInput) {
+            customModelInput.classList.remove('hidden');
+            if (document.activeElement !== customModelInput) {
+              customModelInput.value = model;
+            }
+          }
         }
-        modelSelect.value = model;
       }
       const clearKeyBtn = document.getElementById('gemini-clear-key-btn');
       if (clearKeyBtn) {
@@ -647,11 +662,31 @@
     if (btn) btn.textContent = isPassword ? '🙈' : '👁️';
   };
 
+  window.handleGeminiModelChange = function() {
+    const modelSelect = document.getElementById('gemini-model-select');
+    const customModelInput = document.getElementById('gemini-custom-model-input');
+    if (!modelSelect || !customModelInput) return;
+    const isCustom = modelSelect.value === '__custom__';
+    customModelInput.classList.toggle('hidden', !isCustom);
+    if (isCustom) {
+      customModelInput.focus();
+    }
+  };
+
   window.saveGeminiSettings = function() {
     const keyInput = document.getElementById('gemini-api-key-input');
     const modelSelect = document.getElementById('gemini-model-select');
+    const customModelInput = document.getElementById('gemini-custom-model-input');
     const newKey = keyInput ? keyInput.value.trim() : '';
-    const newModel = modelSelect ? modelSelect.value.trim() : DEFAULT_MODEL;
+    let newModel = modelSelect ? modelSelect.value.trim() : DEFAULT_MODEL;
+    if (newModel === '__custom__') {
+      newModel = customModelInput ? customModelInput.value.trim() : '';
+      if (!newModel) {
+        alert('請輸入自訂的模型 ID（例如 gemini-4-argon 或 gemini-3.8-flash）。');
+        customModelInput?.focus();
+        return;
+      }
+    }
 
     if (!newKey) {
       alert('請輸入有效的 Google Gemini API Key。');
