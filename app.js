@@ -1037,8 +1037,17 @@
         ${imgHtml}
 
         <!-- 選項列表 -->
-        <div class="space-y-3 mb-6">
+        <div class="space-y-3 mb-5">
           ${optionsHtml}
+        </div>
+
+        <!-- AI 解析助教快捷按鈕列 -->
+        <div class="flex items-center justify-end">
+          <button type="button" onclick="window.askGeminiCurrentQuestion()" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white shadow-sm transition cursor-pointer">
+            <span>✨</span>
+            <span>詢問 Gemini</span>
+            ${q.image ? '<span class="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20 font-normal">含附圖</span>' : ''}
+          </button>
         </div>
 
         <!-- 回饋結果 -->
@@ -1302,8 +1311,28 @@
     if (isShortcutsBound) return;
     isShortcutsBound = true;
     window.addEventListener('keydown', (e) => {
-      // 避免在輸入框打字時觸發快捷鍵
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+      if (e.key === 'Escape') {
+        const imgModal = document.getElementById('image-modal');
+        if (imgModal && !imgModal.classList.contains('hidden')) {
+          window.closeImageModal();
+          return;
+        }
+        const geminiModal = document.getElementById('gemini-modal');
+        if (geminiModal && !geminiModal.classList.contains('hidden') && typeof window.closeGeminiModal === 'function') {
+          window.closeGeminiModal();
+          return;
+        }
+      }
+
+      // 避免在輸入框或任一彈出視窗開啟時觸發刷題快捷鍵
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+      const modalIds = ['gemini-modal', 'exam-modal', 'answer-sheet-modal', 'cloud-sync-modal', 'image-modal'];
+      if (modalIds.some(id => {
+        const el = document.getElementById(id);
+        return el && !el.classList.contains('hidden');
+      })) {
+        return;
+      }
       
       const key = e.key.toUpperCase();
       const q = getCurrentQuestion();
@@ -1821,6 +1850,24 @@
       input.value = '';
     };
     reader.readAsText(file);
+  };
+
+  // 供 Gemini AI 解析模組 (gemini.js) 讀取當前題目與作答上下文
+  window.getGeminiQuestionContext = function() {
+    const q = getCurrentQuestion();
+    if (!q) return null;
+    const subj = SUBJECTS[state.currentSubject];
+    const userAns = state.currentMode === 'exam'
+      ? (state.exam.answers[state.currentIndex] || null)
+      : (state.history[q.id]?.answer || null);
+    const revealAnswerToAI = (state.currentMode !== 'exam') || Boolean(state.exam.submitted);
+    return {
+      subjectId: state.currentSubject,
+      subjectName: subj ? subj.name : state.currentSubject,
+      question: q,
+      userAnswer: userAns,
+      revealAnswerToAI
+    };
   };
 
   // 供雲端同步模組 (sync.js) 更新狀態後重新整理介面

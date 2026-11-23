@@ -251,7 +251,7 @@
   </div>
 
   <!-- 彈出視窗 2: 圖片高清放大檢視彈窗 -->
-  <div id="image-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm" onclick="window.closeImageModal()">
+  <div id="image-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm" onclick="window.closeImageModal()">
     <div class="relative max-w-4xl max-h-[90vh] bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-2xl border border-slate-700" onclick="event.stopPropagation()">
       <button onclick="window.closeImageModal()" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold hover:bg-slate-200">
         ✕
@@ -438,19 +438,111 @@
     </div>
   </div>
 
+  <!-- 彈出視窗 5: Gemini AI 電工解析助教 -->
+  <div id="gemini-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm" onclick="if(event.target===this) window.closeGeminiModal()">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-700 animate-fade-in overflow-hidden">
+      <!-- 頂部標題列 -->
+      <div class="flex items-center justify-between gap-2 px-4 sm:px-5 py-3.5 border-b border-slate-100 dark:border-slate-700 bg-gradient-to-r from-indigo-50/80 via-blue-50/70 to-white dark:from-indigo-950/50 dark:via-slate-800 dark:to-slate-800 shrink-0">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="text-xl shrink-0">✨</span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">詢問 Gemini</h3>
+              <span id="gemini-current-model-badge" class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300 font-semibold">gemini-2.5-flash</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 truncate">自動帶入題目、選項與附圖進行 AI 電工解析</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button type="button" id="gemini-toggle-settings-btn" onclick="window.toggleGeminiSettings()" class="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+            ⚙️ 設定
+          </button>
+          <button type="button" onclick="window.retryAskGemini()" title="重新詢問本題" class="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+            🔄 重問
+          </button>
+          <button type="button" onclick="window.closeGeminiModal()" title="關閉視窗" class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg font-bold leading-none">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- API Key 與模型設定面板（可折疊） -->
+      <div id="gemini-settings-panel" class="hidden px-4 sm:px-5 py-4 bg-slate-50 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-700 space-y-3 shrink-0">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Google Gemini API Key：</label>
+            <div class="relative flex items-center">
+              <input type="password" id="gemini-api-key-input" placeholder="貼上您的 AIza... API Key" class="w-full text-xs font-mono pl-3 pr-9 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              <button type="button" id="gemini-key-eye-btn" onclick="window.toggleGeminiKeyVisibility()" title="顯示/隱藏金鑰" class="absolute right-2.5 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">👁️</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Gemini 模型：</label>
+            <select id="gemini-model-select" class="w-full text-xs font-mono px-2.5 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="gemini-2.5-flash">gemini-2.5-flash (推薦)</option>
+              <option value="gemini-2.5-pro">gemini-2.5-pro (深度推理)</option>
+              <option value="gemini-2.0-flash">gemini-2.0-flash</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex items-center justify-between gap-2 flex-wrap">
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">
+            🔒 金鑰僅儲存於您的瀏覽器本機，直接連線 Google 官方 API。可前往
+            <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 underline font-medium">Google AI Studio</a>
+            免費申請。
+          </p>
+          <div class="flex items-center gap-2">
+            <button type="button" id="gemini-clear-key-btn" onclick="window.clearGeminiApiKey()" class="hidden px-3 py-1.5 text-xs font-medium rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 transition">
+              清除金鑰
+            </button>
+            <button type="button" onclick="window.saveGeminiSettings()" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition">
+              儲存並送出
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 當前題目與附圖狀態摘要 -->
+      <div id="gemini-question-preview" class="px-4 sm:px-5 py-3 bg-indigo-50/40 dark:bg-slate-900/40 border-b border-slate-100 dark:border-slate-700/80 shrink-0"></div>
+
+      <!-- 對話回答顯示區 -->
+      <div id="gemini-messages" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3.5 min-h-[200px]"></div>
+
+      <!-- 底部繼續追問列 -->
+      <div class="px-4 sm:px-5 py-3 border-t border-slate-100 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/50 space-y-2 shrink-0">
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <span class="text-[11px] text-slate-400 dark:text-slate-500">快速追問：</span>
+          <button type="button" onclick="window.sendGeminiFollowUp('請詳細說明其餘干擾選項錯在哪裡？')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition">
+            🔍 分析錯誤選項
+          </button>
+          <button type="button" onclick="window.sendGeminiFollowUp('請列出本題相關的計算公式、原理或記憶口訣。')" class="text-[11px] px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 transition">
+            📐 公式與口訣
+          </button>
+        </div>
+        <div class="flex items-end gap-2">
+          <textarea id="gemini-followup-input" rows="2" placeholder="有不清楚的地方嗎？輸入問題繼續追問 Gemini... (Enter 送出)" onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); window.sendGeminiFollowUp(); }" class="flex-1 text-xs sm:text-sm px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"></textarea>
+          <button type="button" id="gemini-followup-btn" onclick="window.sendGeminiFollowUp()" class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition shrink-0">
+            送出
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 引入 Firebase 官方相容版 SDK (方案 C) -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <script src="firebase-config.js?v=20261111_7"></script>
   <script src="sync.js?v=20261112_2"></script>
+  <script src="gemini.js?v=20261123_1"></script>
 
   <!-- 引入三大題庫資料 (支援免伺服器離線執行) -->
   <script src="data/mid_maintenance_electrician.js?v=20261117_1"></script>
   <script src="data/junior_maintenance_electrician.js?v=20261117_1"></script>
   <script src="data/junior_equipment_installer.js?v=20261117_1"></script>
   <!-- 引入核心業務腳本 -->
-  <script src="app.js?v=20261123_1"></script>
+  <script src="app.js?v=20261123_2"></script>
 </body>
 </html>
 
