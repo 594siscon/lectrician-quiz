@@ -4,7 +4,7 @@
     'mid_maintenance_electrician': {
       id: 'mid_maintenance_electrician',
       name: '中級維修電工',
-      badge: '920 題 · 2026 最新版',
+      badge: '924 題 · 2026 最新版',
       getData: () => window.RAW_QUESTION_DATA,
       file: 'data/mid_maintenance_electrician.json'
     },

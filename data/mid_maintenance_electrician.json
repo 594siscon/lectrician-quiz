@@ -4,9 +4,9 @@
   "title": "中級維修電工 技能測試題庫",
   "source": "澳門特別行政區政府 勞工事務局 2026",
   "version": "2026.05",
-  "total_count": 920,
+  "total_count": 924,
   "tf_count": 334,
-  "mc_count": 586,
+  "mc_count": 590,
   "categories": [
     "工作規範與電工安全",
     "電工基礎",
@@ -16439,6 +16439,122 @@
       "section_index": 3,
       "image": null,
       "page": 87
+    },
+    {
+      "id": "mid_mc_s3_081",
+      "num": 81,
+      "type": "mc",
+      "question": "儀錶的所有線路與參考接地點之間的絕緣電阻，應不低於多少兆歐(MΩ)？",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.5MΩ"
+        },
+        {
+          "key": "B",
+          "text": "5MΩ"
+        },
+        {
+          "key": "C",
+          "text": "10MΩ"
+        },
+        {
+          "key": "D",
+          "text": "20MΩ"
+        }
+      ],
+      "answer": "B",
+      "category": "電工儀錶測量",
+      "section_index": 3,
+      "image": null,
+      "page": 88
+    },
+    {
+      "id": "mid_mc_s3_082",
+      "num": 82,
+      "type": "mc",
+      "question": "電能錶(電度錶)內包含何類線圈，請指出最適合之答案？",
+      "options": [
+        {
+          "key": "A",
+          "text": "電流線圈"
+        },
+        {
+          "key": "B",
+          "text": "電壓線圈"
+        },
+        {
+          "key": "C",
+          "text": "電流線圈及電壓線圈"
+        },
+        {
+          "key": "D",
+          "text": "電流線圈及互感線圈"
+        }
+      ],
+      "answer": "C",
+      "category": "電工儀錶測量",
+      "section_index": 3,
+      "image": null,
+      "page": 88
+    },
+    {
+      "id": "mid_mc_s3_083",
+      "num": 83,
+      "type": "mc",
+      "question": "使用哪一類電能錶(電度錶)可測量三相四線制不對稱負載的無功電能？",
+      "options": [
+        {
+          "key": "A",
+          "text": "具有60°相位差之三相無功電能錶"
+        },
+        {
+          "key": "B",
+          "text": "三相有功電能錶"
+        },
+        {
+          "key": "C",
+          "text": "具有附加電流線圈的三相無功電能錶"
+        },
+        {
+          "key": "D",
+          "text": "單相有功電錶"
+        }
+      ],
+      "answer": "C",
+      "category": "電工儀錶測量",
+      "section_index": 3,
+      "image": null,
+      "page": 88
+    },
+    {
+      "id": "mid_mc_s3_084",
+      "num": 84,
+      "type": "mc",
+      "question": "漏電檢測器主要功能是檢測下列何者？",
+      "options": [
+        {
+          "key": "A",
+          "text": "線間短路電流"
+        },
+        {
+          "key": "B",
+          "text": "接地電流"
+        },
+        {
+          "key": "C",
+          "text": "過載電流"
+        },
+        {
+          "key": "D",
+          "text": "線間短路電流及過載電流"
+        }
+      ],
+      "answer": "B",
+      "category": "電工儀錶測量",
+      "section_index": 3,
+      "image": null,
+      "page": 88
     },
     {
       "id": "mid_mc_s4_001",
